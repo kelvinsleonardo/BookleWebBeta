@@ -2,11 +2,15 @@ package br.com.bookleweb.modelo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_usuario")
 public class Usuario {
+	
+
 	
 	@Id
 	private long matricula;

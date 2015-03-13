@@ -1,7 +1,13 @@
 package br.com.bookleweb.controller;
 
+import java.util.List;
+
+import javax.persistence.Query;
+import javax.persistence.EntityManager;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import br.com.bookleweb.Factory.FabricaEntityManager;
 import br.com.bookleweb.modelo.Usuario;
@@ -9,33 +15,35 @@ import br.com.bookleweb.modelo.Usuario;
 @Controller
 public class UsuarioController {
 	
+	
 	@RequestMapping("/Login")
 	public String execute(){
-		System.out.println("Executando Tela Login");
+		
 		return "login";	
 	}
 	
 	@RequestMapping("/AdicionaUsuario")
 	public String adiciona(Usuario usuario){
+
+		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		
-		FabricaEntityManager.getEntityManager().getTransaction().begin();
+		manager.getTransaction().begin();
 		
-		FabricaEntityManager.getEntityManager().persist(usuario);
+		manager.persist(usuario);
 		
-		FabricaEntityManager.getEntityManager().getTransaction().commit();
+		manager.getTransaction().commit();
 		
-		FabricaEntityManager.getEntityManager().close();
+		manager.close();
 		
 		return "conta_adicionada";
 	}
 	
 	@RequestMapping("/BuscaUsuario")
 	public String busca(Usuario usuario){
-		
-		Usuario resultadobusca = FabricaEntityManager.getEntityManager().
+		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
+		Usuario resultadobusca = manager.
 									find(Usuario.class, usuario.getMatricula());
-		
-		System.out.println(resultadobusca.getSenha());    
+		 
 		
 		return "login";
 	}
@@ -43,17 +51,20 @@ public class UsuarioController {
 	@RequestMapping("/ExcluiUsuario")
 	public String exclui(Usuario usuario){
 		
-		Usuario resultadobusca = FabricaEntityManager.getEntityManager().
+		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
+		
+		manager.getTransaction().begin();
+		
+		Usuario resultadobusca = manager.
 				find(Usuario.class, usuario.getMatricula());
 		
-		FabricaEntityManager.getEntityManager().getTransaction().begin();
+		manager.remove(resultadobusca);
 		
-		FabricaEntityManager.getEntityManager().remove(resultadobusca);
+		manager.getTransaction().commit();
 		
-		FabricaEntityManager.getEntityManager().getTransaction().commit();
-		
-		FabricaEntityManager.getEntityManager().close();
+		manager.close();
 		
 		return "login";
 	}
+	
 }
