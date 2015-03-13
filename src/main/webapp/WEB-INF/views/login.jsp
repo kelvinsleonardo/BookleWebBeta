@@ -7,7 +7,7 @@
 </head>
 
 <body>
-
+	<h2>Executar Login</h2>
 	<form action="Login">
 		<h3>Matrícula</h3>
 		<input type="text" name="matricula">
@@ -16,14 +16,29 @@
 		<input type="submit" value="Login">
 	</form>
 	
-	
+	<h2>Adicionar Usuario</h2>
 	<form action="AdicionaUsuario" method="post">
 		<h3>Matrícula</h3>
 		<input type="text" name="matricula">
 		<h3>Senha</h3>
 		<input type="password" name="senha">
-		<input type="submit" value="Login">
+		<input type="submit" value="Cadastrar">
 	</form>
+
+	<h2>Buscar Usuario</h2>
+	<form action="BuscaUsuario" method="post">
+		<h3>Matrícula</h3>
+		<input type="text" name="matricula">
+		<input type="submit" value="Buscar">
+	</form>	
+
+	<h2>Excluir Usuario</h2>
+	<form action="ExcluiUsuario" method="post">
+		<h3>Matrícula</h3>
+		<input type="text" name="matricula">
+		<input type="submit" value="Excluir">
+	</form>	
+	
 	
 </body>
 

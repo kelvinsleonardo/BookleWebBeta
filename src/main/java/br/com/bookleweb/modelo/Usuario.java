@@ -2,8 +2,10 @@ package br.com.bookleweb.modelo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "tb_usuario")
 public class Usuario {
 	
 	@Id
@@ -11,7 +13,7 @@ public class Usuario {
 	private String nome;
 	private String senha;
 	
-	public double getMatricula() {
+	public long getMatricula() {
 		return matricula;
 	}
 	public void setMatricula(long matricula) {

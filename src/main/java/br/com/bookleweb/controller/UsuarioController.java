@@ -1,12 +1,9 @@
 package br.com.bookleweb.controller;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.bookleweb.Factory.FabricaEntityManager;
 import br.com.bookleweb.modelo.Usuario;
 
 @Controller
@@ -21,23 +18,42 @@ public class UsuarioController {
 	@RequestMapping("/AdicionaUsuario")
 	public String adiciona(Usuario usuario){
 		
-		EntityManagerFactory factorymanager = Persistence.createEntityManagerFactory("biblioteca");
-		EntityManager manager = factorymanager.createEntityManager();
+		FabricaEntityManager.getEntityManager().getTransaction().begin();
 		
-		System.out.println("Matricula: "+usuario.getMatricula());
-		System.out.println("Senha: "+usuario.getSenha());
+		FabricaEntityManager.getEntityManager().persist(usuario);
 		
+		FabricaEntityManager.getEntityManager().getTransaction().commit();
 		
-		manager.getTransaction().begin();
-		
-		manager.persist(usuario);
-		
-		manager.getTransaction().commit();
-		
-		manager.close();
-		
-		System.out.println("Adicionando usuario no banco");
+		FabricaEntityManager.getEntityManager().close();
 		
 		return "conta_adicionada";
+	}
+	
+	@RequestMapping("/BuscaUsuario")
+	public String busca(Usuario usuario){
+		
+		Usuario resultadobusca = FabricaEntityManager.getEntityManager().
+									find(Usuario.class, usuario.getMatricula());
+		
+		System.out.println(resultadobusca.getSenha());    
+		
+		return "login";
+	}
+
+	@RequestMapping("/ExcluiUsuario")
+	public String exclui(Usuario usuario){
+		
+		Usuario resultadobusca = FabricaEntityManager.getEntityManager().
+				find(Usuario.class, usuario.getMatricula());
+		
+		FabricaEntityManager.getEntityManager().getTransaction().begin();
+		
+		FabricaEntityManager.getEntityManager().remove(resultadobusca);
+		
+		FabricaEntityManager.getEntityManager().getTransaction().commit();
+		
+		FabricaEntityManager.getEntityManager().close();
+		
+		return "login";
 	}
 }
