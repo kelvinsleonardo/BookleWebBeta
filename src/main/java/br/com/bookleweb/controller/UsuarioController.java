@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +21,11 @@ import br.com.bookleweb.modelo.Usuario;
 @Controller
 public class UsuarioController {
 	
+	private UsuarioDAO usuarioDAO;
 	
-	@RequestMapping("/Login")
-	public String execute(){
-		return "login";
+	@Autowired // Injeção de Dependencia
+	public UsuarioController(UsuarioDAO usuarioDAO) {
+		this.usuarioDAO = usuarioDAO;
 	}
 	
 	@RequestMapping("/AdicionaUsuario")
@@ -32,21 +34,12 @@ public class UsuarioController {
 			return "login";
 		}
 		else{
-		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		usuarioDAO.adiciona(usuario);
 		return "redirect:Login";}
 	}
 	
-	@RequestMapping("/ValidaUsuario")
-	public String busca(Usuario usuario){
-		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		usuarioDAO.valida(usuario);
-		return "login";
-	}
-
 	@RequestMapping("/RemoveUsuario")
 	public String remove(Usuario usuario){
-		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		usuarioDAO.remove(usuario);
 		
 		return "redirect:Login";
@@ -61,7 +54,7 @@ public class UsuarioController {
 		
 		ArrayList<Usuario> usuarios = (ArrayList<Usuario>) typedQuery.getResultList();
 		
-		ModelAndView mv = new ModelAndView("login", "usuarios", usuarios);
+		ModelAndView mv = new ModelAndView("/admin/listausuario", "usuarios", usuarios);
 		
 		return mv;	
 	}

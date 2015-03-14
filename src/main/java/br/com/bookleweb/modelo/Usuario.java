@@ -7,7 +7,6 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-
 @Entity
 @Table(name = "tb_usuario")
 public class Usuario {
@@ -17,6 +16,7 @@ public class Usuario {
 	private String nome;
 	@NotEmpty(message="{usuario.senha.vazio}")
 	private String senha;
+	private String authority ;
 	
 	public Integer getMatricula() {
 		return matricula;
@@ -35,6 +35,12 @@ public class Usuario {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public String getAuthority() {
+		return authority;
+	}
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
 	
 }
