@@ -2,25 +2,26 @@ package br.com.bookleweb.modelo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 @Entity
 @Table(name = "tb_usuario")
 public class Usuario {
-	
-
-	
 	@Id
-	private long matricula;
+	@NotNull(message="{usuario.matricula.vazio}")
+	private Integer matricula;
 	private String nome;
+	@NotEmpty(message="{usuario.senha.vazio}")
 	private String senha;
 	
-	public long getMatricula() {
+	public Integer getMatricula() {
 		return matricula;
 	}
-	public void setMatricula(long matricula) {
+	public void setMatricula(Integer matricula) {
 		this.matricula = matricula;
 	}
 	public String getNome() {

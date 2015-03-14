@@ -1,15 +1,20 @@
 package br.com.bookleweb.controller;
 
-import java.util.List;
+import java.util.ArrayList;
 
-import javax.persistence.Query;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.bookleweb.Factory.FabricaEntityManager;
+import br.com.bookleweb.dao.UsuarioDAO;
 import br.com.bookleweb.modelo.Usuario;
 
 @Controller
@@ -18,53 +23,47 @@ public class UsuarioController {
 	
 	@RequestMapping("/Login")
 	public String execute(){
-		
-		return "login";	
+		return "login";
 	}
 	
 	@RequestMapping("/AdicionaUsuario")
-	public String adiciona(Usuario usuario){
-
-		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
-		
-		manager.getTransaction().begin();
-		
-		manager.persist(usuario);
-		
-		manager.getTransaction().commit();
-		
-		manager.close();
-		
-		return "conta_adicionada";
+	public String adiciona(@Valid Usuario usuario, BindingResult result){
+		if(result.hasErrors()){
+			return "login";
+		}
+		else{
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		usuarioDAO.adiciona(usuario);
+		return "redirect:Login";}
 	}
 	
-	@RequestMapping("/BuscaUsuario")
+	@RequestMapping("/ValidaUsuario")
 	public String busca(Usuario usuario){
-		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
-		Usuario resultadobusca = manager.
-									find(Usuario.class, usuario.getMatricula());
-		 
-		
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		usuarioDAO.valida(usuario);
 		return "login";
 	}
 
-	@RequestMapping("/ExcluiUsuario")
-	public String exclui(Usuario usuario){
+	@RequestMapping("/RemoveUsuario")
+	public String remove(Usuario usuario){
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		usuarioDAO.remove(usuario);
+		
+		return "redirect:Login";
+	}
+
+	@RequestMapping("/ListaUsuario")
+	public ModelAndView lista(){
 		
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		
-		manager.getTransaction().begin();
+		TypedQuery<Usuario> typedQuery = manager.createQuery("SELECT e FROM Usuario e", Usuario.class);
 		
-		Usuario resultadobusca = manager.
-				find(Usuario.class, usuario.getMatricula());
+		ArrayList<Usuario> usuarios = (ArrayList<Usuario>) typedQuery.getResultList();
 		
-		manager.remove(resultadobusca);
+		ModelAndView mv = new ModelAndView("login", "usuarios", usuarios);
 		
-		manager.getTransaction().commit();
-		
-		manager.close();
-		
-		return "login";
+		return mv;	
 	}
-	
+
 }
