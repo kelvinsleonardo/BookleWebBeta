@@ -13,10 +13,13 @@ public class Usuario {
 	@Id
 	@NotNull(message="{usuario.matricula.vazio}")
 	private Integer matricula;
+	
 	private String nome;
+	
 	@NotEmpty(message="{usuario.senha.vazio}")
 	private String senha;
-	private String authority ;
+	
+	private String permissao ;
 	
 	public Integer getMatricula() {
 		return matricula;
@@ -37,10 +40,10 @@ public class Usuario {
 		this.senha = senha;
 	}
 	public String getAuthority() {
-		return authority;
+		return permissao;
 	}
-	public void setAuthority(String authority) {
-		this.authority = authority;
+	public void setAuthority(String permissao) {
+		this.permissao = permissao;
 	}
 	
 }

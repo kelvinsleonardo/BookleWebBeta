@@ -29,13 +29,15 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping("/AdicionaUsuario")
-	public String adiciona(@Valid Usuario usuario, BindingResult result){
-		if(result.hasErrors()){
-			return "login";
-		}
-		else{
-		usuarioDAO.adiciona(usuario);
-		return "redirect:Login";}
+	public ModelAndView adiciona(@Valid Usuario usuario, BindingResult result){
+			if(usuarioDAO.adiciona(usuario)){
+				ModelAndView mv = new ModelAndView("login", "sucesso", "Usuario cadastrado com sucesso");
+				return mv;
+			}else{
+				ModelAndView mv = new ModelAndView("login", "erro", "Erro ao cadastrar usuario");
+				return mv;
+			}
+		
 	}
 	
 	@RequestMapping("/RemoveUsuario")
@@ -45,7 +47,7 @@ public class UsuarioController {
 		return "redirect:Login";
 	}
 
-	@RequestMapping("/ListaUsuario")
+	@RequestMapping(value = "/listausuario")
 	public ModelAndView lista(){
 		
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();

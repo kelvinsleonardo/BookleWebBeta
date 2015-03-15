@@ -9,7 +9,7 @@
 <title>Lista Usuario</title>
 </head>
 <body>
-	<h2>TELA PRINCIPAL - RULES ALUNO</h2>
+	<h2>TELA PRINCIPAL - RULES ADMINISTRADOR</h2>
 	 <sec:authorize access="isAuthenticated()">
          Bem vindo(a) 
     <sec:authentication property="principal"/> -
@@ -18,7 +18,6 @@
     </br>
     Nome do usuario: <%= SecurityContextHolder.getContext().
 							getAuthentication().getName() %>
-        
 
 </body>
 </html>

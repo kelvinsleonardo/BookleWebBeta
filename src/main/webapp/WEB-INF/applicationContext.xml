@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/security
+						http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+	<http auto-config="true" access-denied-page="/403">
+		
+		<!-- INTERCEPTADORES DO ROLE ADMIN -->
+		<intercept-url pattern="/listausuario" access="ROLE_ADMIN"/>
+		<intercept-url pattern="/admin**" access="ROLE_ADMIN"/>
+		
+		<!-- INTERCEPTADORES DO ROLE ALUNO -->
+		<intercept-url pattern="/aluno**" access="ROLE_ALUNO,ROLE_ADMIN"/>
+		
+		<!-- INTERCEPTADORES DO ROLE PROFESSOR -->
+		<intercept-url pattern="/professor**" access="ROLE_PROFESSOR,ROLE_ADMIN"/>
+		
+		<form-login 
+			login-page="/login"
+			authentication-failure-url="/login?error=Usuario ou senha incorreta."
+			authentication-success-handler-ref="autenticacaoHandler"
+		/>
+		
+		<session-management invalid-session-url="/login">
+			<concurrency-control 
+				max-sessions="10"
+				error-if-maximum-exceeded="true" />
+		</session-management>
+	</http>
+
+	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="SELECT matricula, senha, 'true' as enable FROM tb_usuario WHERE matricula=?"
+				authorities-by-username-query="SELECT matricula, permissao FROM tb_usuario WHERE matricula=?" />
+			<!-- <password-encoder hash="md5" /> -->
+		</authentication-provider>
+	</authentication-manager>
+
+	 <beans:bean id="autenticacaoHandler" class="br.com.bookleweb.util.AutenticacaoHandler" />
+
+	<beans:bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="url"
+			value="jdbc:mysql://localhost/bookleweb" />
+		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<beans:property name="username" value="root" />
+		<beans:property name="password" value="root" />
+	</beans:bean>
+
+</beans:beans>

@@ -9,16 +9,9 @@
 <title>Lista Usuario</title>
 </head>
 <body>
-	<h2>TELA PRINCIPAL - RULES ALUNO</h2>
-	 <sec:authorize access="isAuthenticated()">
-         Bem vindo(a) 
-    <sec:authentication property="principal"/> -
-    <a href="<c:url value="/j_spring_security_logout"/>">Logout</a>
-    </sec:authorize>
-    </br>
-    Nome do usuario: <%= SecurityContextHolder.getContext().
-							getAuthentication().getName() %>
-        
+	
+	<h1>HTTP Status 403 - Acesso Negado</h1>
+	<h2>${msg}</h2>
 
 </body>
 </html>
