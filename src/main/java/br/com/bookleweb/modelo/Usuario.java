@@ -7,6 +7,8 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import br.com.bookleweb.util.CriptografiaSenha;
+
 @Entity
 @Table(name = "tb_usuario")
 public class Usuario {
@@ -37,12 +39,12 @@ public class Usuario {
 		return senha;
 	}
 	public void setSenha(String senha) {
-		this.senha = senha;
+		this.senha = CriptografiaSenha.md5(senha);
 	}
-	public String getAuthority() {
+	public String getPermissao() {
 		return permissao;
 	}
-	public void setAuthority(String permissao) {
+	public void setPermissao(String permissao) {
 		this.permissao = permissao;
 	}
 	

@@ -1,4 +1,4 @@
-package br.com.bookleweb.Factory;
+package br.com.bookleweb.factory;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

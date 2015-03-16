@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.bookleweb.Factory.FabricaEntityManager;
+import br.com.bookleweb.factory.FabricaEntityManager;
 import br.com.bookleweb.modelo.Usuario;
 
 @Repository // Repositorio para injeção de dependencia

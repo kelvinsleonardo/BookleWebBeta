@@ -74,11 +74,12 @@
 		  	if(erro != null) {%>
  			<h5 class="error">
  			<%= request.getParameter("error") %>
+ 			${SPRING_SECURITY_LAST_EXCEPTION.message}
  			</h5>
  			<%}%>
 		  <input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" />
- 
+
 		</form>
 	</div>
  
