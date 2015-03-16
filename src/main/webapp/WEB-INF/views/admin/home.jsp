@@ -14,7 +14,7 @@
 	
 	
          Bem vindo(a) 
-    <li><a href="gerenciausuario">Cadatrar Usuario</a></li>
+    <li><a href="gerenciausuario">Gerenciar Usuarios</a></li>
     <a href="<c:url value="/j_spring_security_logout"/>">Logout</a>
   
     </br>

@@ -7,60 +7,43 @@ import org.springframework.stereotype.Repository;
 import br.com.bookleweb.factory.FabricaEntityManager;
 import br.com.bookleweb.modelo.Usuario;
 
-@Repository // Repositorio para injeção de dependencia
+@Repository
 public class UsuarioDAO {
 
 	public Boolean adiciona(Usuario usuario){
-		
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		try{
-		manager.getTransaction().begin();
-		
-		manager.persist(usuario);
-		
-		manager.getTransaction().commit();
-		
-		return true;
+			manager.getTransaction().begin();
+			manager.persist(usuario);
+			manager.getTransaction().commit();
+			return true;
 		}catch(Exception e){
 			return false;
 		}finally{
 			manager.close();
 		}
-
-		
 	}
 	
 	public Boolean remove(Usuario usuario){
-
+		
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
-		
-		manager.getTransaction().begin();
-		
-		Usuario resultadobusca = manager.
-				find(Usuario.class, usuario.getMatricula());
-		
-		manager.remove(resultadobusca);
-		
-		manager.getTransaction().commit();
-		
-		manager.close();
-		
-		return true;
+		try{
+			manager.getTransaction().begin();
+			Usuario usuariobuscado = manager.find(Usuario.class, usuario.getMatricula());
+			manager.remove(usuariobuscado);
+			manager.getTransaction().commit();
+			return true;
+		}catch(Exception e){
+			return false;
+		}finally{
+			manager.close();
+		}
 	}
 
-	public Boolean valida(Usuario usuario){
+	public Usuario procura(Usuario usuario){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
-		Usuario resultadobusca = manager.find(Usuario.class, usuario.getMatricula());
-
-		if(resultadobusca != null){
-			if(resultadobusca.getSenha().equals(usuario.getSenha())){
-				return true;
-			}else{
-				return false;
-			}
-		} else{
-			return false;
-		}
-	
+		Usuario dadosusuario = manager.find(Usuario.class, usuario.getMatricula());
+		
+		return dadosusuario;
 	}
 }
