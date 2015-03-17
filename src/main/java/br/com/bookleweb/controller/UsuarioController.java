@@ -2,9 +2,6 @@ package br.com.bookleweb.controller;
 
 import java.util.ArrayList;
 
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,12 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-
-
-
-
 import br.com.bookleweb.dao.UsuarioDAO;
-import br.com.bookleweb.factory.FabricaEntityManager;
 import br.com.bookleweb.modelo.Usuario;
 
 @Controller
@@ -33,16 +25,19 @@ public class UsuarioController {
 	}
 	
 	// Servlet para acessar página gerenciausuario.jsp
-	@RequestMapping(value = "/gerenciausuario")
+	@RequestMapping(value = "/gerenciadorusuario")
 	public String executeTelaGerenciaUsuario(){
-		return "/admin/gerenciausuario";
+		return "/admin/gerenciadorusuario";
 		
 	}
 	
-	@RequestMapping(value="/gerenciausuario.do", method=RequestMethod.POST)
+	@RequestMapping(value="/gerenciadorusuario-do", method=RequestMethod.POST)
 	public ModelAndView doActions(@ModelAttribute Usuario usuario, @RequestParam String action){
-		ModelAndView objeto = new ModelAndView("redirect:/gerenciausuario");
-		if(action.toLowerCase().equals("adicionar")){
+		
+		ModelAndView objeto = new ModelAndView("forward:/listartodosusuarios");
+		action = action.toLowerCase();
+		
+		if(action.equals("adicionar")){
 			if(usuarioDAO.adiciona(usuario)){
 				String mensagem = "Usuário cadastrado com Sucesso!";
 				objeto.addObject("sucesso", mensagem);
@@ -51,41 +46,40 @@ public class UsuarioController {
 				objeto.addObject("erro", mensagem);
 			}
 		}
-		else if(action.toLowerCase().equals("editar")){
+		else if(action.equals("editar")){
 			System.out.println("CLICOU EM EDITAR");
 		}
-		else if(action.toLowerCase().equals("remover")){
-			System.out.println(usuario.getMatricula());
+		else if(action.equals("remover")){
 			if(usuarioDAO.remove(usuario)){
 				String mensagem = "Usuário removido com sucesso!";
 				objeto.addObject("sucesso", mensagem);
+				return objeto;
 			}else{
 				String mensagem = "Erro ao remover usuário";
 				objeto.addObject("erro", mensagem);
-
 			}
 		}
-		else if(action.toLowerCase().equals("procurar")){
+		else if(action.equals("procurar")){
 			Usuario usuariopesquisado = usuarioDAO.procura(usuario);
 			objeto.addObject("usuario", usuariopesquisado);
 		}
 		
+		else if(action.equals("listar")){
+			ArrayList<Usuario> listausuarios = usuarioDAO.lista();
+			objeto.addObject("listausuarios",listausuarios);
+			
+		}
+		
 		return objeto;
 	}
-	
-	
-	@RequestMapping(value = "/listausuario")
-	public ModelAndView lista(){
-		
-		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
-		
-		TypedQuery<Usuario> typedQuery = manager.createQuery("SELECT e FROM Usuario e", Usuario.class);
-		
-		ArrayList<Usuario> usuarios = (ArrayList<Usuario>) typedQuery.getResultList();
-		
-		ModelAndView mv = new ModelAndView("/admin/listausuario", "usuarios", usuarios);
-		
-		return mv;	
-	}
 
+	@RequestMapping(value = "/listartodosusuarios")
+	public ModelAndView doListarUsuarios(){
+		ModelAndView objeto = new ModelAndView("forward:/gerenciadorusuario");
+		ArrayList<Usuario> listausuarios = usuarioDAO.lista();
+		objeto.addObject("listausuarios",listausuarios);
+		return objeto;
+		
+	}
+	
 }

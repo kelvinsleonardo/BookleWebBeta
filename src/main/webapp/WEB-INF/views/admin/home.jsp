@@ -13,13 +13,13 @@
 	<h2>TELA PRINCIPAL - RULES ADMINISTRADOR</h2>
 	
 	
-         Bem vindo(a) 
-    <li><a href="gerenciausuario">Gerenciar Usuarios</a></li>
-    <a href="<c:url value="/j_spring_security_logout"/>">Logout</a>
+        Bem vindo(a) Nome do usuario: <%= SecurityContextHolder.getContext().
+							getAuthentication().getName() %> &nbsp;<a href="<c:url value="/j_spring_security_logout"/>">Logout</a>
+    <li><a href="gerenciadorusuario">Gerenciar Usuarios</a></li>
+    
   
     </br>
-    Nome do usuario: <%= SecurityContextHolder.getContext().
-							getAuthentication().getName() %>
+    
 
 </body>
 </html>

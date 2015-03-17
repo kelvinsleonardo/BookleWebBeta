@@ -12,7 +12,7 @@
 		<!-- INTERCEPTADORES DO ROLE ADMIN -->
 		<intercept-url pattern="/listausuario" access="ROLE_ADMIN"/>
 		<intercept-url pattern="/gerenciausuario" access="ROLE_ADMIN"/>
-		<intercept-url pattern="/adicionausuario" access="ROLE_ADMIN"/>
+		<intercept-url pattern="/gerenciausuario-do" access="ROLE_ADMIN"/>
 		<intercept-url pattern="/admin**" access="ROLE_ADMIN"/>
 		
 		
