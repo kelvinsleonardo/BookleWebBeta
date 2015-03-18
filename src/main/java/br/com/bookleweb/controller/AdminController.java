@@ -15,17 +15,32 @@ public class AdminController {
 		return "/admin/home";
 	}
 	
+	@RequestMapping(value = "/modelobootstrap")
+	public String executeModeloBootstrap(){
+		return "/admin/index";
+	}
+	
 	@RequestMapping(value = "/403")
-	public ModelAndView accesssDenied(Principal user) {
+	public ModelAndView accessDenied(Principal user) {
 		 
 		ModelAndView model = new ModelAndView();
 		if (user != null) {
-			model.addObject("msg", "OlÃ¡ " + user.getName() 
-			+ ", vocÃª nÃ£o tem permissÃ£o para acessar esta pagina!");
+			model.addObject("msg", "Ixi! :o " + user.getName() 
+			+ ", você não tem permissão para acessar esta pagina!");
 		} else {
 			model.addObject("msg", 
-			"VocÃª nÃ£o tem permissÃ£o para acessar essa pagina!");}
-		model.setViewName("publico/403");
+			"Você não tem permissão para acessar essa pagina!");}
+		model.setViewName("publico/errors/403");
 		return model;
 	}
+	
+	@RequestMapping(value = "/404")
+	public ModelAndView pageNotFound(Principal user) {
+		 
+		ModelAndView model = new ModelAndView();
+		model.addObject("msg","Ixi! Égua seu coléga, não encontramos essa página!");
+		model.setViewName("publico/errors/404");
+		return model;
+	}
+	
 }

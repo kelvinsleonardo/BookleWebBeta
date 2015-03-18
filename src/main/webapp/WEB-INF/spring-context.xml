@@ -12,13 +12,8 @@
 						
 	<context:component-scan base-package="br.com.bookleweb" />
 	<mvc:annotation-driven />
-	<mvc:default-servlet-handler/>
-
-	 <!-- FILTRO PARA BLOQUEAR ACESSO DIRETO AS PAGINAS
-	<mvc:interceptors>
-		<bean class="br.com.bookleweb.interceptor.AutorizadorInterceptor"/>
-	</mvc:interceptors>
- 	-->
+	<mvc:default-servlet-handler />
+	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
