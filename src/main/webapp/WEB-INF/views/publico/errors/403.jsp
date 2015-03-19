@@ -9,26 +9,24 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Modelo GRID BookleWeb</title>
-    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
-    
-    <style>
-        body { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAxMC8yOS8xMiKqq3kAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzVxteM2AAABHklEQVRIib2Vyw6EIAxFW5idr///Qx9sfG3pLEyJ3tAwi5EmBqRo7vHawiEEERHS6x7MTMxMVv6+z3tPMUYSkfTM/R0fEaG2bbMv+Gc4nZzn+dN4HAcREa3r+hi3bcuu68jLskhVIlW073tWaYlQ9+F9IpqmSfq+fwskhdO/AwmUTJXrOuaRQNeRkOd5lq7rXmS5InmERKoER/QMvUAPlZDHcZRhGN4CSeGY+aHMqgcks5RrHv/eeh455x5KrMq2yHQdibDO6ncG/KZWL7M8xDyS1/MIO0NJqdULLS81X6/X6aR0nqBSJcPeZnlZrzN477NKURn2Nus8sjzmEII0TfMiyxUuxphVWjpJkbx0btUnshRihVv70Bv8ItXq6Asoi/ZiCbU6YgAAAABJRU5ErkJggg==);}
-    .error-template {padding: 40px 15px;text-align: center;}
-    </style>
+    <title>BookleWeb 403</title>
+    <!-- Importações de CSS com JSTL-->
+    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css" />" />
+    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/estilo.css" />" />
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     
 </head>
 <body>
 
-    <div class="container">
+<div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="error-template">
-                <h1>
-                    Ixi! Deu erro 403 :o</h1>
-                <div class="alert alert-danger" role="alert">Você não tem permissão pra acessar essa página!</div>
+            <div class="error-http">
+                <h1 class="img-error-header">403</h1>
+                <h1>IXI, VOCÊ NÃO TEM PRIVILÉGIOS PRA ISSO.</h1>
+                <h5>Em outras palavras você está sem moral :(</h5>
                 <br>
-                <a class="btn btn-primary" href="login"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
+                <a class="btn btn-primary btn-sm" href="javascript:window.history.go(-1)">Voltar para a página anterior</a>
             </div>
         </div>
     </div>

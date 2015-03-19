@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Repository;
 
 import br.com.bookleweb.factory.FabricaEntityManager;
@@ -56,4 +57,13 @@ public class UsuarioDAO {
 		ArrayList<Usuario> usuarios = (ArrayList<Usuario>) typedQuery.getResultList();
 		return usuarios;
 	}
+
+	public String getNomeUsuarioLogado(){
+		Integer matriculasessaologado = Integer.parseInt(SecurityContextHolder.getContext().getAuthentication().getName());
+		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
+		Usuario dadosusuario = manager.find(Usuario.class, matriculasessaologado);
+		String nomeusuario = dadosusuario.getNome();
+		return nomeusuario;
+	}
+	
 }

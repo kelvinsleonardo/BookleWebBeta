@@ -11,6 +11,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+import br.com.bookleweb.dao.UsuarioDAO;
+
 public class AutenticacaoHandler implements AuthenticationSuccessHandler {
 
 	public void onAuthenticationSuccess(HttpServletRequest request,
@@ -18,6 +20,11 @@ public class AutenticacaoHandler implements AuthenticationSuccessHandler {
 			throws IOException, ServletException {
 		Set<String> roles = AuthorityUtils.authorityListToSet(authentication
 				.getAuthorities());
+		
+		//  
+		UsuarioDAO usuariodao = new UsuarioDAO();
+		request.getSession().setAttribute("nome_usuario_sessao", usuariodao.getNomeUsuarioLogado());
+		
 		if (roles.contains("ROLE_ALUNO")) {
 			response.sendRedirect("/BookleWeb/aluno");
 		}else if (roles.contains("ROLE_PROFESSOR")) {
