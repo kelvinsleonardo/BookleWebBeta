@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -19,8 +21,11 @@ public class Livro {
 	private String status;
 	private Integer exemplares;
 	
-	@ManyToMany(mappedBy = "livro")
-	private List<Disciplina> disciplina;
+	@ManyToMany
+	@JoinTable(name="tb_disciplina_livro", 
+	joinColumns= @JoinColumn(name="isbn"),
+	inverseJoinColumns = @JoinColumn(name="cod_disciplina"))
+	private List<Disciplina> disciplinas;
 	
 	public Integer getIsbn() {
 		return isbn;

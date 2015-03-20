@@ -17,14 +17,14 @@ public class Disciplina {
 	
 	private String nome_disciplina;
 	
-	@ManyToMany(mappedBy = "disciplina")
-	private List<Curso> curso;
-
 	@ManyToMany
-	@JoinTable(name="tb_disciplina_livro", 
+	@JoinTable(name="tb_curso_disciplina", 
 				joinColumns= @JoinColumn(name="cod_disciplina"),
-				inverseJoinColumns = @JoinColumn(name="isbn"))
-	private List<Livro> livro;
+				inverseJoinColumns = @JoinColumn(name="cod_curso"))
+	private List<Curso> cursos;
+
+	@ManyToMany(mappedBy = "disciplinas")
+	private List<Livro> livros;
 
 	public Integer getCod_disciplina() {
 		return cod_disciplina;
@@ -43,19 +43,19 @@ public class Disciplina {
 	}
 
 	public List<Curso> getCurso() {
-		return curso;
+		return cursos;
 	}
 
-	public void setCurso(List<Curso> curso) {
-		this.curso = curso;
+	public void setCurso(List<Curso> cursos) {
+		this.cursos = cursos;
 	}
 
 	public List<Livro> getLivro() {
-		return livro;
+		return livros;
 	}
 
-	public void setLivro(List<Livro> livro) {
-		this.livro = livro;
+	public void setLivro(List<Livro> livros) {
+		this.livros = livros;
 	}
 	
 	

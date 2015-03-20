@@ -37,7 +37,7 @@ public class DisciplinaController {
 		// Converte para LowerCase;
 		action = action.toLowerCase();
 		if(action.equals("adicionar")){
-			disciplinaDAO.adiciona(disciplina);
+			disciplinaDAO.adiciona(disciplina, curso);
 		}
 		
 		return "redirect:/gerenciadordisciplina";
