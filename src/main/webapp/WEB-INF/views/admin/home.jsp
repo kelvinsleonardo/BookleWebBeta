@@ -12,10 +12,12 @@
 <body>
 	<h2>TELA PRINCIPAL - RULES ADMINISTRADOR</h2>
 
-    <h3>Bem vindo(a) ${nome_usuario_sessao}</h3>
-    
-    &nbsp;<a href="<c:url value="/j_spring_security_logout"/>">Logout</a>
+    <h3>Bem vindo(a) ${nome_usuario_sessao} <a href="<c:url value="/j_spring_security_logout"/>">Logout</a> </h3>
+
     <li><a href="gerenciadorusuario">Gerenciar Usuarios</a></li>
+    <li><a href="gerenciadorcurso">Gerenciar Cursos</a></li>
+    <li><a href="gerenciadordisciplina">Gerenciar Disciplinas</a></li>
+    <li><a href="gerenciadorlivro">Gerenciar Livros</a></li>
     
   
     </br>

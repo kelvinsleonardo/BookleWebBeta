@@ -1,7 +1,10 @@
 package br.com.bookleweb.modelo;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +18,9 @@ public class Livro {
 	private String local;
 	private String status;
 	private Integer exemplares;
+	
+	@ManyToMany(mappedBy = "livro")
+	private List<Disciplina> disciplina;
 	
 	public Integer getIsbn() {
 		return isbn;

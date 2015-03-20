@@ -12,6 +12,9 @@
 
 		<!-- Aqui são listadas todas as entidades -->
 		<class>br.com.bookleweb.modelo.Usuario</class>
+		<class>br.com.bookleweb.modelo.Curso</class>
+		<class>br.com.bookleweb.modelo.Disciplina</class>
+		<class>br.com.bookleweb.modelo.Livro</class>
 		<properties>
 
 			<!-- Propriedades JDBC -->
