@@ -11,11 +11,16 @@
 }
 
 .row {
- margin-bottom: 15px;
+  margin-bottom: 0px;
+}
+
+.background-login{
+	background-color: #F2F1EF; 
 }
 
 
 header{
+	background-color: #F2F1EF; 
  /*padding-top: 10px;
  padding-bottom: 0px;*/
 }
@@ -23,7 +28,7 @@ header{
 div[role="main"]{
     position:relative;
     height: 100%;
-    padding:60px 0 30px 0; /* Header height and footer height */
+    padding:0px 0 0px 0; /* Header height and footer height */
     margin:0 auto 0 auto; /* Center content */
     -moz-box-sizing:border-box;
     -webkit-box-sizing:border-box;

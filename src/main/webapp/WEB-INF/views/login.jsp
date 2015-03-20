@@ -14,23 +14,25 @@
     <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/estilo.css" />" />
     
 </head>
-<body>
+<body class="background-login">
     <div class="container-fluid">
         
         <!-- CABEÇALHO -->
         <header class="row">
             <c:import url="/resources/template/publico/menu.jsp"></c:import> 
         </header>
-        
-        <hr>
+
         <!-- CONTEÚDO -->
         <div class="row">
             <div role="main">
                 <div class="col-md-4 col-md-offset-4">
 		          <form id="formlogin" action="<c:url value='j_spring_security_check' />" method="POST">
 			         <fieldset>
-				        <center><h1><strong>BOOKLEWEB</strong></h1>
-                        <p>Insira seus dados de acesso no formulário abaixo</p></center>
+				        <center>
+				        <br><br>
+				        <hr class="colorgraph">
+				        <img src="resources/img/logo.png" alt="..." class="img-circle">
+				        </center>
 				        <hr class="colorgraph">
                          
                         <div class="form-group">
@@ -42,37 +44,33 @@
                         </div>
 
                         <c:if test="${not empty param.error}">
-                          <div class="alert alert-danger" role="alert">
+                          <div class="alert alert-danger">
                           <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                           <span class="sr-only">Error:</span>
                           ${param.error}
                         </div>
                         </c:if>
-                         
+  				       
+                        
+                            <div>
+                                <button id="entrar" class="btn btn-lg btn-primary btn-block" type="submit" >Entrar</button>
+                            </div>
+                        
+                        
                         <span class="button-checkbox">
                             <a href="resetarsenha.jsp" class="btn">Esqueceu sua senha?</a>
                             <a href="criarnovaconta.jsp" class="btn">Criar novo login</a>
                         </span>
-                         
-				        <hr class="colorgraph">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button id="entrar" class="btn btn-lg btn-success btn-block" type="submit" >Entrar</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-lg btn-primary btn-block" type="reset">Limpar</button>
-                            </div>
-                        </div>
 			         </fieldset>
+			         <br>
 		          </form>
                 </div>
             </div>
         </div>
-       
-        <!-- RODAPÉ -->
+        <!-- RODAPÉ 
         <footer class="row">
-           <c:import url="/resources/template/publico/rodape.jsp"></c:import> 
-        </footer>
+         
+        </footer>-->
     
     <!--FIM DIV CONTAINER-->
     </div>
