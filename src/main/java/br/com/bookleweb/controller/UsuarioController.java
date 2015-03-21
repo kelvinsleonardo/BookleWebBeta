@@ -18,13 +18,13 @@ public class UsuarioController {
 	
 	private UsuarioDAO usuarioDAO;
 	
-	// Construtor da classe com injeção de dependencia do Spring 
+	// Construtor da classe com injeï¿½ï¿½o de dependencia do Spring 
 	@Autowired
 	public UsuarioController(UsuarioDAO usuarioDAO) {
 		this.usuarioDAO = usuarioDAO;
 	}
 	
-	// Servlet para acessar página gerenciausuario.jsp
+	// Servlet para acessar pï¿½gina gerenciausuario.jsp
 	@RequestMapping(value = "/gerenciadorusuario")
 	public String executeTelaGerenciaUsuario(){
 		return "/admin/gerenciadorusuario";
@@ -39,10 +39,10 @@ public class UsuarioController {
 		
 		if(action.equals("adicionar")){
 			if(usuarioDAO.adiciona(usuario)){
-				String mensagem = "Usuário cadastrado com Sucesso!";
+				String mensagem = "Usuï¿½rio cadastrado com Sucesso!";
 				objeto.addObject("sucesso", mensagem);
 			}else{
-				String mensagem = "Erro ao cadastrar usuário, matrícula já existe.";
+				String mensagem = "Erro ao cadastrar usuï¿½rio, matrï¿½cula jï¿½ existe.";
 				objeto.addObject("erro", mensagem);
 			}
 		}
@@ -51,17 +51,16 @@ public class UsuarioController {
 		}
 		else if(action.equals("remover")){
 			if(usuarioDAO.remove(usuario)){
-				String mensagem = "Usuário removido com sucesso!";
+				String mensagem = "Usuï¿½rio removido com sucesso!";
 				objeto.addObject("sucesso", mensagem);
 				return objeto;
 			}else{
-				String mensagem = "Erro ao remover usuário";
+				String mensagem = "Erro ao remover usuï¿½rio";
 				objeto.addObject("erro", mensagem);
 			}
 		}
 		else if(action.equals("procurar")){
-			Usuario usuariopesquisado = usuarioDAO.procura(usuario);
-			objeto.addObject("usuario", usuariopesquisado);
+
 		}
 		
 		else if(action.equals("listar")){
@@ -79,7 +78,27 @@ public class UsuarioController {
 		ArrayList<Usuario> listausuarios = usuarioDAO.lista();
 		objeto.addObject("listausuarios",listausuarios);
 		return objeto;
+	}
+	
+	@RequestMapping(value = "/adicionausuario", method=RequestMethod.POST)
+	public ModelAndView adicionaUsuario(@ModelAttribute Usuario usuario){
+		ModelAndView mv = new ModelAndView("/login");
 		
+		if(usuarioDAO.isRegistrado(usuario)){
+			if(usuarioDAO.adiciona(usuario)){
+				String sucesso = "Opa, usuÃ¡rio cadastrado com sucesso!";
+				mv.addObject("sucesso",sucesso);		
+			}
+			else{
+				String erro = "Ixi, ocorreu um erro ao registrar usuario!";
+				mv.addObject("erro", erro);
+			}
+		}else{
+			String erro = "NÃ£o encontramos sua matrÃ­cula no sistema.";
+			mv.addObject("erro", erro);
+		}
+		
+		return mv;
 	}
 	
 }

@@ -12,6 +12,7 @@ import javax.persistence.Table;
 public class Curso {
 	@Id
 	private Integer cod_curso;
+	
 	private String nome_curso;
 	
 	@ManyToMany(mappedBy = "cursos")

@@ -12,11 +12,41 @@
     <title>Modelo GRID BookleWeb</title>
     <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css" />" />
     <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/estilo.css" />" />
+
+<!-- Fontes do Google -->
+<link href='http://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
+    
+<!-- Estilos do Alertfy -->
+<link rel="stylesheet" href="<c:url value="/resources/jquery/alertifyjs/alertify.min.css"/>" />
+<link rel="stylesheet" href="<c:url value="/resources/jquery/alertifyjs/css/themes/default.min.css"/>" /> 
+<script src="<c:url value="/resources/jquery/alertifyjs/alertify.min.js" />"></script>
+
+    
+    
     
 </head>
 <body class="background-login">
     <div class="container-fluid">
         
+        <!-- MENSAGENS ALERTIFY-->
+        <c:if test="${not empty param.error}">
+            <script>
+                alertify.error("${param.error}");
+            </script>
+        </c:if>
+        
+        <c:if test="${not empty erro}">
+            <script>
+                alertify.error("${erro}");
+            </script>
+        </c:if>
+        
+        <c:if test="${not empty sucesso}">
+            <script>
+                alertify.success("${sucesso}");
+            </script>
+        </c:if>
+             
         <!-- CABEÇALHO -->
         <header class="row">
             <c:import url="/resources/template/publico/menu.jsp"></c:import> 
@@ -26,52 +56,59 @@
         <div class="row">
             <div role="main">
                 <div class="col-md-4 col-md-offset-4">
-		          <form id="formlogin" action="<c:url value='j_spring_security_check' />" method="POST">
-			         <fieldset>
-				        <center>
-				        <br><br>
-				        <hr class="colorgraph">
-				        <img src="resources/img/logo.png" alt="..." class="img-circle">
-				        </center>
-				        <hr class="colorgraph">
-                         
-                        <div class="form-group">
-                            <input type="text" name="j_username" class="form-control" placeholder="Usuario"
-                            value="${param.usuario}">
+		          <form id="formlogin" action="<c:url value='/adicionausuario' />" method="POST">
+                    <div class="panel-body">
+                    <h3 class="text-center">
+                        CADASTRE-SE AGORA
+                    </h3>
+                    <form class="form form-signup" role="form">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-user"></span>
+                            </span>
+                            <input type="text" class="form-control" placeholder="Nome completo" name="nome"/>
                         </div>
-                        <div class="form-group">
-                            <input type="password" name="j_password" class="form-control" placeholder="Senha">
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-certificate"></span>
+                            </span>
+                            <input type="text" class="form-control" placeholder="Matrícula" name="matricula"/>
                         </div>
-
-                        <c:if test="${not empty param.error}">
-                          <div class="alert alert-danger">
-                          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                          <span class="sr-only">Error:</span>
-                          ${param.error}
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                         <span class="input-group-addon">
+                             <span class="glyphicon glyphicon-envelope"></span>
+                            </span>
+                            <input type="text" class="form-control" placeholder="Email" name="email"/>
                         </div>
-                        </c:if>
-  				       
-                        
-                            <div>
-                                <button id="entrar" class="btn btn-lg btn-primary btn-block" type="submit" >Entrar</button>
-                            </div>
-                        
-                        
-                        <span class="button-checkbox">
-                            <a href="resetarsenha.jsp" class="btn">Esqueceu sua senha?</a>
-                            <a href="criarnovaconta.jsp" class="btn">Criar novo login</a>
-                        </span>
-			         </fieldset>
-			         <br>
-		          </form>
+                    </div>    
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                            <input type="password" class="form-control" placeholder="Senha" name="senha"/>
+                        </div>
+                    </div>
                 </div>
+                
+                <button class="btn btn-sm btn-success btn-block" type="submit" >Abrir nova conta</button>
+                        <a data-toggle="modal" data-target="#myModal"><h6>Esqueceu sua senha?</h5></a>    
+                </form>
             </div>
-        </div>
+        </div>  
+    </div>
+</div>
         <!-- RODAPÉ 
         <footer class="row">
          
         </footer>-->
     
+        <!-- MODAL PARA RESETAR SENHA -->
+        <c:import url="/resources/template/publico/resetarsenha.jsp"></c:import> 
+        
     <!--FIM DIV CONTAINER-->
     </div>
 

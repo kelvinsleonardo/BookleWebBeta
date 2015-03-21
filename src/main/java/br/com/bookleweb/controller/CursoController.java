@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import br.com.bookleweb.dao.CursoDAO;
 import br.com.bookleweb.modelo.Curso;
@@ -15,27 +16,29 @@ public class CursoController {
 
 	private CursoDAO cursoDAO;
 	
-	// Construtor da classe com injeção de dependencia do Spring 
+	// Construtor da classe com injeÃ§Ã£o de dependencia do Spring 
 	@Autowired
 	public CursoController(CursoDAO cursoDAO) {
 		this.cursoDAO = cursoDAO;
 	}
 	
 	@RequestMapping(value = "/gerenciadorcurso")
-	public String executeCurso(){
-		return "/admin/gerenciadorcurso";
+	public ModelAndView executeCurso(){
+		ModelAndView mv = new ModelAndView("/admin/gerenciadorcurso");
+		mv.addObject("listacursos",cursoDAO.getlistaTodosCursos());
+		return mv;
 	}
 	
 	@RequestMapping(value = "/gerenciadorcurso-do", method=RequestMethod.POST)
 	public String doActions(@ModelAttribute Curso curso, @RequestParam String action){
 		// Converte para LowerCase;
 		action = action.toLowerCase();
-		
+		System.out.println(curso.getNome_curso());
 		if(action.equals("adicionar")){
 			cursoDAO.adiciona(curso);
 		}
 		
-		return "/admin/gerenciadorcurso";
+		return "redirect:/gerenciadorcurso";
 	}
 
 	

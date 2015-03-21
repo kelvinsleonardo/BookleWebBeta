@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//PT" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Modelo GRID BookleWeb</title>
@@ -29,9 +29,28 @@
                     <h3>Código Curso: </h3><input type="text" cal name="cod_curso">
                     <h3>Nome Curso: </h3><input type="text" value="" name="nome_curso">
                     <input type="submit" name="action" value="Adicionar">
+                    
                 </form>
             </div>
         </div>
+        
+        <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Codigo do Curso</th>
+            <th>Nome do Curso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <c:forEach items="${listacursos}" var="curso">		
+            <tr>
+                <td>${curso.cod_curso}</td>
+                <td>${curso.nome_curso}</td>
+                <td><input type="submit" name="action" value="Remover"/>Remover</td>
+            </tr>
+          </c:forEach>
+        </tbody>
+      </table>
         
         <!-- RODAPÉ 
         <footer class="row">

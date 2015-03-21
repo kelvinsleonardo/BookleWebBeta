@@ -8,11 +8,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Lista Usuario</title>
+    
+<!-- Estilos do Alertfy -->
+<link rel="stylesheet" href="<c:url value="/resources/jquery/alertifyjs/alertify.min.css"/>" />
+<link rel="stylesheet" href="<c:url value="/resources/jquery/alertifyjs/css/themes/default.min.css"/>" /> 
+<script src="<c:url value="/resources/jquery/alertifyjs/alertify.min.js" />"></script>
 </head>
 <body>
 	<h2>TELA PRINCIPAL - RULES ADMINISTRADOR</h2>
-
-    <h3>Bem vindo(a) ${nome_usuario_sessao} <a href="<c:url value="/j_spring_security_logout"/>">Logout</a> </h3>
+    <script>
+        alertify.alert("", "Bem vindo ${nome_usuario_sessao}").set('OK!')
+    </script>
+        <h3>Bem vindo(a) ${nome_usuario_sessao} <a href="<c:url value="/j_spring_security_logout"/>">Logout</a> </h3>
 
     <li><a href="gerenciadorusuario">Gerenciar Usuarios</a></li>
     <li><a href="gerenciadorcurso">Gerenciar Cursos</a></li>

@@ -1,3 +1,10 @@
+.logo{
+    color: rgb(255, 255, 255);
+    font-size: 35px;
+    text-shadow: rgb(122, 122, 122) 4px 3px 0px;
+    font-family: 'Anton', sans-serif;
+}
+
 .error-http{
     font-family: 'Oswald', sans-serif;
     text-align: center;

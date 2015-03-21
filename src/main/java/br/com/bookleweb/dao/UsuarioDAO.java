@@ -18,7 +18,7 @@ public class UsuarioDAO {
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		try{
 			manager.getTransaction().begin();
-			manager.persist(usuario);
+			manager.merge(usuario);
 			manager.getTransaction().commit();
 			return true;
 		}catch(Exception e){
@@ -44,11 +44,14 @@ public class UsuarioDAO {
 		}
 	}
 
-	public Usuario procura(Usuario usuario){
+	public Boolean isRegistrado(Usuario usuario){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		Usuario dadosusuario = manager.find(Usuario.class, usuario.getMatricula());
-		
-		return dadosusuario;
+		if(dadosusuario == null){
+			return false;
+		}else{
+			return true;
+		}
 	}
 	
 	public ArrayList<Usuario> lista(){

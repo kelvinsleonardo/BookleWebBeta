@@ -18,6 +18,8 @@ public class Usuario {
 	
 	private String nome;
 	
+	private String email;
+	
 	@NotEmpty(message="{usuario.senha.vazio}")
 	private String senha;
 	
@@ -46,6 +48,12 @@ public class Usuario {
 	}
 	public void setPermissao(String permissao) {
 		this.permissao = permissao;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 }

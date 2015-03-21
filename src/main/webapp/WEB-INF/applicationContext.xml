@@ -24,7 +24,7 @@
 		
 		<form-login 
 			login-page="/login"
-			authentication-failure-url="/login?error=Usuario ou senha incorreta."
+			authentication-failure-url="/login?error=Usuário ou senha inválido!"
 			authentication-success-handler-ref="autenticacaoHandler"
 		/>
        
