@@ -65,8 +65,11 @@ public class UsuarioDAO {
 		Integer matriculasessaologado = Integer.parseInt(SecurityContextHolder.getContext().getAuthentication().getName());
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		Usuario dadosusuario = manager.find(Usuario.class, matriculasessaologado);
-		String nomeusuario = dadosusuario.getNome();
-		return nomeusuario;
+		String nomeusuariocompleto = dadosusuario.getNome();
+		int posPrimeiroEspacoString = nomeusuariocompleto.indexOf(" ");
+		String strFinalUsuario = nomeusuariocompleto.substring(0, nomeusuariocompleto.indexOf(" ",(posPrimeiroEspacoString+1)));
+		System.out.println(strFinalUsuario);
+		return strFinalUsuario;
 	}
 	
 }
