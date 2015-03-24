@@ -1,0 +1,24 @@
+1)    Por quê o projeto de software pode ser considerado como um problema perverso?
+
+Problema perverso é aquele que apenas pode ser claramente definido por intermédio de sua solução ou pela solução de parte 
+do problema.Basicamente, você precisa resolver o problema pelo menos uma vez para só assim conseguir defini-lo claramente
+e ainda resolvê-lo mais uma vez, para conseguir criar uma solução que funcione. Em projeto de software esse processo faz 
+parte do desenvolvimento de software já que o desenvolvimento de padrões e rotinas só é colocado em prática em problemas 
+uma vez já resolvidos.
+
+2)    Por quê o projeto de software é um processo desordenado, apesar de poder produzir resultados ordenados?
+
+O projeto de software é desordenado porque cometer erros é o objetivo da atividade de projeto de software, identificar os
+erros e corrigi-los antes da implementação é uma boa prática que reduz custos e aumenta a qualidade do software desenvolvido. 
+Além disso, a fase de projeto é desordenada pois não tem um final previamente estabelecido, o nível de detalhes e o quanto deve
+ser detalhado o projeto de software nunca é muito claro, podendo ser reduzido ou incrementado de acordo com o tempo disponível.
+
+3)    Por quê é importante controlar a complexidade de um software?
+
+Controlar a complexidade é importante pois minimiza o tempo e o esforço empreendidos em solução de problemas demasiadamente 
+engenhosos.
+
+4)    Apresente algumas maneiras de minimizar a complexidade de um software?
+
+Reduzindo rotinas, dividindo e delegando processos, utilizando soluções prontas e já testadas, buscando um software 
+reutilizável, portável, com baixo acoplamento e com técnicas de programação objetivas e predefinidas.
