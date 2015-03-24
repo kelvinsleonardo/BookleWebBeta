@@ -11,7 +11,10 @@ $(function(){
     $('button[name=excluircurso]').click(function(){
         var codigoDoCurso = $(this).closest("tr").find("td[name=tb_cod_curso]").html(); // Pegando codigo do curso da tabela 
         var nomeDoCurso = $(this).closest("tr").find("td[name=tb_nome_curso]").html(); // Pegando nome do curso da tabela 
-        alertify.confirm('a callback will be invoked on ok.').set('onok', function(closeEvent){ 
+
+
+        alertify.confirm("EXCLUSÃO DO CURSO "+nomeDoCurso, "Você tem certeza que deseja remover o curso "+nomeDoCurso+" ?", "", "").
+                    autoCancel(10).set('onok', function(closeEvent){ 
             if (closeEvent) {
                 $.ajax({
                         type: 'POST',
@@ -26,15 +29,13 @@ $(function(){
                             }
                         },
                         success: function(response){
-                            alert("excluido"+response);
+                            
+                            //window.location = response.newurl; 
+                            document.write(response); // Escreve a resposta do servlet na pagina.
+                            //location.href="gerenciadorcurso"
                         }
-
                     });
-                
-                
-                
-                
-            }   
+            }// Fim IF   
         } ); 
                  
         
