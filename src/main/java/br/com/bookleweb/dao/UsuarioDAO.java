@@ -7,6 +7,7 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 import br.com.bookleweb.factory.FabricaEntityManager;
 import br.com.bookleweb.modelo.Usuario;
@@ -66,9 +67,9 @@ public class UsuarioDAO {
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		Usuario dadosusuario = manager.find(Usuario.class, matriculasessaologado);
 		String nomeusuariocompleto = dadosusuario.getNome();
-		int posPrimeiroEspacoString = nomeusuariocompleto.indexOf(" ");
-		String strFinalUsuario = nomeusuariocompleto.substring(0, nomeusuariocompleto.indexOf(" ",(posPrimeiroEspacoString+1)));
-		System.out.println(strFinalUsuario);
+		String strUpperCase = nomeusuariocompleto.substring(0, nomeusuariocompleto.indexOf(" "));
+		String strLowerCase = strUpperCase.toLowerCase();
+		String strFinalUsuario = StringUtils.capitalize(strLowerCase); 
 		return strFinalUsuario;
 	}
 	

@@ -60,8 +60,9 @@
       <ul class="nav navbar-nav navbar-right">
           <li class="dropdown"> 
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-            <span class="glyphicon glyphicon-user"></span>
-                 ${nome_usuario_sessao}
+                <span class="glyphicon glyphicon-user"></span>
+                 ${nome_usuario_sessao}&nbsp;-&nbsp;               
+                Matrícula: <%= SecurityContextHolder.getContext().getAuthentication().getName() %>
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">

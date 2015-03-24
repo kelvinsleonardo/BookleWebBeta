@@ -2,67 +2,122 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!-- Import JSTL-->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!-- Spring Famework -->
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>    
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//PT" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Modelo GRID BookleWeb</title>
-    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css" />" />
-    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/estilo.css" />" />
+    <title>Gerenciador Curso</title>
+<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css" />" />
+<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/estilo.css" />" />
     
+<!-- Fontes do Google -->
+<link href='http://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
+    
+<!-- Javascript do bootstrap -->
+<script src="resources/js/jquery-1.11.2.min.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
+
+<!-- Estilos do Alertfy -->
+<link rel="stylesheet" href="<c:url value="/resources/jquery/alertifyjs/alertify.min.css"/>" />
+<link rel="stylesheet" href="<c:url value="/resources/jquery/alertifyjs/css/themes/default.min.css"/>" /> 
+<script src="<c:url value="/resources/jquery/alertifyjs/alertify.min.js" />"></script>
+
+<!-- Importação do arquivo Ajax para preenchimento dos input Modal -->
+<script type="text/javascript" charset="utf-8"  src="<c:url value="/resources/jquery/ajax/ajax.js" />"></script> 
+
 </head>
 <body class="background-login">
     <div class="container-fluid">
         
+        <!-- MENSAGENS ALERTIFY-->
+        <c:if test="${not empty param.error}">
+            <script>
+                alertify.error("${param.error}");
+            </script>
+        </c:if>
+        
+        <c:if test="${not empty erro}">
+            <script>
+                alertify.error("${erro}");
+            </script>
+        </c:if>
+        
+        <c:if test="${not empty sucesso}">
+            <script>
+                alertify.success("${sucesso}");
+            </script>
+        </c:if>
+             
         <!-- CABEÇALHO -->
         <header class="row">
-            <c:import url="/resources/template/publico/menu.jsp"></c:import> 
+            <c:import url="/resources/template/admin/menu.jsp"></c:import> 
         </header>
-
+        
         <!-- CONTEÚDO -->
         <div class="row">
             <div role="main">
-                <form action="gerenciadorcurso-do" method="POST">
-                    <h3>Código Curso: </h3><input type="text" cal name="cod_curso">
-                    <h3>Nome Curso: </h3><input type="text" value="" name="nome_curso">
-                    <input type="submit" name="action" value="Adicionar">
-                    
-                </form>
+                <div class="col-md-10 col-md-offset-1">
+		      
+                    <!-- BREADCRUMB -->
+                    <ul class="breadcrumb">
+                       <li><a href="admin">Home</a></li>
+                      <li class="active">Gerenciador Curso</li>
+                    </ul>
+                    <table class="table table-responsive table-bordered table-hover">
+                        <thead>
+                            <tr class="info">
+                                <th>Código</th>
+                                <th>Nome</th>
+                                <th>Descrição</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${listacursos}" var="curso">
+                            <tr>
+                                <td class="active" name="tb_cod_curso">${curso.cod_curso}</td>
+                                
+                                <td class="active" name="tb_nome_curso">${curso.nome_curso}</td>
+                                
+                                <td class="active" name="tb_descricao_curso">${curso.descricao_curso}</td>
+                                
+                                <td class="active">
+                                    <button type="submit" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalEditaCurso" name="editarcurso">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                        Editar
+                                </button>
+                                    <button type="submit" class="btn btn-danger btn-sm" name="excluircurso">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                        Excluir
+                                    </button>
+                                </td>  
+                            </tr>
+                           </c:forEach> 
+                        </tbody>
+                    </table>
+                <div class="col-md-offset-11">
+                        <input type="submit" class="btn btn-success btn-sm form-control" data-toggle="modal" data-target="#modalAdicionaCurso" value="Adicionar Curso"/>
+                </div>
             </div>
-        </div>
-        
-        <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Codigo do Curso</th>
-            <th>Nome do Curso</th>
-          </tr>
-        </thead>
-        <tbody>
-          <c:forEach items="${listacursos}" var="curso">		
-            <tr>
-                <td>${curso.cod_curso}</td>
-                <td>${curso.nome_curso}</td>
-                <td><input type="submit" name="action" value="Remover"/>Remover</td>
-            </tr>
-          </c:forEach>
-        </tbody>
-      </table>
-        
-        <!-- RODAPÉ 
+        </div>  
+    </div>
+</div>
+        <!-- RODAPÉ --> 
         <footer class="row">
-         
-        </footer>-->
+            <c:import url="/resources/template/admin/rodape.jsp"></c:import> 
+        </footer>
     
+        <!-- MODALS -->
+        <c:import url="/resources/template/admin/modal/adicionacurso.jsp"></c:import>
+        <c:import url="/resources/template/admin/modal/editacurso.jsp"></c:import> 
+        
     <!--FIM DIV CONTAINER-->
     </div>
-
-    <!-- Javascript do bootstrap -->
-    <script src="resources/js/jquery-1.11.2.min.js"></script>
-    <script src="resources/js/bootstrap.min.js"></script>
 </body>
-    
 </html>

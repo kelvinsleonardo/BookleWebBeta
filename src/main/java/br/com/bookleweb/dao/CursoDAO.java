@@ -28,6 +28,20 @@ public class CursoDAO {
 		}
 	}
 	
+	public Boolean edita(Curso curso){
+		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
+		try{
+			manager.getTransaction().begin();
+			manager.merge(curso);
+			manager.getTransaction().commit();
+			return true;
+		}catch(Exception e){
+			return false;
+		}finally{
+			manager.close();
+		}
+	}
+	
 	public Boolean remove(Curso curso){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		try{

@@ -15,6 +15,8 @@ public class Curso {
 	
 	private String nome_curso;
 	
+	private String descricao_curso;
+	
 	@ManyToMany(mappedBy = "cursos")
 	private List<Disciplina> disciplinas;
 	
@@ -35,6 +37,12 @@ public class Curso {
 	}
 	public void setDisciplina(List<Disciplina> disciplinas) {
 		this.disciplinas = disciplinas;
+	}
+	public String getDescricao_curso() {
+		return descricao_curso;
+	}
+	public void setDescricao_curso(String descricao_curso) {
+		this.descricao_curso = descricao_curso;
 	}
 		
 	

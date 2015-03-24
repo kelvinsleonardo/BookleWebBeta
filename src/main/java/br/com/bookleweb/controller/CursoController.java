@@ -4,8 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;	
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.bookleweb.dao.CursoDAO;
@@ -29,18 +28,46 @@ public class CursoController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/gerenciadorcurso-do", method=RequestMethod.POST)
-	public String doActions(@ModelAttribute Curso curso, @RequestParam String action){
-		// Converte para LowerCase;
-		action = action.toLowerCase();
-		System.out.println(curso.getNome_curso());
-		if(action.equals("adicionar")){
-			cursoDAO.adiciona(curso);
+	@RequestMapping(value= "/adicionacurso", method= RequestMethod.POST)
+	public ModelAndView adicionaCurso(@ModelAttribute Curso curso){
+		ModelAndView mv =  new ModelAndView("forward:/gerenciadorcurso");
+		if(cursoDAO.adiciona(curso)){
+			String mensagem = "Opa! Curso adicionado com Sucesso!";
+			mv.addObject("sucesso",mensagem);
+		}else{
+			String mensagem = "Ixi! Erro ao cadastrar curso!";
+			mv.addObject("erro",mensagem);	
 		}
-		
-		return "redirect:/gerenciadorcurso";
+		return mv;
 	}
-
+	
+	@RequestMapping(value= "/editacurso", method= RequestMethod.POST)
+	public ModelAndView editaCurso(@ModelAttribute Curso curso){
+		ModelAndView mv =  new ModelAndView("forward:/gerenciadorcurso");
+		if(cursoDAO.edita(curso)){
+			String mensagem = "Opa! Curso editado com Sucesso!";
+			mv.addObject("sucesso",mensagem);
+		}else{
+			String mensagem = "Ixi! Erro ao editar curso!";
+			mv.addObject("erro",mensagem);	
+		}
+		return mv;
+	}
+	
+	@RequestMapping(value= "/removecurso", method= RequestMethod.POST)
+	public ModelAndView removeCurso(@ModelAttribute Curso curso){
+		ModelAndView mv =  new ModelAndView("forward:/gerenciadorcurso");
+		if(cursoDAO.remove(curso)){
+			String mensagem = "Opa! Curso removido com Sucesso!";
+			mv.addObject("sucesso",mensagem);
+		}else{
+			String mensagem = "Ixi! Erro ao excluir curso!";
+			mv.addObject("erro",mensagem);	
+		}
+		return mv;
+	}
+	
+	
 	
 	
 }
