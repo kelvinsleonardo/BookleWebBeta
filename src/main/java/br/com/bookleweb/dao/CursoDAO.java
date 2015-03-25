@@ -1,8 +1,6 @@
 package br.com.bookleweb.dao;
 
-
 import java.util.ArrayList;
-
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
@@ -62,6 +60,22 @@ public class CursoDAO {
 		TypedQuery<Curso> typedQuery = manager.createQuery("FROM Curso", Curso.class);
 		ArrayList<Curso> cursos = (ArrayList<Curso>) typedQuery.getResultList();
 		return cursos;
+	}
+	
+	public ArrayList<Curso> pesquisaPorMatricula(Curso curso){
+		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
+		TypedQuery<Curso> typedQuery = manager.createNamedQuery("Curso.pesquisaPelaMatricula",Curso.class);
+		typedQuery.setParameter("cod_curso", curso.getCod_curso());// Setando parametro da Query
+		ArrayList<Curso> cursoArrayList = (ArrayList<Curso>) typedQuery.getResultList();  // Pega resultado
+		return cursoArrayList;
+	}
+	
+	public ArrayList<Curso> pesquisaPorNome(Curso curso){
+		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
+		TypedQuery<Curso> typedQuery = manager.createNamedQuery("Curso.pesquisaPeloNome",Curso.class);
+		typedQuery.setParameter("nome_curso", "%"+curso.getNome_curso()+"%");// Setando parametro da Query
+		ArrayList<Curso> cursoArrayList = (ArrayList<Curso>) typedQuery.getResultList();  // Pega resultado
+		return cursoArrayList;
 	}
 
 }

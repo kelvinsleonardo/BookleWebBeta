@@ -7,7 +7,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+@NamedQueries({
+	@NamedQuery(name="Disciplina.pesquisaPelaMatricula", 
+				query="select d from Disciplina d where d.cod_disciplina = :cod_disciplina"),
+	@NamedQuery(name="Disciplina.pesquisaPeloNome", 
+					query="select d from Disciplina d where d.nome_disciplina LIKE :nome_disciplina")
+	
+})
 
 @Entity
 @Table(name = "tb_disciplina")
@@ -16,6 +26,8 @@ public class Disciplina {
 	private Integer cod_disciplina;
 	
 	private String nome_disciplina;
+	
+	private String desc_disciplina;
 	
 	@ManyToMany
 	@JoinTable(name="tb_curso_disciplina", 
@@ -56,6 +68,14 @@ public class Disciplina {
 
 	public void setLivro(List<Livro> livros) {
 		this.livros = livros;
+	}
+
+	public String getDesc_disciplina() {
+		return desc_disciplina;
+	}
+
+	public void setDesc_disciplina(String desc_disciplina) {
+		this.desc_disciplina = desc_disciplina;
 	}
 	
 	

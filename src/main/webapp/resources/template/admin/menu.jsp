@@ -39,7 +39,7 @@
               Gerenciar<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="gerenciadorcurso">Cursos</a></li>
-            <li><a href="gerenciadorcurso">Disciplinas</a></li>
+            <li><a href="gerenciadordisciplina">Disciplinas</a></li>
             <li><a href="gerenciadorlivro">Livros</a></li>
             <li><a href="gerenciadorusuario">Usuários</a></li>
           </ul>

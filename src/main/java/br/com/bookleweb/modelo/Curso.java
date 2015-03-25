@@ -5,8 +5,16 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-
+@NamedQueries({
+	@NamedQuery(name="Curso.pesquisaPelaMatricula", 
+				query="select c from Curso c where c.cod_curso = :cod_curso"),
+	@NamedQuery(name="Curso.pesquisaPeloNome", 
+					query="select c from Curso c where c.nome_curso LIKE :nome_curso")
+	
+})
 @Entity
 @Table(name = "tb_curso")
 public class Curso {

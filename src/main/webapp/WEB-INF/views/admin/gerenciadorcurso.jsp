@@ -28,10 +28,52 @@
 <link rel="stylesheet" href="<c:url value="/resources/jquery/alertifyjs/css/themes/default.min.css"/>" /> 
 <script src="<c:url value="/resources/jquery/alertifyjs/alertify.min.js" />"></script>
 
-<!-- Importação do arquivo Ajax para preenchimento dos input Modal -->
+<!-- Importação do arquivo Ajax -->
 <script type="text/javascript" charset="utf-8"  src="<c:url value="/resources/jquery/ajax/ajax.js" />"></script> 
 
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="<c:url value="/resources/jquery/datatables/media/css/jquery.dataTables.css"/>">
+  
+<!-- jQuery -->
+<script type="text/javascript" charset="utf8" src="<c:url value="/resources/jquery/datatables/media/js/jquery.js"/>"></script>
+  
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="<c:url value="/resources/jquery/datatables/media/js/jquery.dataTables.js"/>"></script>
+<script>
+    $(document).ready(function() {
+       $.extend( $.fn.dataTable.defaults, {
+            searching: false,
+            ordering:  true,
+            info: false,
+            responsive: true
+       } );
+    $('#tabelacurso').dataTable( {
+        "scrollY":        "400px",
+        "scrollCollapse": true,
+        "paging":         false, // Remove ocao de setar quantos itens mostrados
+        //"bSort": false, // Removendo Ordenação
+        
+        "language": {
+            "emptyTable":     "Ixi! Não foi encontrado nada nessa busca.",
+            "lengthMenu": "Display _MENU_ records per page",
+            "zeroRecords": "Nada encontrado para esse filtro",
+            "info": "Mostrando pagina _PAGE_ de _PAGES_<br><br>",
+            "infoEmpty": "Mostrando pagina 0 de 0 entradas",
+            "infoFiltered": "(filtrado de _MAX_ gravações)<br><br>",
+            "search":         "Procurar:"
+        },
+    
+        
+        
+    } );
+    
+ 
+    
+} );    
+    
+    </script>
 </head>
+    
 <body class="background-login">
     <div class="container-fluid">
         
@@ -69,53 +111,88 @@
                        <li><a href="admin">Home</a></li>
                       <li class="active">Gerenciador Curso</li>
                     </ul>
-                    <table class="table table-responsive table-bordered table-hover">
+                    
+                    <form action="pesquisacurso" method="POST">
+                        <label>
+                            Pesquisar por: &nbsp; 
+                        </label>
+                        
+                        <label class="radio-inline">
+                            <input type="radio" name="opcaopesquisa" id="op_pesq_cod" value="codigo" checked>Código
+                        </label>
+                        
+                        <label class="radio-inline">
+                            <input type="radio" name="opcaopesquisa" id="op_pesq_nome" value="Nome">Nome
+                        </label>
+                             
+                        
+                        <div class="input-group">
+                          <input type="number" class="form-control" name="cod_curso" id="search_cod_curso" placeholder="Código do curso">
+                          <input type="text" class="form-control" style="display:none" name="nome_curso" id="search_nome_curso" placeholder="Nome do curso">
+                          <div class="input-group-btn">
+                              <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <br>
+                    
+                    <table id="tabelacurso" class="table table-responsive table-bordered table-hover table-striped">
                         <thead>
                             <tr class="info">
                                 <th>Código</th>
                                 <th>Nome</th>
                                 <th>Descrição</th>
-                                <th></th>
+                                <th>Editar</th>
+                                <th>Excluir</th>
                             </tr>
                         </thead>
                         <tbody>
                             <c:forEach items="${listacursos}" var="curso">
-                            <tr>
-                                <td class="active" name="tb_cod_curso">${curso.cod_curso}</td>
+                            <tr class="active">
+                                <td class="text-center" name="tb_cod_curso">${curso.cod_curso}</td>
                                 
-                                <td class="active" name="tb_nome_curso">${curso.nome_curso}</td>
+                                <td name="tb_nome_curso">${curso.nome_curso}</td>
                                 
-                                <td class="active" name="tb_descricao_curso">${curso.descricao_curso}</td>
-                                
-                                <td class="active">
-                                    <button type="submit" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalEditaCurso" name="editarcurso">
+                                <td name="tb_descricao_curso">${curso.descricao_curso}</td>
+
+                                <td>
+                                    <button type="submit" class="btn btn-primary btn-sm"data-toggle="modal" data-target="#modalEditaCurso" name="editarcurso">
                                         <span class="glyphicon glyphicon-edit"></span>
                                         Editar
-                                </button>
+                                    </button>
+                                </td> 
+                                
+                                <td>
                                     <button type="submit" class="btn btn-danger btn-sm" name="excluircurso">
                                         <span class="glyphicon glyphicon-trash"></span>
                                         Excluir
                                     </button>
-                                </td>  
+                                </td>
+                                  
                             </tr>
                            </c:forEach> 
                         </tbody>
                     </table>
-                <div class="col-md-offset-11">
-                        <input type="submit" class="btn btn-success btn-sm form-control" data-toggle="modal" data-target="#modalAdicionaCurso" value="Adicionar Curso"/>
-                </div>
+                
+                    <div class="col-md-offset-9">
+                        <br>
+                        <button type="submit" class="btn btn-info btn-sm form-control" data-toggle="modal" data-target="#modalAdicionaCurso"/><span class="glyphicon glyphicon-plus-sign"></span> &nbsp;Adicionar Curso</button>
+                    </div>
+                    
+                        
+                
             </div>
         </div>  
     </div>
-</div>
         <!-- RODAPÉ --> 
         <footer class="row">
             <c:import url="/resources/template/admin/rodape.jsp"></c:import> 
         </footer>
     
         <!-- MODALS -->
-        <c:import url="/resources/template/admin/modal/adicionacurso.jsp"></c:import>
-        <c:import url="/resources/template/admin/modal/editacurso.jsp"></c:import> 
+        <c:import url="/resources/template/admin/modal/curso/adicionacurso.jsp"></c:import>
+        <c:import url="/resources/template/admin/modal/curso/editacurso.jsp"></c:import> 
         
     <!--FIM DIV CONTAINER-->
     </div>

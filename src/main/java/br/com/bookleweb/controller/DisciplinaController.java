@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.bookleweb.dao.CursoDAO;
 import br.com.bookleweb.dao.DisciplinaDAO;
 import br.com.bookleweb.modelo.Curso;
 import br.com.bookleweb.modelo.Disciplina;
@@ -18,31 +17,66 @@ public class DisciplinaController {
 
 	private DisciplinaDAO disciplinaDAO;
 	
-	// Construtor da classe com injeção de dependencia do Spring 
-	@Autowired
-	public DisciplinaController(DisciplinaDAO disciplinaDAO) {
-		this.disciplinaDAO = disciplinaDAO;
-	}
-	
-	@RequestMapping(value = "/gerenciadordisciplina")
-	public ModelAndView executeDisciplina(){
-		CursoDAO cursoDAO = new CursoDAO();
-		ModelAndView mv = new ModelAndView("/admin/gerenciadordisciplina");
-		mv.addObject("listacursos",cursoDAO.getlistaTodosCursos());
-		return mv;
-	}
-	
-	@RequestMapping(value = "/gerenciadordisciplina-do", method=RequestMethod.POST)
-	public String doActions(@ModelAttribute Disciplina disciplina, @ModelAttribute Curso curso,@RequestParam String action){
-		// Converte para LowerCase;
-		action = action.toLowerCase();
-		if(action.equals("adicionar")){
-			disciplinaDAO.adiciona(disciplina, curso);
+	// Construtor da classe com injeÃ§Ã£o de dependencia do Spring 
+		@Autowired
+		public DisciplinaController(DisciplinaDAO disciplinaDAO) {
+			this.disciplinaDAO = disciplinaDAO;
 		}
 		
-		return "redirect:/gerenciadordisciplina";
-	}
-
+		@RequestMapping(value = "/gerenciadordisciplina")
+		public ModelAndView executeDisciplina(){
+			ModelAndView mv = new ModelAndView("/admin/gerenciadordisciplina");
+			mv.addObject("listadisciplinas",disciplinaDAO.getlistaTodasDisciplinas());
+			return mv;
+		}
+		
+		@RequestMapping(value= "/adicionadisciplina", method= RequestMethod.POST)
+		public ModelAndView adicionaDisciplina(@ModelAttribute Disciplina disciplina,@ModelAttribute Curso curso){
+			ModelAndView mv =  new ModelAndView("forward:/gerenciadordisciplina");
+			if(disciplinaDAO.adiciona(disciplina, curso)){
+				String mensagem = "Opa! Disciplina adicionada com Sucesso!";
+				mv.addObject("sucesso",mensagem);
+			}else{
+				String mensagem = "Ixi! Erro ao cadastrar disciplina!";
+				mv.addObject("erro",mensagem);	
+			}
+			return mv;
+		}
+		
+		@RequestMapping(value= "/editadisciplina", method= RequestMethod.POST)
+		public ModelAndView editaDisciplina(@ModelAttribute Disciplina disciplina){
+			ModelAndView mv =  new ModelAndView("forward:/gerenciadordisciplina");
+			if(disciplinaDAO.edita(disciplina)){
+				String mensagem = "Opa! Disciplina editada com Sucesso!";
+				mv.addObject("sucesso",mensagem);
+			}else{
+				String mensagem = "Ixi! Erro ao editar disciplina!";
+				mv.addObject("erro",mensagem);	
+			}
+			return mv;
+		}
+		
+		@RequestMapping(value= "/removedisciplina", method= RequestMethod.POST)
+		public ModelAndView removeDisciplina(@ModelAttribute Disciplina disciplina){
+			ModelAndView mv =  new ModelAndView("forward:/gerenciadordisciplina");
+			disciplinaDAO.remove(disciplina);
+			return mv;
+		}
+		
+		@RequestMapping(value= "/pesquisadisciplina", method= RequestMethod.POST)
+		public ModelAndView pesquisaDisciplina(@ModelAttribute Disciplina disciplina, @RequestParam String opcaopesquisa){
+			ModelAndView mv =  new ModelAndView("/admin/gerenciadordisciplina");
+			opcaopesquisa = opcaopesquisa.toLowerCase();
+			if(opcaopesquisa.equals("codigo")){
+				mv.addObject("listadisciplinas",disciplinaDAO.pesquisaPorMatricula(disciplina));
+				
+			}
+			else if(opcaopesquisa.equals("nome")){
+				mv.addObject("listadisciplinas",disciplinaDAO.pesquisaPorNome(disciplina));
+			}
+			return mv;
+		}
+		
 	
 	
 }

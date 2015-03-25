@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;	
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.bookleweb.dao.CursoDAO;
@@ -57,16 +58,23 @@ public class CursoController {
 	@RequestMapping(value= "/removecurso", method= RequestMethod.POST)
 	public ModelAndView removeCurso(@ModelAttribute Curso curso){
 		ModelAndView mv =  new ModelAndView("forward:/gerenciadorcurso");
-		if(cursoDAO.remove(curso)){
-			String mensagem = "Opa! Curso removido com Sucesso!";
-			mv.addObject("sucesso",mensagem);
-		}else{
-			String mensagem = "Ixi! Erro ao excluir curso!";
-			mv.addObject("erro",mensagem);	
-		}
+		cursoDAO.remove(curso);
 		return mv;
 	}
 	
+	@RequestMapping(value= "/pesquisacurso", method= RequestMethod.POST)
+	public ModelAndView pesquisaCurso(@ModelAttribute Curso curso, @RequestParam String opcaopesquisa){
+		ModelAndView mv =  new ModelAndView("/admin/gerenciadorcurso");
+		opcaopesquisa = opcaopesquisa.toLowerCase();
+		if(opcaopesquisa.equals("codigo")){
+			mv.addObject("listacursos",cursoDAO.pesquisaPorMatricula(curso));
+			
+		}
+		else if(opcaopesquisa.equals("nome")){
+			mv.addObject("listacursos",cursoDAO.pesquisaPorNome(curso));
+		}
+		return mv;
+	}
 	
 	
 	
