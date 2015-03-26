@@ -1,5 +1,4 @@
 package br.com.bookleweb.controller;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -8,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.bookleweb.dao.CursoDAO;
 import br.com.bookleweb.dao.DisciplinaDAO;
 import br.com.bookleweb.modelo.Curso;
 import br.com.bookleweb.modelo.Disciplina;
@@ -16,17 +16,20 @@ import br.com.bookleweb.modelo.Disciplina;
 public class DisciplinaController {
 
 	private DisciplinaDAO disciplinaDAO;
+	private CursoDAO cursoDAO;
 	
 	// Construtor da classe com injeção de dependencia do Spring 
 		@Autowired
-		public DisciplinaController(DisciplinaDAO disciplinaDAO) {
+		public DisciplinaController(DisciplinaDAO disciplinaDAO, CursoDAO cursoDAO) {
 			this.disciplinaDAO = disciplinaDAO;
+			this.cursoDAO = cursoDAO;
 		}
 		
 		@RequestMapping(value = "/gerenciadordisciplina")
 		public ModelAndView executeDisciplina(){
 			ModelAndView mv = new ModelAndView("/admin/gerenciadordisciplina");
 			mv.addObject("listadisciplinas",disciplinaDAO.getlistaTodasDisciplinas());
+			mv.addObject("listacursos",cursoDAO.getlistaTodosCursos());
 			return mv;
 		}
 		
@@ -44,9 +47,9 @@ public class DisciplinaController {
 		}
 		
 		@RequestMapping(value= "/editadisciplina", method= RequestMethod.POST)
-		public ModelAndView editaDisciplina(@ModelAttribute Disciplina disciplina){
+		public ModelAndView editaDisciplina(@ModelAttribute Disciplina disciplina, @ModelAttribute Curso curso){
 			ModelAndView mv =  new ModelAndView("forward:/gerenciadordisciplina");
-			if(disciplinaDAO.edita(disciplina)){
+			if(disciplinaDAO.edita(disciplina, curso)){
 				String mensagem = "Opa! Disciplina editada com Sucesso!";
 				mv.addObject("sucesso",mensagem);
 			}else{
@@ -68,11 +71,11 @@ public class DisciplinaController {
 			ModelAndView mv =  new ModelAndView("/admin/gerenciadordisciplina");
 			opcaopesquisa = opcaopesquisa.toLowerCase();
 			if(opcaopesquisa.equals("codigo")){
-				mv.addObject("listadisciplinas",disciplinaDAO.pesquisaPorMatricula(disciplina));
+				mv.addObject("listadisciplinas",disciplinaDAO.pesquisaPeloCodigo(disciplina));
 				
 			}
 			else if(opcaopesquisa.equals("nome")){
-				mv.addObject("listadisciplinas",disciplinaDAO.pesquisaPorNome(disciplina));
+				mv.addObject("listadisciplinas",disciplinaDAO.pesquisaPeloNome(disciplina));
 			}
 			return mv;
 		}

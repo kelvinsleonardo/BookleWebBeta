@@ -27,7 +27,7 @@
             <div role="main">
                 <form action="gerenciadordisciplina-do" method="POST">
                     <h3>Curso: </h3><select name="cod_curso">
-                        <c:forEach items="${listacursos}" var="curso">		
+                        <c:forEach  var="curso" items="${listacursos}">		
                                     <option value="${curso.cod_curso}">${curso.nome_curso}</option>
                         </c:forEach> 
                     </select>

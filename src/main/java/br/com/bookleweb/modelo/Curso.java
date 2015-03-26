@@ -2,6 +2,7 @@ package br.com.bookleweb.modelo;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -25,7 +26,7 @@ public class Curso {
 	
 	private String descricao_curso;
 	
-	@ManyToMany(mappedBy = "cursos")
+	@ManyToMany(mappedBy = "cursos", cascade = CascadeType.ALL)
 	private List<Disciplina> disciplinas;
 	
 	public Integer getCod_curso() {

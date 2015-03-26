@@ -12,11 +12,12 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @NamedQueries({
-	@NamedQuery(name="Disciplina.pesquisaPelaMatricula", 
-				query="select d from Disciplina d where d.cod_disciplina = :cod_disciplina"),
+	@NamedQuery(name="Disciplina.pesquisaPeloCodigo", 
+				query="SELECT disc FROM Disciplina disc JOIN disc.cursos cur WHERE disc.cod_disciplina = :cod_disciplina"),
 	@NamedQuery(name="Disciplina.pesquisaPeloNome", 
-					query="select d from Disciplina d where d.nome_disciplina LIKE :nome_disciplina")
-	
+				query="SELECT disc FROM Disciplina disc JOIN disc.cursos cur WHERE disc.nome_disciplina LIKE :nome_disciplina"),
+	@NamedQuery(name="Disciplina.pesquisaTodasDisciplinas", 
+				query="SELECT disc FROM Disciplina disc JOIN disc.cursos cur")
 })
 
 @Entity
@@ -54,19 +55,11 @@ public class Disciplina {
 		this.nome_disciplina = nome_disciplina;
 	}
 
-	public List<Curso> getCurso() {
-		return cursos;
-	}
-
-	public void setCurso(List<Curso> cursos) {
-		this.cursos = cursos;
-	}
-
-	public List<Livro> getLivro() {
+	public List<Livro> getLivros() {
 		return livros;
 	}
 
-	public void setLivro(List<Livro> livros) {
+	public void setLivros(List<Livro> livros) {
 		this.livros = livros;
 	}
 
@@ -77,6 +70,15 @@ public class Disciplina {
 	public void setDesc_disciplina(String desc_disciplina) {
 		this.desc_disciplina = desc_disciplina;
 	}
+
+	public List<Curso> getCursos() {
+		return cursos;
+	}
+
+	public void setCursos(List<Curso> cursos) {
+		this.cursos = cursos;
+	}
+	
 	
 	
 }

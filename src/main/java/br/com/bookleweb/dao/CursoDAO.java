@@ -62,7 +62,7 @@ public class CursoDAO {
 		return cursos;
 	}
 	
-	public ArrayList<Curso> pesquisaPorMatricula(Curso curso){
+	public ArrayList<Curso> pesquisaPorCodigo(Curso curso){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		TypedQuery<Curso> typedQuery = manager.createNamedQuery("Curso.pesquisaPelaMatricula",Curso.class);
 		typedQuery.setParameter("cod_curso", curso.getCod_curso());// Setando parametro da Query

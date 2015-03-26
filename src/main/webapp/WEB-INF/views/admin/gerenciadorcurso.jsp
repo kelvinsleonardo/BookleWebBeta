@@ -29,7 +29,7 @@
 <script src="<c:url value="/resources/jquery/alertifyjs/alertify.min.js" />"></script>
 
 <!-- Importação do arquivo Ajax -->
-<script type="text/javascript" charset="utf-8"  src="<c:url value="/resources/jquery/ajax/ajax.js" />"></script> 
+<script type="text/javascript" charset="utf-8"  src="<c:url value="/resources/jquery/ajax/ajax_gerenciadorcurso.js" />"></script> 
 
 <!-- DataTables CSS -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/jquery/datatables/media/css/jquery.dataTables.css"/>">

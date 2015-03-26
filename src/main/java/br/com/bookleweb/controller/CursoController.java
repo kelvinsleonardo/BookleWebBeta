@@ -67,7 +67,7 @@ public class CursoController {
 		ModelAndView mv =  new ModelAndView("/admin/gerenciadorcurso");
 		opcaopesquisa = opcaopesquisa.toLowerCase();
 		if(opcaopesquisa.equals("codigo")){
-			mv.addObject("listacursos",cursoDAO.pesquisaPorMatricula(curso));
+			mv.addObject("listacursos",cursoDAO.pesquisaPorCodigo(curso));
 			
 		}
 		else if(opcaopesquisa.equals("nome")){

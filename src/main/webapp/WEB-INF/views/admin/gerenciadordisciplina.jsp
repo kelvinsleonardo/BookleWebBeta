@@ -29,7 +29,7 @@
 <script src="<c:url value="/resources/jquery/alertifyjs/alertify.min.js" />"></script>
 
 <!-- Importação do arquivo Ajax -->
-<script type="text/javascript" charset="utf-8"  src="<c:url value="/resources/jquery/ajax/ajax.js" />"></script> 
+<script type="text/javascript" charset="utf-8"  src="<c:url value="/resources/jquery/ajax/ajax_gerenciadordisciplina.js" />"></script> 
 
 <!-- DataTables CSS -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/jquery/datatables/media/css/jquery.dataTables.css"/>">
@@ -138,19 +138,24 @@
                                 <th>Código</th>
                                 <th>Nome</th>
                                 <th>Descrição</th>
+                                <th>Curso</th>
                                 <th>Editar</th>
                                 <th>Excluir</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${listadisciplinas}" var="disciplina">
+                            <c:forEach var="disciplina" items="${listadisciplinas}" >
                             <tr class="active">
                                 <td class="text-center" name="tb_cod_disciplina">${disciplina.cod_disciplina}</td>
                                 
                                 <td name="tb_nome_disciplina">${disciplina.nome_disciplina}</td>
                                 
                                 <td name="tb_desc_disciplina">${disciplina.desc_disciplina}</td>
-
+                                
+                                <c:forEach var="curso" items="${disciplina.cursos}" >   
+                                      <td name="tb_curso_disciplina" id="${curso.cod_curso}">${curso.nome_curso}</td>
+                                </c:forEach>
+                                
                                 <td>
                                     <button type="submit" class="btn btn-primary btn-sm"data-toggle="modal" data-target="#modalEditaDisciplina" name="editardisciplina">
                                         <span class="glyphicon glyphicon-edit"></span>
