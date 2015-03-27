@@ -99,7 +99,7 @@
         <!-- CONTEÚDO -->
         <div class="row">
             <div role="main">
-                <div class="col-md-10 col-md-offset-1">
+                <div class="col-md-12 col-md-offset-0">
 		      
                     <!-- BREADCRUMB -->
                     <ul class="breadcrumb">
@@ -185,10 +185,10 @@
             </div>
         </div>  
     </div>
-        <!-- RODAPÉ --> 
+        <!-- RODAPÉ  
         <footer class="row">
             <c:import url="/resources/template/admin/rodape.jsp"></c:import> 
-        </footer>
+        </footer>-->
     
         <!-- MODALS -->
         <c:import url="/resources/template/admin/modal/disciplina/adicionadisciplina.jsp"></c:import>

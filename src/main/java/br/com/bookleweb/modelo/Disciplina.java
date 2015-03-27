@@ -2,6 +2,7 @@ package br.com.bookleweb.modelo;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -32,11 +33,11 @@ public class Disciplina {
 	
 	@ManyToMany
 	@JoinTable(name="tb_curso_disciplina", 
-				joinColumns= @JoinColumn(name="cod_disciplina"),
-				inverseJoinColumns = @JoinColumn(name="cod_curso"))
+	joinColumns= @JoinColumn(name="cod_disciplina"),
+	inverseJoinColumns = @JoinColumn(name="cod_curso"))
 	private List<Curso> cursos;
 
-	@ManyToMany(mappedBy = "disciplinas")
+	@ManyToMany(mappedBy = "disciplinas", cascade = CascadeType.ALL)
 	private List<Livro> livros;
 
 	public Integer getCod_disciplina() {

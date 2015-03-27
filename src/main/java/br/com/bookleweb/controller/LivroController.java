@@ -1,43 +1,86 @@
 package br.com.bookleweb.controller;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import br.com.bookleweb.dao.DisciplinaDAO;
 import br.com.bookleweb.dao.LivroDAO;
+import br.com.bookleweb.modelo.Disciplina;
 import br.com.bookleweb.modelo.Livro;
 
 @Controller
 public class LivroController {
 
+	private DisciplinaDAO disciplinaDAO;
 	private LivroDAO livroDAO;
 	
-	// Construtor da classe com injeção de dependencia do Spring 
-	@Autowired
-	public LivroController(LivroDAO livroDAO) {
-		this.livroDAO = livroDAO;
-	}
-	
-	@RequestMapping(value = "/gerenciadorlivro")
-	public String executeLivro(){
-		return "/admin/gerenciadorlivro";
-	}
-	
-	@RequestMapping(value = "/gerenciadorlivro-do", method=RequestMethod.POST)
-	public String doActions(@ModelAttribute Livro livro, @RequestParam String action){
-		// Converte para LowerCase;
-		action = action.toLowerCase();
-		
-		if(action.equals("adicionar")){
-			livroDAO.adiciona(livro);
+	// Construtor da classe com injeÃ§Ã£o de dependencia do Spring 
+		@Autowired
+		public LivroController(LivroDAO livroDAO, DisciplinaDAO disciplinaDAO) {
+			this.disciplinaDAO = disciplinaDAO;
+			this.livroDAO = livroDAO;
 		}
 		
-		return "/admin/gerenciadorlivro";
-	}
-
+		@RequestMapping(value = "/gerenciadorlivro")
+		public ModelAndView executeLivro(){
+			ModelAndView mv = new ModelAndView("/admin/gerenciadorlivro");
+			mv.addObject("listalivros",livroDAO.getlistaTodosLivros());
+			mv.addObject("listadisciplinas",disciplinaDAO.getlistaTodasDisciplinas());
+			return mv;
+		}
+		
+		@RequestMapping(value= "/adicionalivro", method= RequestMethod.POST)
+		public ModelAndView adicionaLivro(@ModelAttribute Livro livro, @ModelAttribute Disciplina disciplina){
+			ModelAndView mv =  new ModelAndView("forward:/gerenciadorlivro");
+			System.out.println(livro.getTitulo() +" "+ disciplina.getCod_disciplina() );
+			if(livroDAO.adiciona(livro, disciplina)){
+				String mensagem = "Opa! Livro adicionado com Sucesso!";
+				mv.addObject("sucesso",mensagem);
+			}else{
+				String mensagem = "Ixi! Erro ao cadastrar livro!";
+				mv.addObject("erro",mensagem);	
+			}
+			return mv;
+		}
+		
+		@RequestMapping(value= "/editalivro", method= RequestMethod.POST)
+		public ModelAndView editaDisciplina(@ModelAttribute Livro livro, @ModelAttribute Disciplina disciplina){
+			ModelAndView mv =  new ModelAndView("forward:/gerenciadorlivro");
+			if(livroDAO.edita(livro,disciplina)){
+				String mensagem = "Opa! Livro editado com Sucesso!";
+				mv.addObject("sucesso",mensagem);
+			}else{
+				String mensagem = "Ixi! Erro ao editar livro!";
+				mv.addObject("erro",mensagem);	
+			}
+			return mv;
+		}
+		
+		@RequestMapping(value= "/removelivro", method= RequestMethod.POST)
+		public ModelAndView removeDisciplina(@ModelAttribute Livro livro){
+			ModelAndView mv =  new ModelAndView("forward:/gerenciadorlivro");
+			livroDAO.remove(livro);
+			return mv;
+		}
+		
+		@RequestMapping(value= "/pesquisalivro", method= RequestMethod.POST)
+		public ModelAndView pesquisaDisciplina(@ModelAttribute Livro livro, @RequestParam String opcaopesquisa){
+			ModelAndView mv =  new ModelAndView("/admin/gerenciadorlivro");
+			opcaopesquisa = opcaopesquisa.toLowerCase();
+			if(opcaopesquisa.equals("isbn")){
+				mv.addObject("listalivros",livroDAO.pesquisaPeloISBN(livro));
+				
+			}
+			else if(opcaopesquisa.equals("titulo")){
+				mv.addObject("listalivros",livroDAO.pesquisaPeloTitulo(livro));
+			}
+			return mv;
+		}
+		
 	
 	
 }

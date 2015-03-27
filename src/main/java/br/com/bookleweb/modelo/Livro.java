@@ -7,7 +7,18 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+@NamedQueries({
+	@NamedQuery(name="Livro.pesquisaPeloISBN", 
+				query="SELECT liv FROM Livro liv JOIN liv.disciplinas disc WHERE liv.isbn = :isbn"),
+	@NamedQuery(name="Livro.pesquisaPeloTitulo", 
+				query="SELECT liv FROM Livro liv JOIN liv.disciplinas disc WHERE liv.titulo LIKE :titulo"),
+	@NamedQuery(name="Livro.pesquisaTodosLivros", 
+				query="SELECT liv FROM Livro liv JOIN liv.disciplinas disc")
+})
 
 @Entity
 @Table(name = "tb_livro")
@@ -16,7 +27,7 @@ public class Livro {
 	private Integer isbn;
 	private String titulo;
 	private String autor;
-	private String descricao;
+	private String desc_livro;
 	private String local;
 	private String status;
 	private Integer exemplares;
@@ -29,6 +40,12 @@ public class Livro {
 	
 	public Integer getIsbn() {
 		return isbn;
+	}
+	public List<Disciplina> getDisciplinas() {
+		return disciplinas;
+	}
+	public void setDisciplinas(List<Disciplina> disciplinas) {
+		this.disciplinas = disciplinas;
 	}
 	public void setIsbn(Integer isbn) {
 		this.isbn = isbn;
@@ -45,11 +62,12 @@ public class Livro {
 	public void setAutor(String autor) {
 		this.autor = autor;
 	}
-	public String getDescricao() {
-		return descricao;
+	
+	public String getDesc_livro() {
+		return desc_livro;
 	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setDesc_livro(String desc_livro) {
+		this.desc_livro = desc_livro;
 	}
 	public String getLocal() {
 		return local;

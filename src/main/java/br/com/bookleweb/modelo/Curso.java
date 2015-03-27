@@ -4,10 +4,13 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 @NamedQueries({
 	@NamedQuery(name="Curso.pesquisaPelaMatricula", 
@@ -20,6 +23,8 @@ import javax.persistence.Table;
 @Table(name = "tb_curso")
 public class Curso {
 	@Id
+	@SequenceGenerator( name = "CURSO_COD", sequenceName = "CURSO_SEQ", allocationSize = 9999 )
+	@GeneratedValue(strategy=GenerationType.IDENTITY,generator = "CURSO_COD")
 	private Integer cod_curso;
 	
 	private String nome_curso;
