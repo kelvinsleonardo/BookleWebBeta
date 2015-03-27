@@ -19,6 +19,20 @@ public class UsuarioDAO {
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		try{
 			manager.getTransaction().begin();
+			manager.persist(usuario); 
+			manager.getTransaction().commit();
+			return true;
+		}catch(Exception e){
+			return false;
+		}finally{
+			manager.close();
+		}
+	}
+	
+	public Boolean edita(Usuario usuario){
+		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
+		try{
+			manager.getTransaction().begin();
 			manager.merge(usuario);
 			manager.getTransaction().commit();
 			return true;
@@ -55,9 +69,9 @@ public class UsuarioDAO {
 		}
 	}
 	
-	public ArrayList<Usuario> lista(){
+	public ArrayList<Usuario> getListaTodosUsuarios(){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
-		TypedQuery<Usuario> typedQuery = manager.createQuery("FROM Usuario", Usuario.class);
+		TypedQuery<Usuario> typedQuery = manager.createNamedQuery("Usuario.pesquisaTodosUsuarios", Usuario.class);
 		ArrayList<Usuario> usuarios = (ArrayList<Usuario>) typedQuery.getResultList();
 		return usuarios;
 	}
@@ -72,5 +86,22 @@ public class UsuarioDAO {
 		String strFinalUsuario = StringUtils.capitalize(strLowerCase); 
 		return strFinalUsuario;
 	}
+	
+	public ArrayList<Usuario> pesquisaPelaMatricula(Usuario usuario){
+		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
+		TypedQuery<Usuario> typedQuery = manager.createNamedQuery("Usuario.pesquisaPelaMatricula",Usuario.class);
+		typedQuery.setParameter("matricula", usuario.getMatricula());// Setando parametro da Query
+		ArrayList<Usuario> usuarioArrayList = (ArrayList<Usuario>) typedQuery.getResultList();  // Pega resultado
+		return usuarioArrayList;
+	}
+	
+	public ArrayList<Usuario> pesquisaPeloNome(Usuario usuario){
+		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
+		TypedQuery<Usuario> typedQuery = manager.createNamedQuery("Usuario.pesquisaPeloNome",Usuario.class);
+		typedQuery.setParameter("nome", "%"+usuario.getNome()+"%");// Setando parametro da Query
+		ArrayList<Usuario> usuarioArrayList = (ArrayList<Usuario>) typedQuery.getResultList();  // Pega resultado
+		return usuarioArrayList;
+	}
+	
 	
 }

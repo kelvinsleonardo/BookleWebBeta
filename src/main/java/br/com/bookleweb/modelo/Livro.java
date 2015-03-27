@@ -13,11 +13,11 @@ import javax.persistence.Table;
 
 @NamedQueries({
 	@NamedQuery(name="Livro.pesquisaPeloISBN", 
-				query="SELECT liv FROM Livro liv JOIN liv.disciplinas disc WHERE liv.isbn = :isbn"),
+				query="SELECT DISTINCT liv FROM Livro liv JOIN liv.disciplinas disc WHERE liv.isbn = :isbn"),
 	@NamedQuery(name="Livro.pesquisaPeloTitulo", 
-				query="SELECT liv FROM Livro liv JOIN liv.disciplinas disc WHERE liv.titulo LIKE :titulo"),
+				query="SELECT DISTINCT liv FROM Livro liv JOIN liv.disciplinas disc WHERE liv.titulo LIKE :titulo"),
 	@NamedQuery(name="Livro.pesquisaTodosLivros", 
-				query="SELECT liv FROM Livro liv JOIN liv.disciplinas disc")
+				query="SELECT liv FROM Livro liv")
 })
 
 @Entity

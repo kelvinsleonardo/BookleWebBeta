@@ -30,9 +30,6 @@
                             <input type="text" class="form-control" name="nome_disciplina" id="edit_nome_disciplina"/>
                     </div>  
                     
-                     <div class="form-group">
-                            <textarea class="form-control" rows="5" name="desc_disciplina" id="edit_desc_disciplina"  ></textarea>
-                    </div>
                 </div>
             <div class="col-md-offset-9">
     

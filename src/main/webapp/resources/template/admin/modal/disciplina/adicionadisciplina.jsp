@@ -25,17 +25,14 @@
                     </div>
                     
                     <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Codigo" name="cod_disciplina" id="add_cod_disciplina"/>
+                            <input type="text" class="form-control" placeholder="Codigo" name="cod_disciplina" id="add_cod_disciplina" readonly/>
                     </div>
                     
                     <div class="form-group">
                             <input type="text" class="form-control" placeholder="Nome" name="nome_disciplina" id="add_nome_disciplina"/>
                     </div>  
                     
-                     <div class="form-group">
-                            <textarea class="form-control" rows="5" placeholder="Descrição sobre a Disciplina" name="desc_disciplina"
-                                      id="add_desc_disciplina"></textarea>
-                    </div>
+
                 </div>
             <button class="btn btn-sm btn-info btn-block" type="submit" >Adicionar Novo</button>
         </form>

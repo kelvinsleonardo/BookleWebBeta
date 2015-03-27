@@ -19,10 +19,6 @@
                     <div class="form-group">
                             <input type="text" class="form-control" name="nome_curso" id="edit_nome_curso"/>
                     </div>  
-                    
-                     <div class="form-group">
-                            <textarea class="form-control" rows="5" name="descricao_curso" id="edit_desc_curso"  ></textarea>
-                    </div>
                 </div>
             <div class="col-md-offset-9">
     

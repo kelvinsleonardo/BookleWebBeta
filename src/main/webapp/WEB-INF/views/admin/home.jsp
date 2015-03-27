@@ -15,6 +15,10 @@
     <title>Modelo GRID BookleWeb</title>
     <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css" />" />
     <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/estilo.css" />" />
+
+<!-- Javascript do bootstrap -->
+<script src="resources/js/jquery-1.11.2.min.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>    
     
 <!-- Fontes do Google -->
 <link href='http://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
@@ -24,6 +28,10 @@
 <link rel="stylesheet" href="<c:url value="/resources/jquery/alertifyjs/css/themes/default.min.css"/>" /> 
 <script src="<c:url value="/resources/jquery/alertifyjs/alertify.min.js" />"></script>
 
+<!-- Importação do arquivo Ajax -->
+<script type="text/javascript" charset="utf-8"  src="<c:url value="/resources/jquery/ajax/ajax_livrosugerido.js" />"></script> 
+    
+    
 </head>
 <body class="background-login">
     <div class="container-fluid">
@@ -60,8 +68,24 @@
         <!-- CONTEÚDO -->
         <div class="row">
             <div role="main">
-                <div class="col-md-4 col-md-offset-4">
-		          <h1>ROLE ADMIN PAGE</h1>
+                <div class="col-md-12 col-md-offset-0">
+                    
+                    <div class="form-group">
+                        <select name="curso" class="form-control">
+                            <c:forEach items="${listacursos}" var="curso" >		
+                                Selecione o curso: <option value="${curso.cod_curso}">${curso.nome_curso}</option>
+                            </c:forEach> 
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <select name="disciplina" class="form-control">
+                            <c:forEach items="${listadisciplinas}" var="disciplina" >		
+                                Selecione o curso: <option value="${disciplina.cod_disciplina}">${disciplina.nome_disciplina}</option>
+                            </c:forEach> 
+                        </select>
+                    </div>
+                    
             </div>
         </div>  
     </div>
@@ -76,9 +100,5 @@
         
     <!--FIM DIV CONTAINER-->
     </div>
-
-    <!-- Javascript do bootstrap -->
-    <script src="resources/js/jquery-1.11.2.min.js"></script>
-    <script src="resources/js/bootstrap.min.js"></script>
 </body>
 </html>

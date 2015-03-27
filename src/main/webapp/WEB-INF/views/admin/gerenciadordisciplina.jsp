@@ -137,7 +137,6 @@
                             <tr class="info">
                                 <th>Código</th>
                                 <th>Nome</th>
-                                <th>Descrição</th>
                                 <th>Curso</th>
                                 <th>Editar</th>
                                 <th>Excluir</th>
@@ -149,9 +148,7 @@
                                 <td class="text-center" name="tb_cod_disciplina">${disciplina.cod_disciplina}</td>
                                 
                                 <td name="tb_nome_disciplina">${disciplina.nome_disciplina}</td>
-                                
-                                <td name="tb_desc_disciplina">${disciplina.desc_disciplina}</td>
-                                
+                                        
                                 <c:forEach var="curso" items="${disciplina.cursos}" >   
                                       <td name="tb_curso_disciplina" id="${curso.cod_curso}">${curso.nome_curso}</td>
                                 </c:forEach>

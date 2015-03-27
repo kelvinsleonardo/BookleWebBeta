@@ -142,7 +142,6 @@
                             <tr class="info">
                                 <th>Código</th>
                                 <th>Nome</th>
-                                <th>Descrição</th>
                                 <th>Editar</th>
                                 <th>Excluir</th>
                             </tr>
@@ -153,8 +152,6 @@
                                 <td class="text-center" name="tb_cod_curso">${curso.cod_curso}</td>
                                 
                                 <td name="tb_nome_curso">${curso.nome_curso}</td>
-                                
-                                <td name="tb_descricao_curso">${curso.descricao_curso}</td>
 
                                 <td>
                                     <button type="submit" class="btn btn-primary btn-sm"data-toggle="modal" data-target="#modalEditaCurso" name="editarcurso">

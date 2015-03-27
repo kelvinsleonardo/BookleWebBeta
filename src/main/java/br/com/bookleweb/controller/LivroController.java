@@ -18,7 +18,7 @@ public class LivroController {
 	private DisciplinaDAO disciplinaDAO;
 	private LivroDAO livroDAO;
 	
-	// Construtor da classe com injeção de dependencia do Spring 
+	// Construtor da classe com injecao de dependencia do Spring 
 		@Autowired
 		public LivroController(LivroDAO livroDAO, DisciplinaDAO disciplinaDAO) {
 			this.disciplinaDAO = disciplinaDAO;
@@ -36,7 +36,6 @@ public class LivroController {
 		@RequestMapping(value= "/adicionalivro", method= RequestMethod.POST)
 		public ModelAndView adicionaLivro(@ModelAttribute Livro livro, @ModelAttribute Disciplina disciplina){
 			ModelAndView mv =  new ModelAndView("forward:/gerenciadorlivro");
-			System.out.println(livro.getTitulo() +" "+ disciplina.getCod_disciplina() );
 			if(livroDAO.adiciona(livro, disciplina)){
 				String mensagem = "Opa! Livro adicionado com Sucesso!";
 				mv.addObject("sucesso",mensagem);
@@ -73,10 +72,12 @@ public class LivroController {
 			opcaopesquisa = opcaopesquisa.toLowerCase();
 			if(opcaopesquisa.equals("isbn")){
 				mv.addObject("listalivros",livroDAO.pesquisaPeloISBN(livro));
+				mv.addObject("listadisciplinas",disciplinaDAO.getlistaTodasDisciplinas());
 				
 			}
 			else if(opcaopesquisa.equals("titulo")){
 				mv.addObject("listalivros",livroDAO.pesquisaPeloTitulo(livro));
+				mv.addObject("listadisciplinas",disciplinaDAO.getlistaTodasDisciplinas());
 			}
 			return mv;
 		}

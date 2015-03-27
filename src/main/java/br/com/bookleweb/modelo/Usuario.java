@@ -2,12 +2,23 @@ package br.com.bookleweb.modelo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 import br.com.bookleweb.util.CriptografiaSenha;
+
+@NamedQueries({
+	@NamedQuery(name="Usuario.pesquisaPelaMatricula", 
+				query="SELECT usu FROM Usuario usu WHERE usu.matricula = :matricula"),
+	@NamedQuery(name="Usuario.pesquisaPeloNome", 
+				query="SELECT usu FROM Usuario usu WHERE usu.nome LIKE :nome"),
+	@NamedQuery(name="Usuario.pesquisaTodosUsuarios", 
+				query="SELECT usu FROM Usuario usu")
+})
 
 @Entity
 @Table(name = "tb_usuario")

@@ -60,20 +60,19 @@ $(function(){
     /* EVENTO CLICAR NO RADIO "CODIGO" CURSO DE FILTRO DE PESQUISA
      * Após clicar no radio "CODIGO" é mostrado um input para inserir os dados e oculta o input nome.
      */
-    $('#op_pesq_cod').on('change',function(){
-        $('#search_nome_disciplina').hide();
-        $('#search_nome_disciplina').val("");
-        $('#search_cod_disciplina').show();
-        
+    $('#op_pesq_isbn').on('change',function(){
+        $('#search_titulo').hide();
+        $('#search_titulo').val("");
+        $('#search_isbn').show();
     })
     
         /* EVENTO CLICAR NO RADIO "NOME" CURSO DE FILTRO DE PESQUISA
      * Após clicar no radio "NOME" é mostrado um input para inserir os dados e oculta o input codigo.
      */
-    $('#op_pesq_nome').on('change',function(){
-        $('#search_cod_disciplina').hide();
-        $('#search_cod_disciplina').val("");
-        $('#search_nome_disciplina').show();
+    $('#op_pesq_titulo').on('change',function(){
+        $('#search_isbn').hide();
+        $('#search_isbn').val("");
+        $('#search_titulo').show();
     })
     
 });

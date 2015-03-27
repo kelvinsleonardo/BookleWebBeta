@@ -1,80 +1,202 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- Import java-->
+<%@ page contentType="text/html; charset=UTF-8" %>
+<!-- Import JSTL-->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<!-- Spring Famework -->
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>    
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//PT" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Bookle Web Login</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gerenciador Usuario</title>
+<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css" />" />
+<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/estilo.css" />" />
+    
+<!-- Fontes do Google -->
+<link href='http://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
+    
+<!-- Javascript do bootstrap -->
+<script src="resources/js/jquery-1.11.2.min.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
+
+<!-- Estilos do Alertfy -->
+<link rel="stylesheet" href="<c:url value="/resources/jquery/alertifyjs/alertify.min.css"/>" />
+<link rel="stylesheet" href="<c:url value="/resources/jquery/alertifyjs/css/themes/default.min.css"/>" /> 
+<script src="<c:url value="/resources/jquery/alertifyjs/alertify.min.js" />"></script>
+
+<!-- Importação do arquivo Ajax -->
+<script type="text/javascript" charset="utf-8"  src="<c:url value="/resources/jquery/ajax/ajax_gerenciadorusuario.js" />"></script> 
+
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="<c:url value="/resources/jquery/datatables/media/css/jquery.dataTables.css"/>">
+  
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="<c:url value="/resources/jquery/datatables/media/js/jquery.dataTables.js"/>"></script>
+<script>
+    $(document).ready(function() {
+       $.extend( $.fn.dataTable.defaults, {
+            searching: false,
+            ordering:  true,
+            info: false
+       } );
+    $('#tabelausuario').dataTable( {
+        "scrollY":        "400px",
+        "scrollCollapse": true,
+        "paging":         false, // Remove ocao de setar quantos itens mostrados
+        //"bSort": false, // Removendo Ordenação
+        "language": {
+            "emptyTable":     "Ixi! Não foi encontrado nada nessa busca.",
+            "lengthMenu": "Display _MENU_ records per page",
+            "zeroRecords": "Nada encontrado para esse filtro",
+            "info": "Mostrando pagina _PAGE_ de _PAGES_<br><br>",
+            "infoEmpty": "Mostrando pagina 0 de 0 entradas",
+            "infoFiltered": "(filtrado de _MAX_ gravações)<br><br>",
+            "search":         "Procurar:"
+        },
+    
+        
+        
+    } );
+    
+ 
+    
+} );    
+    
+    </script>
 </head>
-
-<body>    
-<form action="gerenciadorusuario-do" method="POST">
-	<table>
-		<tr>
-			<td>Matricula</td>
-			<td><input name="matricula" value=""/></td>
-		</tr>
-		<tr>
-			<td>Nome Completo</td>
-			<td><input name="nome" /></td>
-		</tr>
-		<tr>
-			<td>Senha</td>
-			<td><input name="senha" /></td>
-		</tr>
-		<tr>
-			<td>Permissão</td>
-			<td>
-                <select name="permissao">
-                      <option value="ROLE_ADMIN">Admin</option>
-                      <option value="ROLE_PROFESSOR">Professor</option>
-                      <option value="ROLE_ALUNO">Aluno</option>
-                </select></td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<input type="submit" name="action" value="Adicionar" />
-				<input type="submit" name="action" value="Remover" />
-				<input type="submit" name="action" value="Editar" />
-				<input type="submit" name="action" value="Procurar" />
-				<input type="submit" name="action" value="Listar" />
-                <a type="button" href="gerenciadorusuario-do?action=Remover&matricula=${user.matricula}">
-			</td>
-		</tr>
-	</table>
-</form>
     
-    <font color='red'>${erro}</font>
-    <font color='blue'>${sucesso}</font>
-
+<body class="background-login">
+    <div class="container-fluid">
+        
+        <!-- MENSAGENS ALERTIFY-->
+        <c:if test="${not empty param.error}">
+            <script>
+                alertify.error("${param.error}");
+            </script>
+        </c:if>
+        
+        <c:if test="${not empty erro}">
+            <script>
+                alertify.error("${erro}");
+            </script>
+        </c:if>
+        
+        <c:if test="${not empty sucesso}">
+            <script>
+                alertify.success("${sucesso}");
+            </script>
+        </c:if>
+             
+        <!-- CABEÇALHO -->
+        <header class="row">
+            <c:import url="/resources/template/admin/menu.jsp"></c:import> 
+        </header>
+        
+        <!-- CONTEÚDO -->
+        <div class="row">
+            <div role="main">
+                <div class="col-md-12 col-md-offset-0">
+		      
+                    <!-- BREADCRUMB -->
+                    <ul class="breadcrumb">
+                       <li><a href="admin">Home</a></li>
+                      <li class="active">Gerenciador Usuario</li>
+                    </ul>
+                    
+                    <form action="pesquisausuario" method="POST">
+                        <label>
+                            Pesquisar por: &nbsp; 
+                        </label>
+                        
+                        <label class="radio-inline">
+                            <input type="radio" name="opcaopesquisa" id="op_pesq_matricula" value="matricula" checked>Matricula
+                        </label>
+                        
+                        <label class="radio-inline">
+                            <input type="radio" name="opcaopesquisa" id="op_pesq_nome" value="nome">Nome
+                        </label>
+                             
+                        
+                        <div class="input-group">
+                          <input type="number" class="form-control" name="matricula" id="search_matricula" placeholder="Matricula do usuario">
+                          <input type="text" class="form-control" style="display:none" name="nome" id="search_nome" placeholder="Nome do Usuario">
+                          <div class="input-group-btn">
+                              <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <br>
+                    
+                    <table id="tabelausuario" class="table table-responsive table-bordered table-hover table-striped">
+                        <thead>
+                            <tr class="info">
+                                <th>Matricula</th>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Senha</th>
+                                <th>Permissao</th>
+                                <th>Editar</th>
+                                <th>Excluir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="usuario" items="${listausuarios}" >
+                            <tr class="active">
+                                
+                                <td class="text-center" name="tb_matricula">${usuario.matricula}</td>
+                                
+                                <td name="tb_nome">${usuario.nome}</td>
+                                
+                                <td name="tb_email">${usuario.email}</td>
+                                
+                                <td name="tb_senha">${usuario.senha}</td>
+                                
+                                <td name="tb_permissao" id="${usuario.permissao}">${usuario.permissao}</td>
+                                    
+                                <td>
+                                    <button type="submit" class="btn btn-primary btn-sm"data-toggle="modal" data-target="#modalEditaUsuario" name="editarusuario">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                        Editar
+                                    </button>
+                                </td> 
+                                
+                                <td>
+                                    <button type="submit" class="btn btn-danger btn-sm" name="excluirusuario">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                        Excluir
+                                    </button>
+                                </td>
+                                  
+                            </tr>
+                           </c:forEach> 
+                        </tbody>
+                    </table>
+                
+                    <div class="col-md-offset-9">
+                        <br>
+                        <button type="submit" class="btn btn-info btn-sm form-control" data-toggle="modal" data-target="#modalAdicionaUsuario"/><span class="glyphicon glyphicon-plus-sign"></span> &nbsp;Adicionar Usuario</button>
+                    </div>
+                    
+                        
+                
+            </div>
+        </div>  
+    </div>
+        <!-- RODAPÉ  
+        <footer class="row">
+            <c:import url="/resources/template/admin/rodape.jsp"></c:import> 
+        </footer>-->
     
-<form action="gerenciadorusuario-do" method="POST">
-    <table border="1">
-        <tr>
-            <th>Matricula</th>
-            <th>Nome</th>
-            <th>Senha</th>
-            <th>Permissão</th>
-        </tr>
-        <tr></tr>
-            <tr>
-                <c:forEach items="${listausuarios}" var="user">		
-                    <tr>
-                        <td>${user.matricula}</td><input type="hidden" name="matricula" value="${user.matricula}"/>
-                        <td>${user.nome}</td>
-                        <td>${user.senha}</td>
-                        <td>${user.permissao}</td>
-                        <td><input type="submit" name="action" value="Remover" /></td>
-                        <!--<td><a href="gerenciadorusuario-do?action=Remover&matricula=${user.matricula}">Remover por Href</a></td>-->
-                    </tr>
-               </c:forEach>  
-            </tr>
-    </table>
-</form>    
-    
-	
+        <!-- MODALS -->
+        <c:import url="/resources/template/admin/modal/usuario/adicionausuario.jsp"></c:import>
+        <c:import url="/resources/template/admin/modal/usuario/editausuario.jsp"></c:import> 
+        
+    <!--FIM DIV CONTAINER-->
+    </div>
 </body>
-
 </html>

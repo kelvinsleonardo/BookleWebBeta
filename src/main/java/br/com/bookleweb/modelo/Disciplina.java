@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -18,18 +19,19 @@ import javax.persistence.Table;
 	@NamedQuery(name="Disciplina.pesquisaPeloNome", 
 				query="SELECT disc FROM Disciplina disc JOIN disc.cursos cur WHERE disc.nome_disciplina LIKE :nome_disciplina"),
 	@NamedQuery(name="Disciplina.pesquisaTodasDisciplinas", 
-				query="SELECT disc FROM Disciplina disc JOIN disc.cursos cur")
+				query="SELECT disc FROM Disciplina disc JOIN disc.cursos cur"),
+	@NamedQuery(name="Disciplina.pesquisaPeloCodigoCurso", 
+				query="SELECT disc FROM Disciplina disc JOIN disc.cursos cur WHERE cur.cod_curso = :cod_curso")
 })
 
 @Entity
 @Table(name = "tb_disciplina")
 public class Disciplina {
 	@Id
+	@GeneratedValue
 	private Integer cod_disciplina;
 	
 	private String nome_disciplina;
-	
-	private String desc_disciplina;
 	
 	@ManyToMany
 	@JoinTable(name="tb_curso_disciplina", 
@@ -62,14 +64,6 @@ public class Disciplina {
 
 	public void setLivros(List<Livro> livros) {
 		this.livros = livros;
-	}
-
-	public String getDesc_disciplina() {
-		return desc_disciplina;
-	}
-
-	public void setDesc_disciplina(String desc_disciplina) {
-		this.desc_disciplina = desc_disciplina;
 	}
 
 	public List<Curso> getCursos() {

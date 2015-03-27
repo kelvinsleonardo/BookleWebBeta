@@ -1,6 +1,7 @@
 package br.com.bookleweb.dao;
 
 import java.util.ArrayList;
+
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 

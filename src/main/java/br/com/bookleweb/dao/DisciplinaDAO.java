@@ -87,4 +87,12 @@ public class DisciplinaDAO {
 		ArrayList<Disciplina> disciplinaArrayList = (ArrayList<Disciplina>) typedQuery.getResultList();  // Pega resultado
 		return disciplinaArrayList;
 	}
+	
+	public ArrayList<Disciplina> pesquisaPeloCodigoCurso(Curso curso){
+		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
+		TypedQuery<Disciplina> typedQuery = manager.createNamedQuery("Disciplina.pesquisaPeloCodigoCurso",Disciplina.class);
+		typedQuery.setParameter("cod_curso",curso.getCod_curso());// Setando parametro da Query
+		ArrayList<Disciplina> disciplinaArrayList = (ArrayList<Disciplina>) typedQuery.getResultList();  // Pega resultado
+		return disciplinaArrayList;
+	}
 }

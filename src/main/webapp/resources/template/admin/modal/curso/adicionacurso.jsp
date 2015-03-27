@@ -20,10 +20,6 @@
                             <input type="text" class="form-control" placeholder="Nome" name="nome_curso" id="add_nome_curso"/>
                     </div>  
                     
-                     <div class="form-group">
-                            <textarea class="form-control" rows="5" placeholder="Descrição sobre o Curso" name="descricao_curso"
-                                      id="add_desc_curso"></textarea>
-                    </div>
                 </div>
             <button class="btn btn-sm btn-info btn-block" type="submit" >Adicionar Novo</button>
         </form>

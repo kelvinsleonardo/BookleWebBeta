@@ -62,20 +62,21 @@
                         CADASTRE-SE AGORA
                     </h3>
                     <form class="form form-signup" role="form">
+                      <div class="form-group">  
+                     <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-certificate"></span>
+                            </span>
+                            <input type="text" class="form-control" placeholder="Matrícula" name="matricula"/>
+                        </div>
+                    </div>
+                    
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-user"></span>
                             </span>
                             <input type="text" class="form-control" placeholder="Nome completo" name="nome"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-certificate"></span>
-                            </span>
-                            <input type="text" class="form-control" placeholder="Matrícula" name="matricula"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -90,6 +91,7 @@
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
                             <input type="password" class="form-control" placeholder="Senha" name="senha"/>
+                            <input type="hidden" name="permissao"/>
                         </div>
                     </div>
                 </div>

@@ -107,7 +107,7 @@
                       <li class="active">Gerenciador Livro</li>
                     </ul>
                     
-                    <form action="pesquisadisciplina" method="POST">
+                    <form action="pesquisalivro" method="POST">
                         <label>
                             Pesquisar por: &nbsp; 
                         </label>
@@ -148,44 +148,46 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="livro" items="${listalivros}" >
-                            <tr class="active">
-                                <td class="text-center" name="tb_isbn">${livro.isbn}</td>
-                                
-                                <td name="tb_titulo">${livro.titulo}</td>
-                                
-                                <td name="tb_autor">${livro.autor}</td>
-                                
-                                <td name="tb_descricao">${livro.desc_livro}</td>
-                                
-                                <td name="tb_local">${livro.local}</td>
-                                
-                                <td name="tb_exemplares">${livro.exemplares}</td>
-                                
-                                <td name="tb_status">${livro.status}</td>
-                                
-                                
-                                
-                                
+                            <c:forEach var="livro" items="${listalivros}" > 
                                 <c:forEach var="disciplina" items="${livro.disciplinas}" >   
-                                      <td name="tb_livro_disciplina" id="${disciplina.cod_disciplina}">${disciplina.nome_disciplina}</td>
+                                    <tr class="active">
+                                        <td class="text-center" name="tb_isbn">${livro.isbn}</td>
+
+                                        <td name="tb_titulo">${livro.titulo}</td>
+
+                                        <td name="tb_autor">${livro.autor}</td>
+
+                                        <td name="tb_descricao">${livro.desc_livro}</td>
+
+                                        <td name="tb_local">${livro.local}</td>
+
+                                        <td name="tb_exemplares">${livro.exemplares}</td>
+
+                                        <td name="tb_status">${livro.status}</td>
+
+                                        <td name="tb_livro_disciplina" id="${disciplina.cod_disciplina}">
+                                            ${disciplina.nome_disciplina}
+                                        </td>
+
+                                        <td>
+                                            <button type="submit" class="btn btn-primary btn-sm"data-toggle="modal" data-target="#modalEditaLivro" name="editarlivro">
+                                                <span class="glyphicon glyphicon-edit"></span>
+                                                Editar
+                                            </button>
+                                        </td> 
+
+                                        <td>
+                                            <button type="submit" class="btn btn-danger btn-sm" name="excluirlivro">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                                Excluir
+                                            </button>
+                                        </td>      
+                                    </tr>          
                                 </c:forEach>
                                 
-                                <td>
-                                    <button type="submit" class="btn btn-primary btn-sm"data-toggle="modal" data-target="#modalEditaLivro" name="editarlivro">
-                                        <span class="glyphicon glyphicon-edit"></span>
-                                        Editar
-                                    </button>
-                                </td> 
                                 
-                                <td>
-                                    <button type="submit" class="btn btn-danger btn-sm" name="excluirlivro">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                        Excluir
-                                    </button>
-                                </td>
                                   
-                            </tr>
+                            
                            </c:forEach> 
                         </tbody>
                     </table>
