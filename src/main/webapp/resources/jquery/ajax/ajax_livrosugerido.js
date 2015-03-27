@@ -16,13 +16,14 @@ $(function(){
 			},
 			success: function(dados){
                 console.log("Success Return Ajax");
-				/*$('select[name=disciplina] option').remove(); // Limpa combobox Disciplina
+				$('select[name=disciplina] option').remove(); // Limpa combobox Disciplina
 				$('select[name=disciplina]').append('<option value="default">Selecione o apartamento</option>')
 				var pegadados = dados.split(":");
 				for(var i = 0; i < pegadados.length - 1; i++){
-					var nomeapartamento = pegadados[i];
-					$('select[name=apartamento]').append('<option value="'+nomeapartamento+'">'+nomeapartamento+'</option>')
-				}*/
+					var nomedisciplina = pegadados[i];
+                    alert(nomedisciplina);
+					$('select[name=disciplina]').append('<option value="'+nomedisciplina+'">'+nomedisciplina+'</option>')
+				}
 			}
 			
 		});
