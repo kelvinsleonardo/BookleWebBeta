@@ -23,7 +23,7 @@
                     </div>
                     
                     <div class="form-group">
-                            <input type="text" class="form-control" name="cod_isbn" id="edit_isbn" readonly/>
+                            <input type="text" class="form-control" name="isbn" id="edit_isbn" readonly/>
                     </div>
                     
                     <div class="form-group">

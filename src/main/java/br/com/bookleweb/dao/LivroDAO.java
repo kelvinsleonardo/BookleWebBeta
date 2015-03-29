@@ -3,6 +3,7 @@ package br.com.bookleweb.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.management.Query;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
@@ -14,18 +15,21 @@ import br.com.bookleweb.modelo.Livro;
 
 @Repository
 public class LivroDAO {
+
 	
-	public Boolean adiciona(Livro livro, Disciplina disciplina){
+	public Boolean adiciona(Livro livro){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		try{
-			manager.getTransaction().begin();			
-			List<Disciplina> listadisciplina = new ArrayList<Disciplina>();
-			listadisciplina.add(disciplina);
-			livro.setDisciplinas(listadisciplina);;
+			manager.getTransaction().begin();
+			/*
+			ArrayList<Disciplina> listaDeDisciplinas = new ArrayList<Disciplina>();
+			listaDeDisciplinas.add(disciplina);
+			livro.setDisciplinas(listaDeDisciplinas);*/
 			manager.persist(livro);
 			manager.getTransaction().commit();
 			return true;
 		}catch(Exception e){
+			System.out.println(e);
 			return false;
 		}finally{
 			manager.close();
@@ -37,12 +41,16 @@ public class LivroDAO {
 		try{
 			manager.getTransaction().begin();
 			List<Disciplina> listadisciplina = new ArrayList<Disciplina>();
+			
 			listadisciplina.add(disciplina);
+
 			livro.setDisciplinas(listadisciplina);
+			
 			manager.merge(livro);
 			manager.getTransaction().commit();
 			return true;
 		}catch(Exception e){
+			System.out.println(e);
 			return false;
 		}finally{
 			manager.close();
@@ -53,11 +61,12 @@ public class LivroDAO {
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		try{
 			manager.getTransaction().begin();
-			Disciplina livrobuscado = manager.find(Disciplina.class, livro.getIsbn());
+			Livro livrobuscado = manager.find(Livro.class, livro.getIsbn());
 			manager.remove(livrobuscado);
 			manager.getTransaction().commit();
 			return true;
 		}catch(Exception e){
+			System.out.println(e);
 			return false;
 		}finally{
 			manager.close();
@@ -85,5 +94,13 @@ public class LivroDAO {
 		typedQuery.setParameter("titulo", "%"+livro.getTitulo()+"%");// Setando parametro da Query
 		ArrayList<Livro> livrosArrayList = (ArrayList<Livro>) typedQuery.getResultList();  // Pega resultado
 		return livrosArrayList;
+	}
+	
+	public ArrayList<Livro> pesquisaPeloCodigoDisciplina(Disciplina disciplina){
+		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
+		TypedQuery<Livro> typedQuery = manager.createNamedQuery("Livro.pesquisaPeloCodigoDisciplina",Livro.class);
+		typedQuery.setParameter("cod_disciplina",disciplina.getCod_disciplina());// Setando parametro da Query
+		ArrayList<Livro> livroArrayList = (ArrayList<Livro>) typedQuery.getResultList();  // Pega resultado
+		return livroArrayList;
 	}
 }

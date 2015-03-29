@@ -18,8 +18,7 @@
                     
                     <div class="form-group">
                             <input type="text" class="form-control" placeholder="Nome" name="nome_curso" id="add_nome_curso"/>
-                    </div>  
-                    
+                    </div> 
                 </div>
             <button class="btn btn-sm btn-info btn-block" type="submit" >Adicionar Novo</button>
         </form>

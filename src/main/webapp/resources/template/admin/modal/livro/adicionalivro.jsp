@@ -11,19 +11,26 @@
         <h4>Adicionar Livro</h4>
       </div>
       <div class="modal-body">
-        <form id="formlogin" action="adicionalivro" method="POST">
+        <form id="formlogin" action="adicionalivro" method="GET">
                 <div class="panel-body">  
                     
                     <div class="form-group">
-                        
+                        <!--
                         <select name="cod_disciplina" class="form-control">
                             <c:forEach items="${listadisciplinas}" var="disciplina" >		
                                 Selecione o curso: <option value="${disciplina.cod_disciplina}">${disciplina.nome_disciplina}</option>
                             </c:forEach> 
                         </select>
-                        
+                        -->
                     </div>
                     
+                  
+                    
+                    <select name="listaescolhida" multiple class="form-control">                   
+                        <c:forEach  var="disciplina" items="${listadisciplinas}">		
+                           <option id="${disciplina.cod_disciplina}" value="${disciplina.cod_disciplina}">${disciplina.nome_disciplina}</option>
+                        </c:forEach>
+                    </select>
                     <div class="form-group">
                             <input type="text" class="form-control" placeholder="ISBN" name="isbn" id="add_isbn"/>
                     </div>

@@ -1,11 +1,12 @@
 package br.com.bookleweb.modelo;
 
 import java.util.List;
+import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -17,12 +18,17 @@ import javax.persistence.Table;
 	@NamedQuery(name="Livro.pesquisaPeloTitulo", 
 				query="SELECT DISTINCT liv FROM Livro liv JOIN liv.disciplinas disc WHERE liv.titulo LIKE :titulo"),
 	@NamedQuery(name="Livro.pesquisaTodosLivros", 
-				query="SELECT liv FROM Livro liv")
+				query="SELECT liv FROM Livro liv"),
+	@NamedQuery(name="Livro.pesquisaPeloCodigoDisciplina", 
+				query="SELECT liv FROM Livro liv JOIN liv.disciplinas disc WHERE disc.cod_disciplina = :cod_disciplina")
 })
 
 @Entity
 @Table(name = "tb_livro")
-public class Livro {
+public class Livro implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private Integer isbn;
 	private String titulo;
@@ -41,14 +47,14 @@ public class Livro {
 	public Integer getIsbn() {
 		return isbn;
 	}
+	public void setIsbn(Integer isbn) {
+		this.isbn = isbn;
+	}
 	public List<Disciplina> getDisciplinas() {
 		return disciplinas;
 	}
 	public void setDisciplinas(List<Disciplina> disciplinas) {
 		this.disciplinas = disciplinas;
-	}
-	public void setIsbn(Integer isbn) {
-		this.isbn = isbn;
 	}
 	public String getTitulo() {
 		return titulo;
@@ -87,4 +93,7 @@ public class Livro {
 	public void setExemplares(Integer exemplares) {
 		this.exemplares = exemplares;
 	}
+	
+
+	
 }

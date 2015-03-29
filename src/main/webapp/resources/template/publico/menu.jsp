@@ -1,3 +1,5 @@
+<!-- Import java-->
+<%@ page contentType="text/html; charset=UTF-8" %>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -8,7 +10,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand logo" href="#">BOOKLEWEB</a>
+      <a class="navbar-brand logos" href="#">BOOKLEWEB</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -18,13 +20,13 @@
         <div class="navbar-text pull-right">
        
 			<form action="j_spring_security_check" method="POST" class="form-inline" >
-			  <div class="form-group">
-			    <input type="text" name="j_username" class="form-control" placeholder="Usuario" value="${param.usuario}">
+			  <div class="form-group form-group-sm">
+			    <input type="text" name="j_username" class="form-control" placeholder="Matrícula" value="${param.usuario}">
 			  </div>
-			  <div class="form-group">
-			    <input type="password" name="j_password" class="form-control" placeholder="Senha" value="${param.senha}">
+			  <div class="form-group form-group-sm">
+			    <input type="password" name="j_password" class="form-control form-control-sm" placeholder="Senha" value="${param.senha}">
 			  </div>
-			  <button type="submit" class="btn btn-default">Entrar</button>
+			  <button type="submit" class="btn btn-default btn-sm">Entrar</button>
 			</form>       
 
       </div>

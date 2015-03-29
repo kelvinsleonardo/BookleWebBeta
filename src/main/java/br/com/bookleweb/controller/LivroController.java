@@ -1,4 +1,8 @@
 package br.com.bookleweb.controller;
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -33,10 +37,24 @@ public class LivroController {
 			return mv;
 		}
 		
-		@RequestMapping(value= "/adicionalivro", method= RequestMethod.POST)
-		public ModelAndView adicionaLivro(@ModelAttribute Livro livro, @ModelAttribute Disciplina disciplina){
+		@RequestMapping(value= "/adicionalivro")
+		public ModelAndView adicionaLivro(@ModelAttribute Livro livro, @ModelAttribute Disciplina disciplina, HttpServletRequest request){
 			ModelAndView mv =  new ModelAndView("forward:/gerenciadorlivro");
-			if(livroDAO.adiciona(livro, disciplina)){
+			String[] itensDisciplina =  request.getParameterValues("listaescolhida");
+			
+			Disciplina disc;
+			ArrayList<Disciplina> arrayDisc = new ArrayList<Disciplina>();
+			
+			if(itensDisciplina != null){
+				for(int i = 0; i < itensDisciplina.length; i++){
+					disc = new Disciplina();
+					System.out.println("CODIGO DISC: "+Integer.parseInt(itensDisciplina[i]));
+					disc.setCod_disciplina(Integer.parseInt(itensDisciplina[i]));
+					arrayDisc.add(disc);
+				}
+			}
+			livro.setDisciplinas(arrayDisc);
+	        if (livroDAO.adiciona(livro)) {
 				String mensagem = "Opa! Livro adicionado com Sucesso!";
 				mv.addObject("sucesso",mensagem);
 			}else{

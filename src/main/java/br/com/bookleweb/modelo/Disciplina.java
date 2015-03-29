@@ -1,10 +1,11 @@
 package br.com.bookleweb.modelo;
 
+import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -26,9 +27,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_disciplina")
-public class Disciplina {
+public class Disciplina implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cod_disciplina;
 	
 	private String nome_disciplina;
@@ -39,7 +43,7 @@ public class Disciplina {
 	inverseJoinColumns = @JoinColumn(name="cod_curso"))
 	private List<Curso> cursos;
 
-	@ManyToMany(mappedBy = "disciplinas", cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy = "disciplinas")
 	private List<Livro> livros;
 
 	public Integer getCod_disciplina() {
@@ -50,20 +54,20 @@ public class Disciplina {
 		this.cod_disciplina = cod_disciplina;
 	}
 
-	public String getNome_disciplina() {
-		return nome_disciplina;
-	}
-
-	public void setNome_disciplina(String nome_disciplina) {
-		this.nome_disciplina = nome_disciplina;
-	}
-
 	public List<Livro> getLivros() {
 		return livros;
 	}
 
 	public void setLivros(List<Livro> livros) {
 		this.livros = livros;
+	}
+
+	public String getNome_disciplina() {
+		return nome_disciplina;
+	}
+
+	public void setNome_disciplina(String nome_disciplina) {
+		this.nome_disciplina = nome_disciplina;
 	}
 
 	public List<Curso> getCursos() {
@@ -74,7 +78,8 @@ public class Disciplina {
 		this.cursos = cursos;
 	}
 	
-	
+
+    
 	
 }
 	

@@ -44,7 +44,7 @@
             info: false
        } );
     $('#tabeladisciplina').dataTable( {
-        "scrollY":        "400px",
+        "scrollY":        "300px",
         "scrollCollapse": true,
         "paging":         false, // Remove ocao de setar quantos itens mostrados
         //"bSort": false, // Removendo Ordenação

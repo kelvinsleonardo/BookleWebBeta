@@ -44,7 +44,7 @@
             info: false
        } );
     $('#tabelalivro').dataTable( {
-        "scrollY":        "400px",
+        "scrollY":        "300px",
         "scrollCollapse": true,
         "paging":         false, // Remove ocao de setar quantos itens mostrados
         //"bSort": false, // Removendo Ordenação
@@ -148,7 +148,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="livro" items="${listalivros}" > 
+                             <c:forEach var="livro" items="${listalivros}" > 
                                 <c:forEach var="disciplina" items="${livro.disciplinas}" >   
                                     <tr class="active">
                                         <td class="text-center" name="tb_isbn">${livro.isbn}</td>
@@ -183,12 +183,9 @@
                                             </button>
                                         </td>      
                                     </tr>          
+                                    </c:forEach> 
                                 </c:forEach>
-                                
-                                
-                                  
-                            
-                           </c:forEach> 
+
                         </tbody>
                     </table>
                 

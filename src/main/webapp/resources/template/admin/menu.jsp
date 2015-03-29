@@ -27,7 +27,7 @@
         </li>
         
         <li class="dropdown">
-            <li><a href="pesquisalivro">Livros</a></li>
+            <li><a href="pesquisa">Pesquisar</a></li>
         </li>
           
         <li class="dropdown">
@@ -57,8 +57,8 @@
           <li class="dropdown"> 
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                 <span class="glyphicon glyphicon-user"></span>
-                 ${nome_usuario_sessao}&nbsp;-&nbsp;               
-                Matrícula: <%= SecurityContextHolder.getContext().getAuthentication().getName() %>
+                 Bem vindo, ${nome_usuario_sessao}               
+                <!--Matrícula: <%= SecurityContextHolder.getContext().getAuthentication().getName() %>-->
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">

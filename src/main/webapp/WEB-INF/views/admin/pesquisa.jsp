@@ -60,17 +60,44 @@
             <c:import url="/resources/template/admin/menu.jsp"></c:import> 
         </header>
 
-        <!-- BREADCRUMB 
+        <!-- BREADCRUMB -->
         <ul class="breadcrumb">
           <li class="active">Home</li>
-        </ul>-->
+        </ul>
         
         <!-- CONTEÚDO -->
         <div class="row">
             <div role="main">
                 <div class="col-md-12 col-md-offset-0">
+                    <form action="" method="POST">
+                    <div class="form-group">
+                        <select name="curso" class="form-control">
+                            <option value="default" selected >Selecione o curso</option>
+                            <c:forEach items="${listacursos}" var="curso" >		
+                                Selecione o curso: <option value="${curso.cod_curso}">${curso.nome_curso}</option>
+                            </c:forEach> 
+                        </select>
+                    </div>
                     
-                    <h4>Bem vindo ao nosso sitema BookleWeb.</h4>
+                    <div class="form-group">
+                        <select name="disciplina" class="form-control">
+                            <option value="default" selected >Selecione a disciplina</option>
+                        </select>
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                        <select name="livro" class="form-control">
+                            <option value="default" selected >Selecione o livro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="col-md-offset-9">
+                        <br>
+                        <button type="submit" class="btn btn-info btn-sm form-control"/>
+                        <span class="glyphicon glyphicon-search"></span> &nbsp;Pesquisar</button>
+                    </div>
+                    </form>
                     
             </div>
         </div>  
