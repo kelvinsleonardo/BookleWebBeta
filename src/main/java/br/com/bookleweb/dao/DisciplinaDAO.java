@@ -1,7 +1,6 @@
 package br.com.bookleweb.dao;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -18,9 +17,7 @@ public class DisciplinaDAO {
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		try{
 			manager.getTransaction().begin();			
-			List<Curso> listacursos = new ArrayList<Curso>();
-			listacursos.add(curso);
-			disciplina.setCursos(listacursos);
+			disciplina.setCurso(curso);
 			manager.persist(disciplina);
 			manager.getTransaction().commit();
 			return true;
@@ -36,9 +33,7 @@ public class DisciplinaDAO {
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		try{
 			manager.getTransaction().begin();
-			List<Curso> listacursos = new ArrayList<Curso>();
-			listacursos.add(curso);
-			disciplina.setCursos(listacursos);
+			disciplina.setCurso(curso);
 			manager.merge(disciplina);
 			manager.getTransaction().commit();
 			return true;
@@ -64,32 +59,32 @@ public class DisciplinaDAO {
 		}
 	}
 
-	public ArrayList<Disciplina> getlistaTodasDisciplinas(){
+	public ArrayList<Disciplina> getTodasDisciplinas(){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
-		TypedQuery<Disciplina> typedQuery = manager.createNamedQuery("Disciplina.pesquisaTodasDisciplinas", Disciplina.class);
+		TypedQuery<Disciplina> typedQuery = manager.createNamedQuery("Disciplina.procuraTodasAsDisciplinas", Disciplina.class);
 		ArrayList<Disciplina> disciplinas = (ArrayList<Disciplina>) typedQuery.getResultList();
 		return disciplinas;
 	}
 	
-	public ArrayList<Disciplina> pesquisaPeloCodigo(Disciplina disciplina){
+	public ArrayList<Disciplina> procuraPeloCodigoDaDisciplina(Disciplina disciplina){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
-		TypedQuery<Disciplina> typedQuery = manager.createNamedQuery("Disciplina.pesquisaPeloCodigo",Disciplina.class);
+		TypedQuery<Disciplina> typedQuery = manager.createNamedQuery("Disciplina.procuraPeloCodigo",Disciplina.class);
 		typedQuery.setParameter("cod_disciplina", disciplina.getCod_disciplina());// Setando parametro da Query
 		ArrayList<Disciplina> disciplinaArrayList = (ArrayList<Disciplina>) typedQuery.getResultList();  // Pega resultado
 		return disciplinaArrayList;
 	}
 	
-	public ArrayList<Disciplina> pesquisaPeloNome(Disciplina disciplina){
+	public ArrayList<Disciplina> procuraPeloNomeDaDisciplina(Disciplina disciplina){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
-		TypedQuery<Disciplina> typedQuery = manager.createNamedQuery("Disciplina.pesquisaPeloNome",Disciplina.class);
+		TypedQuery<Disciplina> typedQuery = manager.createNamedQuery("Disciplina.procuraPeloNome",Disciplina.class);
 		typedQuery.setParameter("nome_disciplina", "%"+disciplina.getNome_disciplina()+"%");// Setando parametro da Query
 		ArrayList<Disciplina> disciplinaArrayList = (ArrayList<Disciplina>) typedQuery.getResultList();  // Pega resultado
 		return disciplinaArrayList;
 	}
 	
-	public ArrayList<Disciplina> pesquisaPeloCodigoCurso(Curso curso){
+	public ArrayList<Disciplina> procuraDisciplinaPeloCodigoDoCurso(Curso curso){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
-		TypedQuery<Disciplina> typedQuery = manager.createNamedQuery("Disciplina.pesquisaPeloCodigoCurso",Disciplina.class);
+		TypedQuery<Disciplina> typedQuery = manager.createNamedQuery("Disciplina.procuraPeloCodigoCurso",Disciplina.class);
 		typedQuery.setParameter("cod_curso",curso.getCod_curso());// Setando parametro da Query
 		ArrayList<Disciplina> disciplinaArrayList = (ArrayList<Disciplina>) typedQuery.getResultList();  // Pega resultado
 		return disciplinaArrayList;

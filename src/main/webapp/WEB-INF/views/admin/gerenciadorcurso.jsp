@@ -112,17 +112,17 @@
                       <li class="active">Gerenciador Curso</li>
                     </ul>
                     
-                    <form action="pesquisacurso" method="POST">
+                    <form action="filtrocurso" method="POST">
                         <label>
                             Pesquisar por: &nbsp; 
                         </label>
                         
                         <label class="radio-inline">
-                            <input type="radio" name="opcaopesquisa" id="op_pesq_cod" value="codigo" checked>Código
+                            <input type="radio" name="opcaofiltro" id="op_pesq_cod" value="codigo" checked>Código
                         </label>
                         
                         <label class="radio-inline">
-                            <input type="radio" name="opcaopesquisa" id="op_pesq_nome" value="Nome">Nome
+                            <input type="radio" name="opcaofiltro" id="op_pesq_nome" value="Nome">Nome
                         </label>
                              
                         

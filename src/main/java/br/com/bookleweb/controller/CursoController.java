@@ -25,7 +25,7 @@ public class CursoController {
 	@RequestMapping(value = "/gerenciadorcurso")
 	public ModelAndView executeCurso(){
 		ModelAndView mv = new ModelAndView("/admin/gerenciadorcurso");
-		mv.addObject("listacursos",cursoDAO.getlistaTodosCursos());
+		mv.addObject("listacursos",cursoDAO.getTodosCursos());
 		return mv;
 	}
 	
@@ -62,16 +62,16 @@ public class CursoController {
 		return mv;
 	}
 	
-	@RequestMapping(value= "/pesquisacurso", method= RequestMethod.POST)
-	public ModelAndView pesquisaCurso(@ModelAttribute Curso curso, @RequestParam String opcaopesquisa){
+	@RequestMapping(value= "/filtrocurso", method= RequestMethod.POST)
+	public ModelAndView pesquisaCurso(@ModelAttribute Curso curso, @RequestParam String opcaofiltro){
 		ModelAndView mv =  new ModelAndView("/admin/gerenciadorcurso");
-		opcaopesquisa = opcaopesquisa.toLowerCase();
-		if(opcaopesquisa.equals("codigo")){
-			mv.addObject("listacursos",cursoDAO.pesquisaPorCodigo(curso));
+		opcaofiltro = opcaofiltro.toLowerCase();
+		if(opcaofiltro.equals("codigo")){
+			mv.addObject("listacursos",cursoDAO.procuraCursoPeloCodigo(curso));
 			
 		}
-		else if(opcaopesquisa.equals("nome")){
-			mv.addObject("listacursos",cursoDAO.pesquisaPorNome(curso));
+		else if(opcaofiltro.equals("nome")){
+			mv.addObject("listacursos",cursoDAO.procuraCursoPeloNome(curso));
 		}
 		return mv;
 	}

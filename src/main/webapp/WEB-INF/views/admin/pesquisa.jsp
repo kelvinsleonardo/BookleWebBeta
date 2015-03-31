@@ -72,7 +72,7 @@
                     <form action="" method="POST">
                     <div class="form-group">
                         <select name="curso" class="form-control">
-                            <option value="default" selected >Selecione o curso</option>
+                            <option value="-1" selected >Selecione o curso</option>
                             <c:forEach items="${listacursos}" var="curso" >		
                                 Selecione o curso: <option value="${curso.cod_curso}">${curso.nome_curso}</option>
                             </c:forEach> 
@@ -81,14 +81,14 @@
                     
                     <div class="form-group">
                         <select name="disciplina" class="form-control">
-                            <option value="default" selected >Selecione a disciplina</option>
+                            <option value="-1" selected >Selecione a disciplina</option>
                         </select>
                     </div>
                     
                     
                     <div class="form-group">
                         <select name="livro" class="form-control">
-                            <option value="default" selected >Selecione o livro</option>
+                            <option value="-1" selected >Selecione o livro</option>
                         </select>
                     </div>
                     

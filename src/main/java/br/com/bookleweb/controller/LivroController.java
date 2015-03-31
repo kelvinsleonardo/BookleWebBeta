@@ -33,7 +33,7 @@ public class LivroController {
 		public ModelAndView executeLivro(){
 			ModelAndView mv = new ModelAndView("/admin/gerenciadorlivro");
 			mv.addObject("listalivros",livroDAO.getlistaTodosLivros());
-			mv.addObject("listadisciplinas",disciplinaDAO.getlistaTodasDisciplinas());
+			mv.addObject("listadisciplinas",disciplinaDAO.getTodasDisciplinas());
 			return mv;
 		}
 		
@@ -90,12 +90,12 @@ public class LivroController {
 			opcaopesquisa = opcaopesquisa.toLowerCase();
 			if(opcaopesquisa.equals("isbn")){
 				mv.addObject("listalivros",livroDAO.pesquisaPeloISBN(livro));
-				mv.addObject("listadisciplinas",disciplinaDAO.getlistaTodasDisciplinas());
+				mv.addObject("listadisciplinas",disciplinaDAO.getTodasDisciplinas());
 				
 			}
 			else if(opcaopesquisa.equals("titulo")){
 				mv.addObject("listalivros",livroDAO.pesquisaPeloTitulo(livro));
-				mv.addObject("listadisciplinas",disciplinaDAO.getlistaTodasDisciplinas());
+				mv.addObject("listadisciplinas",disciplinaDAO.getTodasDisciplinas());
 			}
 			return mv;
 		}

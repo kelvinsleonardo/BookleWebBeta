@@ -6,7 +6,6 @@ $(function(){
     $('button[name=editardisciplina]').click(function(){
         var nomeDoCurso = $(this).closest("tr").find("td[name=tb_curso_disciplina]").html();
         var codigoDoCurso = $(this).closest("tr").find("td[name=tb_curso_disciplina]").attr('id');
-        
         var codigoDaDisc = $(this).closest("tr").find("td[name=tb_cod_disciplina]").html(); // Pegando codigo do curso da tabela 
         var nomeDaDisc = $(this).closest("tr").find("td[name=tb_nome_disciplina]").html(); // Pegando nome do curso da tabela
         var descDaDisc = $(this).closest("tr").find("td[name=tb_desc_disciplina]").html(); // Pegando descricao do curso da tabela

@@ -37,7 +37,7 @@ public class LivroSugeridoController {
 	@RequestMapping(value= "/pesquisa")
 	public ModelAndView initPesquisa(){
 		ModelAndView mv = new ModelAndView("/admin/pesquisa");
-		mv.addObject("listacursos",cursoDAO.getlistaTodosCursos());
+		mv.addObject("listacursos",cursoDAO.getTodosCursos());
 		return mv;		
 	}
 	
@@ -45,7 +45,7 @@ public class LivroSugeridoController {
 	@RequestMapping(value= "/relacaodisciplina", method= RequestMethod.POST)
 	public void pesquisaCurso(@ModelAttribute Curso curso, HttpServletResponse response ) throws IOException{
 		PrintWriter out = response.getWriter();
-		ArrayList<Disciplina> listadisciplinas = disciplinaDAO.pesquisaPeloCodigoCurso(curso);
+		ArrayList<Disciplina> listadisciplinas = disciplinaDAO.procuraDisciplinaPeloCodigoDoCurso(curso);
 		StringBuilder sb = new StringBuilder("");
 		
 		for(int i = 0; i < listadisciplinas.size(); i++){

@@ -2,7 +2,6 @@ $(function(){
     // Ocultando combobox
     $('select[name=disciplina]').hide();
     $('select[name=livro]').hide();
-    
     $('select[name=curso]').on('change',function(){
         var codigoDoCursoComboBox = $('select[name=curso]').val();
 		$.ajax({
@@ -21,8 +20,8 @@ $(function(){
                 $('select[name=disciplina]').fadeIn(1000).show();
 				$('select[name=disciplina] option').remove();
                 $('select[name=livro] option').remove();// Limpa combobox Disciplina
-				$('select[name=disciplina]').append('<option value="default">Selecione a disciplina</option>')
-				$('select[name=livro]').append('<option value="default">Selecione o livro</option>')
+				$('select[name=disciplina]').append('<option value="-1">Selecione a disciplina</option>')
+				$('select[name=livro]').append('<option value="-1">Selecione o livro</option>')
 				var pegadados = dados.split(":");
 				for(var i = 0; i < pegadados.length - 1; i++){
 					var cod_disciplina = pegadados[i].split("-")[0];
@@ -51,7 +50,7 @@ $(function(){
 			success: function(dados){
                 $('select[name=livro]').fadeIn(1000).show();
 				$('select[name=livro] option').remove(); // Limpa combobox Disciplina
-				$('select[name=livro]').append('<option value="default">Selecione o livro</option>')
+				$('select[name=livro]').append('<option value="-1">Selecione o livro</option>')
 				var pegadados = dados.split(":");
                 for(var i = 0; i < pegadados.length - 1; i++){
 					var isbn = pegadados[i].split("-")[0];

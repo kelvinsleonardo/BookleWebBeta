@@ -28,8 +28,8 @@ public class DisciplinaController {
 		@RequestMapping(value = "/gerenciadordisciplina")
 		public ModelAndView executeDisciplina(){
 			ModelAndView mv = new ModelAndView("/admin/gerenciadordisciplina");
-			mv.addObject("listadisciplinas",disciplinaDAO.getlistaTodasDisciplinas());
-			mv.addObject("listacursos",cursoDAO.getlistaTodosCursos());
+			mv.addObject("listadisciplinas",disciplinaDAO.getTodasDisciplinas());
+			mv.addObject("listacursos",cursoDAO.getTodosCursos());
 			return mv;
 		}
 		
@@ -71,11 +71,11 @@ public class DisciplinaController {
 			ModelAndView mv =  new ModelAndView("/admin/gerenciadordisciplina");
 			opcaopesquisa = opcaopesquisa.toLowerCase();
 			if(opcaopesquisa.equals("codigo")){
-				mv.addObject("listadisciplinas",disciplinaDAO.pesquisaPeloCodigo(disciplina));
+				mv.addObject("listadisciplinas",disciplinaDAO.procuraPeloCodigoDaDisciplina(disciplina));
 				
 			}
 			else if(opcaopesquisa.equals("nome")){
-				mv.addObject("listadisciplinas",disciplinaDAO.pesquisaPeloNome(disciplina));
+				mv.addObject("listadisciplinas",disciplinaDAO.procuraPeloNomeDaDisciplina(disciplina));
 			}
 			return mv;
 		}
