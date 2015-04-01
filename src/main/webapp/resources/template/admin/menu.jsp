@@ -36,7 +36,14 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="gerenciadorcurso">Cursos</a></li>
             <li><a href="gerenciadordisciplina">Disciplinas</a></li>
-            <li><a href="gerenciadorlivro">Livros</a></li>
+
+            <li class="dropdown-submenu">
+                <a tabindex="-1" href="gerenciadorlivro">Livros</a>
+                <ul class="dropdown-menu">
+                  <li><a href="relationshipdisciplinacurso">Vincular Livro a Disciplina</a></li>
+                </ul>
+              </li>
+              
             <li><a href="gerenciadorusuario">Usuários</a></li>
           </ul>
         </li>

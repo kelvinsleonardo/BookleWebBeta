@@ -30,7 +30,9 @@ $(function(){
      * da tabela.
      */
     $('button[name=excluirlivro]').click(function(){
-        var isbn = $(this).closest("tr").find("td[name=tb_isbn]").html(); // Pegando codigo da disciplina da tabela 
+        var isbn = $(this).closest("tr").find("td[name=tb_isbn]").html(); // Pegando codigo da disciplina da tabela
+        var codDisciplina = $(this).closest("tr").find("td[name=tb_livro_disciplina]").attr('id'); // Pegando codigo da disciplina da tabela 
+        console.log(codDisciplina);
         var nomeDoLivro = $(this).closest("tr").find("td[name=tb_titulo]").html(); // Pegando nome da disciplina da tabela 
         var $this = $(this); // Pegando this do excluir a linha do livro
         alertify.confirm("EXCLUSÃO DO LIVRO "+nomeDoLivro, "Você tem certeza que deseja remover o livro "+nomeDoLivro+" ?", "", "").

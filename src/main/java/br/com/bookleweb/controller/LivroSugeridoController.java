@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import br.com.bookleweb.dao.CursoDAO;
 import br.com.bookleweb.dao.DisciplinaDAO;
 import br.com.bookleweb.dao.LivroDAO;
+import br.com.bookleweb.dao.RelationShipDisciplinaLivroDAO;
 import br.com.bookleweb.modelo.Curso;
 import br.com.bookleweb.modelo.Disciplina;
 import br.com.bookleweb.modelo.Livro;
@@ -25,13 +26,13 @@ public class LivroSugeridoController {
 	
 	private CursoDAO cursoDAO; 
 	private DisciplinaDAO disciplinaDAO;
-	private LivroDAO livroDAO;
+	private RelationShipDisciplinaLivroDAO relationShipDAO;
 	
 	@Autowired
-	public LivroSugeridoController(DisciplinaDAO disciplinaDAO, LivroDAO livroDAO, CursoDAO cursoDAO) {
+	public LivroSugeridoController(DisciplinaDAO disciplinaDAO, LivroDAO livroDAO, CursoDAO cursoDAO, RelationShipDisciplinaLivroDAO relationShipDAO) {
 		this.disciplinaDAO = disciplinaDAO;
-		this.livroDAO = livroDAO;
 		this.cursoDAO = cursoDAO;
+		this.relationShipDAO = relationShipDAO;
 	}
 	
 	@RequestMapping(value= "/pesquisa")
@@ -58,7 +59,7 @@ public class LivroSugeridoController {
 	@RequestMapping(value= "/relacaolivro", method= RequestMethod.POST)
 	public void pesquisaLivro(@ModelAttribute Disciplina disciplina, HttpServletResponse response ) throws IOException{
 		PrintWriter out = response.getWriter();
-		ArrayList<Livro> listalivros = livroDAO.pesquisaPeloCodigoDisciplina(disciplina);
+		ArrayList<Livro> listalivros = relationShipDAO.procuraNaRelacaoPeloCodigoDaDisciplina(disciplina);
 		StringBuilder sb = new StringBuilder("");
 		
 		for(int i = 0; i < listalivros.size(); i++){

@@ -36,7 +36,7 @@ public class Disciplina implements Serializable{
 	private Integer cod_disciplina;
 	
 	private String nome_disciplina;
-
+	
 	@ManyToMany(mappedBy = "disciplinas")
 	private List<Livro> livros;
 	

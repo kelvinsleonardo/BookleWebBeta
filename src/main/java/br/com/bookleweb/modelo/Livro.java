@@ -13,14 +13,18 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @NamedQueries({
-	@NamedQuery(name="Livro.pesquisaPeloISBN", 
-				query="SELECT DISTINCT liv FROM Livro liv JOIN liv.disciplinas disc WHERE liv.isbn = :isbn"),
-	@NamedQuery(name="Livro.pesquisaPeloTitulo", 
-				query="SELECT DISTINCT liv FROM Livro liv JOIN liv.disciplinas disc WHERE liv.titulo LIKE :titulo"),
-	@NamedQuery(name="Livro.pesquisaTodosLivros", 
+	@NamedQuery(name="Livro.procuraPeloISBN", 
+				query="SELECT liv FROM Livro liv WHERE liv.isbn = :isbn"),
+	@NamedQuery(name="Livro.procuraPeloTitulo", 
+				query="SELECT liv FROM Livro liv WHERE liv.titulo LIKE :titulo"),
+	@NamedQuery(name="Livro.procuraTodosLivros", 
 				query="SELECT liv FROM Livro liv"),
-	@NamedQuery(name="Livro.pesquisaPeloCodigoDisciplina", 
-				query="SELECT liv FROM Livro liv JOIN liv.disciplinas disc WHERE disc.cod_disciplina = :cod_disciplina")
+	@NamedQuery(name="Livro.procuraTodosLivrosDaRelacao", 
+				query="SELECT liv FROM Livro liv JOIN liv.disciplinas disc"),
+	@NamedQuery(name="Livro.procuraNaRelacaoPeloCodigoDisciplina", 
+				query="SELECT liv FROM Livro liv JOIN liv.disciplinas disc WHERE disc.cod_disciplina = :cod_disciplina"),
+	@NamedQuery(name="Livro.procuraNaRelacaoPeloCodigoISBN", 
+				query="SELECT DISTINCT liv FROM Livro liv JOIN liv.disciplinas disc WHERE liv.isbn = :isbn")
 })
 
 @Entity
@@ -36,8 +40,7 @@ public class Livro implements Serializable{
 	private String desc_livro;
 	private String local;
 	private String status;
-	private Integer exemplares;
-	
+	private Integer exemplares; 
 	@ManyToMany
 	@JoinTable(name="tb_disciplina_livro", 
 	joinColumns= @JoinColumn(name="isbn"),

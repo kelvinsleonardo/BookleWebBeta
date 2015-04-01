@@ -13,7 +13,7 @@
       <div class="modal-body">
         <form id="formlogin" action="editalivro" method="POST">
                 <div class="panel-body">   
-                    
+                    <!--
                     <div class="form-group">
                         <select name="cod_disciplina" class="form-control" id="edit_nome_disciplina">
                             <c:forEach  var="disciplina" items="${listadisciplinas}">		
@@ -21,7 +21,7 @@
                             </c:forEach> 
                         </select>
                     </div>
-                    
+                    -->
                     <div class="form-group">
                             <input type="text" class="form-control" name="isbn" id="edit_isbn" readonly/>
                     </div>

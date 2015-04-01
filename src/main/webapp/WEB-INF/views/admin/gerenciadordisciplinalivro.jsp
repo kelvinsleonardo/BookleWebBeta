@@ -29,7 +29,7 @@
 <script src="<c:url value="/resources/jquery/alertifyjs/alertify.min.js" />"></script>
 
 <!-- Importação do arquivo Ajax -->
-<script type="text/javascript" charset="utf-8"  src="<c:url value="/resources/jquery/ajax/ajax_gerenciadorlivro.js" />"></script> 
+<script type="text/javascript" charset="utf-8"  src="<c:url value="/resources/jquery/ajax/ajax_gerenciadordisciplinalivro.js" />"></script> 
 
 <!-- DataTables CSS -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/jquery/datatables/media/css/jquery.dataTables.css"/>">
@@ -43,7 +43,7 @@
             ordering:  true,
             info: false
        } );
-    $('#tabelalivro').dataTable( {
+    $('#tabelarelationship').dataTable( {
         "scrollY":        "300px",
         "scrollCollapse": true,
         "paging":         false, // Remove ocao de setar quantos itens mostrados
@@ -104,10 +104,11 @@
                     <!-- BREADCRUMB -->
                     <ul class="breadcrumb">
                        <li><a href="admin">Home</a></li>
-                      <li class="active">Gerenciador Livro</li>
+                       <li><a href="gerenciadorlivro">Gerenciador Livro</a></li>
+                       <li class="active">Gerenciador Vínculo Livro Disciplina</li>
                     </ul>
                     
-                    <form action="filtrolivro" method="POST">
+                    <form action="procurarelationshipdisciplinalivro" method="POST">
                         <label>
                             Pesquisar por: &nbsp; 
                         </label>
@@ -117,13 +118,13 @@
                         </label>
                         
                         <label class="radio-inline">
-                            <input type="radio" name="opcaopesquisa" id="op_pesq_titulo" value="titulo">Título
+                            <input type="radio" name="opcaopesquisa" id="op_pesq_cod_disciplina" value="cod_disciplina">Código Disciplina
                         </label>
                              
                         
                         <div class="input-group">
                           <input type="number" class="form-control" name="isbn" id="search_isbn" placeholder="ISBN do livro">
-                          <input type="text" class="form-control" style="display:none" name="titulo" id="search_titulo" placeholder="Titulo do livro">
+                          <input type="text" class="form-control" style="display:none" name="cod_disciplina" id="search_cod_disciplina" placeholder="Codigo da Disciplina">
                           <div class="input-group-btn">
                               <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-search"></i></button>
                             </div>
@@ -132,55 +133,37 @@
                     
                     <br>
                     
-                    <table id="tabelalivro" class="table table-responsive table-bordered table-hover table-striped">
+                    <table id="tabelarelationship" class="table table-responsive table-bordered table-hover table-striped">
                         <thead>
                             <tr class="info">
                                 <th>ISBN</th>
-                                <th>Titulo</th>
-                                <th>Autor</th>
-                                <th>Descrição</th>
-                                <th>Local</th>
-                                <th>Exemplares</th>
-                                <th>Status</th>
-                                <th>Editar</th>
+                                <th>Nome do Livro</th>
+                                <th>Código Disciplina</th>
+                                <th>Nome Disciplina</th>
                                 <th>Excluir</th>
                             </tr>
                         </thead>
                         <tbody>
-                             <c:forEach var="livro" items="${listalivros}" > 
+                        <c:forEach var="livro" items="${listalivros}" > 
+                             <c:forEach var="disciplina" items="${livro.disciplinas}" > 
                                     <tr class="active">
+                                       
                                         <td class="text-center" name="tb_isbn">${livro.isbn}</td>
 
                                         <td name="tb_titulo">${livro.titulo}</td>
 
-                                        <td name="tb_autor">${livro.autor}</td>
-
-                                        <td name="tb_descricao">${livro.desc_livro}</td>
-
-                                        <td name="tb_local">${livro.local}</td>
-
-                                        <td name="tb_exemplares">${livro.exemplares}</td>
-
-                                        <td name="tb_status">${livro.status}</td>
-                                        <!-- 
-                                        <td name="tb_livro_disciplina" id="${disciplina.cod_disciplina}">
-                                            ${disciplina.nome_disciplina}
-                                        </td>-->
+                                        <td class="text-center" name="tb_cod_disciplina">${disciplina.cod_disciplina}</td>
+                                                              
+                                        <td name="tb_nome_disciplina">${disciplina.nome_disciplina}</td>
 
                                         <td>
-                                            <button type="submit" class="btn btn-primary btn-sm"data-toggle="modal" data-target="#modalEditaLivro" name="editarlivro">
-                                                <span class="glyphicon glyphicon-edit"></span>
-                                                Editar
-                                            </button>
-                                        </td> 
-
-                                        <td>
-                                            <button type="submit" class="btn btn-danger btn-sm" name="excluirlivro">
+                                            <button type="submit" class="btn btn-danger btn-sm" name="excluirlivrodadisciplina">
                                                 <span class="glyphicon glyphicon-trash"></span>
                                                 Excluir
                                             </button>
                                         </td>      
-                                    </tr> 
+                                    </tr>
+                                    </c:forEach>
                                 </c:forEach>         
                               
                         </tbody>
@@ -188,7 +171,7 @@
                 
                     <div class="col-md-offset-9">
                         <br>
-                        <button type="submit" class="btn btn-info btn-sm form-control" data-toggle="modal" data-target="#modalAdicionaLivro"/><span class="glyphicon glyphicon-plus-sign"></span> &nbsp;Adicionar Livro
+                        <button type="submit" class="btn btn-info btn-sm form-control" data-toggle="modal" data-target="#modalVinculaLivroNaDisciplina"/><span class="glyphicon glyphicon-plus-sign"></span> &nbsp;Adicionar Livro na Disciplina
                         </button>
                     </div>
                 
@@ -201,8 +184,7 @@
         </footer>--> 
     
         <!-- MODALS -->
-        <c:import url="/resources/template/admin/modal/livro/adicionalivro.jsp"></c:import>
-        <c:import url="/resources/template/admin/modal/livro/editalivro.jsp"></c:import>
+        <c:import url="/resources/template/admin/modal/livro/adicionalivronadisciplina.jsp"></c:import> 
         
     <!--FIM DIV CONTAINER-->
     </div>

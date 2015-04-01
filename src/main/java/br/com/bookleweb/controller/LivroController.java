@@ -1,5 +1,5 @@
 package br.com.bookleweb.controller;
-import java.util.ArrayList;
+
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -40,6 +40,7 @@ public class LivroController {
 		@RequestMapping(value= "/adicionalivro")
 		public ModelAndView adicionaLivro(@ModelAttribute Livro livro, @ModelAttribute Disciplina disciplina, HttpServletRequest request){
 			ModelAndView mv =  new ModelAndView("forward:/gerenciadorlivro");
+			/*
 			String[] itensDisciplina =  request.getParameterValues("listaescolhida");
 			
 			Disciplina disc;
@@ -53,7 +54,7 @@ public class LivroController {
 					arrayDisc.add(disc);
 				}
 			}
-			livro.setDisciplinas(arrayDisc);
+			livro.setDisciplinas(arrayDisc);*/
 	        if (livroDAO.adiciona(livro)) {
 				String mensagem = "Opa! Livro adicionado com Sucesso!";
 				mv.addObject("sucesso",mensagem);
@@ -61,13 +62,15 @@ public class LivroController {
 				String mensagem = "Ixi! Erro ao cadastrar livro!";
 				mv.addObject("erro",mensagem);	
 			}
+			
+			
 			return mv;
 		}
 		
 		@RequestMapping(value= "/editalivro", method= RequestMethod.POST)
-		public ModelAndView editaDisciplina(@ModelAttribute Livro livro, @ModelAttribute Disciplina disciplina){
+		public ModelAndView editaDisciplina(@ModelAttribute Livro livro){
 			ModelAndView mv =  new ModelAndView("forward:/gerenciadorlivro");
-			if(livroDAO.edita(livro,disciplina)){
+			if(livroDAO.edita(livro)){
 				String mensagem = "Opa! Livro editado com Sucesso!";
 				mv.addObject("sucesso",mensagem);
 			}else{
@@ -84,22 +87,18 @@ public class LivroController {
 			return mv;
 		}
 		
-		@RequestMapping(value= "/pesquisalivro", method= RequestMethod.POST)
-		public ModelAndView pesquisaDisciplina(@ModelAttribute Livro livro, @RequestParam String opcaopesquisa){
+		@RequestMapping(value= "/filtrolivro", method= RequestMethod.POST)
+		public ModelAndView procuraNaRelacaoPeloCodigoDisciplina(@ModelAttribute Disciplina disciplina, @ModelAttribute Livro livro,@RequestParam String opcaopesquisa){
 			ModelAndView mv =  new ModelAndView("/admin/gerenciadorlivro");
 			opcaopesquisa = opcaopesquisa.toLowerCase();
 			if(opcaopesquisa.equals("isbn")){
-				mv.addObject("listalivros",livroDAO.pesquisaPeloISBN(livro));
-				mv.addObject("listadisciplinas",disciplinaDAO.getTodasDisciplinas());
+				mv.addObject("listalivros",livroDAO.procuraPeloISBN(livro));
 				
 			}
 			else if(opcaopesquisa.equals("titulo")){
-				mv.addObject("listalivros",livroDAO.pesquisaPeloTitulo(livro));
-				mv.addObject("listadisciplinas",disciplinaDAO.getTodasDisciplinas());
+				mv.addObject("listalivros",livroDAO.procuraPeloTitulo(livro));
 			}
 			return mv;
 		}
-		
-	
-	
+
 }
