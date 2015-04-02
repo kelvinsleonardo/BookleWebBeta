@@ -2,7 +2,6 @@ package br.com.bookleweb.modelo;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,10 +25,7 @@ public class Curso {
 	
 	private String nome_curso;
 	
-	/*
-	@ManyToMany(mappedBy = "cursos", cascade = CascadeType.ALL)
-	private List<Disciplina> disciplinas;*/
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="curso")
+	@OneToMany(mappedBy="curso")
 	private List<Disciplina> disciplina;
 	
 	

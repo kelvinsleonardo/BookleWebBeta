@@ -27,27 +27,27 @@
                     </div>
                     
                     <div class="form-group">
-                            <input type="text" class="form-control" name="titulo" id="edit_titulo"/>
+                            <input type="text" class="form-control" name="titulo" id="edit_titulo" placeholder="Titulo"/>
                     </div>
                     
                     <div class="form-group">
-                            <input type="text" class="form-control" name="autor" id="edit_autor"/>
+                            <input type="text" class="form-control" name="autor" id="edit_autor" placeholder="Autor"/>
                     </div> 
                     
                      <div class="form-group">
-                            <textarea class="form-control" rows="5" name="desc_livro" id="edit_desc_livro"  ></textarea>
+                            <textarea class="form-control" rows="5" name="desc_livro" id="edit_desc_livro" placeholder="Descrição" ></textarea>
                     </div>
                     
                     <div class="form-group">
-                            <input type="text" class="form-control" name="local" id="edit_local"/>
+                            <input type="text" class="form-control" name="local" id="edit_local" placeholder="Local"/>
                     </div>
                     
                     <div class="form-group">
-                            <input type="text" class="form-control" name="exemplares" id="edit_exemplares"/>
+                            <input type="text" class="form-control" name="exemplares" id="edit_exemplares" placeholder="Exemplares"/>
                     </div>
                     
                     <div class="form-group">
-                            <input type="text" class="form-control" name="status" id="edit_status"/>
+                            <input type="text" class="form-control" name="status" id="edit_status" placeholder="Status"/>
                     </div>
                     
                 </div>

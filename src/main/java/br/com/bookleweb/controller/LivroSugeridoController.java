@@ -42,6 +42,14 @@ public class LivroSugeridoController {
 		return mv;		
 	}
 	
+	
+	@RequestMapping(value= "/pesquisaresultado")
+	public ModelAndView initPesquisaResultado(@ModelAttribute Disciplina disciplina){
+		ModelAndView mv = new ModelAndView("/admin/pesquisaresultado");
+		mv.addObject("listalivros",disciplinaDAO.procuraPeloCodigoDaDisciplina(disciplina));
+		return mv;		
+	}
+	
 
 	@RequestMapping(value= "/relacaodisciplina", method= RequestMethod.POST)
 	public void pesquisaCurso(@ModelAttribute Curso curso, HttpServletResponse response ) throws IOException{

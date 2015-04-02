@@ -76,8 +76,9 @@ public class RelationShipDisciplinaLivroDAO {
 	
 	public ArrayList<Livro> procuraNaRelacaoPeloCodigoDaDisciplina(Disciplina disciplina){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
+		//TypedQuery<Livro> typedQuery = manager.createNamedQuery("Livro.procuraNaRelacaoPeloCodigoDisciplina",Livro.class);
 		TypedQuery<Livro> typedQuery = manager.createNamedQuery("Livro.procuraNaRelacaoPeloCodigoDisciplina",Livro.class);
-		typedQuery.setParameter("cod_disciplina",disciplina.getCod_disciplina());// Setando parametro da Query
+		typedQuery.setParameter("codigodisciplina",disciplina.getCod_disciplina());// Setando parametro da Query
 		ArrayList<Livro> livroArrayList = (ArrayList<Livro>) typedQuery.getResultList();  // Pega resultado
 		return livroArrayList;
 	}

@@ -22,7 +22,7 @@ import javax.persistence.Table;
 	@NamedQuery(name="Livro.procuraTodosLivrosDaRelacao", 
 				query="SELECT liv FROM Livro liv JOIN liv.disciplinas disc"),
 	@NamedQuery(name="Livro.procuraNaRelacaoPeloCodigoDisciplina", 
-				query="SELECT liv FROM Livro liv JOIN liv.disciplinas disc WHERE disc.cod_disciplina = :cod_disciplina"),
+				query="SELECT DISTINCT liv FROM Livro liv JOIN liv.disciplinas disc WHERE disc.cod_disciplina IN :codigodisciplina"),
 	@NamedQuery(name="Livro.procuraNaRelacaoPeloCodigoISBN", 
 				query="SELECT DISTINCT liv FROM Livro liv JOIN liv.disciplinas disc WHERE liv.isbn = :isbn")
 })
@@ -41,6 +41,7 @@ public class Livro implements Serializable{
 	private String local;
 	private String status;
 	private Integer exemplares; 
+	
 	@ManyToMany
 	@JoinTable(name="tb_disciplina_livro", 
 	joinColumns= @JoinColumn(name="isbn"),

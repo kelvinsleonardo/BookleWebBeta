@@ -31,7 +31,6 @@
 <!-- Importação do arquivo Ajax -->
 <script type="text/javascript" charset="utf-8"  src="<c:url value="/resources/jquery/ajax/ajax_livrosugerido.js" />"></script> 
     
-    
 </head>
 <body class="background-login">
     <div class="container-fluid">
@@ -60,46 +59,57 @@
             <c:import url="/resources/template/admin/menu.jsp"></c:import> 
         </header>
 
-        <!-- BREADCRUMB -->
+        <!-- BREADCRUMB 
         <ul class="breadcrumb">
           <li class="active">Home</li>
-        </ul>
+        </ul>-->
         
         <!-- CONTEÚDO -->
         <div class="row">
             <div role="main">
-                <div class="col-md-12 col-md-offset-0">
-                    <form action="pesquisaresultado" method="GET">
+                <div class="col-md-8 col-md-offset-2">
+                    <form action="pesquisaresultado" method="POST">
                     <div class="form-group">
-                        <select name="cod_curso" class="form-control">
-                            <option value="-1" selected >Selecione o curso</option>
-                            <c:forEach items="${listacursos}" var="curso" >		
-                                Selecione o curso: <option value="${curso.cod_curso}">${curso.nome_curso}</option>
-                            </c:forEach> 
-                        </select>
+                     
+                <c:forEach items="${listalivros}" var="disciplina" >
+                    <div class="panel panel-default ">
+                      <div class="panel-heading">
+                        <h3 class="panel-title text-center">${disciplina.nome_disciplina}</h3>
+                      </div>
+                    <c:forEach items="${disciplina.livros}" var="livro" >
+                      <div class="panel-body">
+                           <h5>${livro.titulo} -  ${livro.autor}</h5>
+                                    <h5>${livro.local}</h5>
+                                    <h5>Exemplares: ${livro.exemplares} Status: ${livro.status}</h5>
+                      </div>
+                     </c:forEach>
+                    </div>  
+                </c:forEach> 
+                    
+                    <div class="row">    
+                        <div class="col-md-10">
+                             <a href="pesquisa" class="btn btn-info btn-sm">
+                                    <span class="glyphicon glyphicon-menu-left"></span>&nbsp;VOLTAR
+                             </a>
+                       </div>
+                        
+                        <div class="col-md-2">
+                            <a class="btn btn-info btn-sm" href="javascript:window.print()">
+                                    <span class="glyphicon glyphicon-print"></span>&nbsp;IMPRIMIR
+                             </a>
+                        </div>
                     </div>
                     
-                    <div class="form-group">
-                        <select name="cod_disciplina" class="form-control">
-                            <option value="-1" selected >Selecione a disciplina</option>
-                        </select>
-                    </div>
                     
-                    <div class="col-md-offset-9">
-                        <br>
-                        <button type="submit" class="btn btn-info btn-sm form-control" name="btnpesquisar"/>
-                        <span class="glyphicon glyphicon-search"></span> &nbsp;Pesquisar</button>
-                    </div>
-                    </form>
                     
             </div>
         </div>  
     </div>
 </div>
-        <!-- RODAPÉ --> 
+        <!-- RODAPÉ 
         <footer class="row">
             <c:import url="/resources/template/admin/rodape.jsp"></c:import> 
-        </footer>
+        </footer>--> 
     
         <!-- MODAL PARA RESETAR SENHA -->
         <c:import url="/resources/template/publico/resetarsenha.jsp"></c:import> 
