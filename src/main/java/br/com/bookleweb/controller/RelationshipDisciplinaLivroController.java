@@ -46,7 +46,7 @@ public class RelationshipDisciplinaLivroController {
 				String mensagem = "Opa! Livro vinculado com Sucesso!";
 				mv.addObject("sucesso",mensagem);
 			}else{
-				String mensagem = "Ixi! O Livro j· est· cadastrado para esta disciplina!";
+				String mensagem = "Ixi! O Livro j√° est√° cadastrado para esta disciplina!";
 				mv.addObject("erro",mensagem);	
 			}
 
@@ -62,7 +62,7 @@ public class RelationshipDisciplinaLivroController {
 				String mensagem = "Opa! Livro removido da disciplina com sucesso";
 				mv.addObject("sucesso",mensagem);
 			}else{
-				String mensagem = "Ixi! N„o foi possÌvel remover o livro da disciplina!";
+				String mensagem = "Ixi! N√£o foi poss√≠vel remover o livro da disciplina!";
 				mv.addObject("erro",mensagem);	
 			}
 
@@ -75,9 +75,11 @@ public class RelationshipDisciplinaLivroController {
 		opcaopesquisa = opcaopesquisa.toLowerCase();
 		if(opcaopesquisa.equals("cod_disciplina")){
 			mv.addObject("listalivros",relationShipDAO.procuraNaRelacaoPeloCodigoDaDisciplina(disciplina));
+			mv.addObject("listadisciplinas",disciplinaDAO.getTodasDisciplinas());
 		}
 		else if(opcaopesquisa.equals("isbn")){
 			mv.addObject("listalivros",relationShipDAO.procuraNaRelacaoPeloISBN(livro));
+			mv.addObject("listadisciplinas",disciplinaDAO.getTodasDisciplinas());
 		}
 		return mv;
 	}

@@ -31,6 +31,8 @@ public class LivroDAO {
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		try{
 			manager.getTransaction().begin();
+			Livro livroFind = manager.find(Livro.class, livro.getIsbn());
+			livro.setDisciplinas(livroFind.getDisciplinas());
 			manager.merge(livro);
 			manager.getTransaction().commit();
 			return true;
