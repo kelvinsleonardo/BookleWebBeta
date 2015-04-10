@@ -19,20 +19,17 @@ import br.com.bookleweb.dao.LivroDAO;
 import br.com.bookleweb.dao.RelationShipDisciplinaLivroDAO;
 import br.com.bookleweb.modelo.Curso;
 import br.com.bookleweb.modelo.Disciplina;
-import br.com.bookleweb.modelo.Livro;
 
 @Controller
 public class LivroSugeridoController {
 	
 	private CursoDAO cursoDAO; 
 	private DisciplinaDAO disciplinaDAO;
-	private RelationShipDisciplinaLivroDAO relationShipDAO;
 	
 	@Autowired
 	public LivroSugeridoController(DisciplinaDAO disciplinaDAO, LivroDAO livroDAO, CursoDAO cursoDAO, RelationShipDisciplinaLivroDAO relationShipDAO) {
 		this.disciplinaDAO = disciplinaDAO;
 		this.cursoDAO = cursoDAO;
-		this.relationShipDAO = relationShipDAO;
 	}
 	
 	@RequestMapping(value= "/pesquisa")
