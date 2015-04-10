@@ -63,17 +63,5 @@ public class LivroSugeridoController {
 		out.write(sb.toString());
 	}
 
-
-	@RequestMapping(value= "/relacaolivro", method= RequestMethod.POST)
-	public void pesquisaLivro(@ModelAttribute Disciplina disciplina, HttpServletResponse response ) throws IOException{
-		PrintWriter out = response.getWriter();
-		ArrayList<Livro> listalivros = relationShipDAO.procuraNaRelacaoPeloCodigoDaDisciplina(disciplina);
-		StringBuilder sb = new StringBuilder("");
-		
-		for(int i = 0; i < listalivros.size(); i++){
-			sb.append(listalivros.get(i).getIsbn()+"-"+listalivros.get(i).getTitulo()+":");
-		}
-		out.write(sb.toString());
-	}
 	
 }

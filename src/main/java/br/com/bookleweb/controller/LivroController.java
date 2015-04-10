@@ -40,21 +40,6 @@ public class LivroController {
 		@RequestMapping(value= "/adicionalivro")
 		public ModelAndView adicionaLivro(@ModelAttribute Livro livro, @ModelAttribute Disciplina disciplina, HttpServletRequest request){
 			ModelAndView mv =  new ModelAndView("forward:/gerenciadorlivro");
-			/*
-			String[] itensDisciplina =  request.getParameterValues("listaescolhida");
-			
-			Disciplina disc;
-			ArrayList<Disciplina> arrayDisc = new ArrayList<Disciplina>();
-			
-			if(itensDisciplina != null){
-				for(int i = 0; i < itensDisciplina.length; i++){
-					disc = new Disciplina();
-					System.out.println("CODIGO DISC: "+Integer.parseInt(itensDisciplina[i]));
-					disc.setCod_disciplina(Integer.parseInt(itensDisciplina[i]));
-					arrayDisc.add(disc);
-				}
-			}
-			livro.setDisciplinas(arrayDisc);*/
 	        if (livroDAO.adiciona(livro)) {
 				String mensagem = "Opa! Livro adicionado com Sucesso!";
 				mv.addObject("sucesso",mensagem);

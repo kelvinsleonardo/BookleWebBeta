@@ -4,7 +4,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class FabricaEntityManager {
-	 private static EntityManagerFactory fabrica = null; 
+	
+	private static EntityManagerFactory fabrica = null; 
 	
 	public static EntityManagerFactory getEntityManagerFactory() {
 		if(fabrica == null){

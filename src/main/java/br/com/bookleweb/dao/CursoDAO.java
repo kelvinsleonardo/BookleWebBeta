@@ -45,8 +45,8 @@ public class CursoDAO {
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		try{
 			manager.getTransaction().begin();
-			Curso cursobuscado = manager.find(Curso.class, curso.getCod_curso());
-			manager.remove(cursobuscado);
+			Curso cursoBuscado = manager.find(Curso.class, curso.getCod_curso());
+			manager.remove(cursoBuscado);
 			manager.getTransaction().commit();
 			return true;
 		}catch(Exception e){
