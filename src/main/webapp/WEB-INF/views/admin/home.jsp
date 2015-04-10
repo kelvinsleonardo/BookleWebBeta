@@ -59,19 +59,19 @@
         <header class="row">
             <c:import url="/resources/template/admin/menu.jsp"></c:import> 
         </header>
-
-        <!-- BREADCRUMB 
-        <ul class="breadcrumb">
-          <li class="active">Home</li>
-        </ul>-->
         
         <!-- CONTEÚDO -->
         <div class="row">
             <div role="main">
-                <div class="col-md-12 col-md-offset-0">
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="col-md-12 col-md-offset-0 text-center">
                     
-                    <h4>Bem vindo ao nosso sitema BookleWeb.</h4>
-                    
+                    <img src="resources/img/logo.png" class="img-responsive center-block" alt="Responsive image">
+                    <h1><strong>BEM VINDO AO BOOKLEWEB</strong></h1>
+                    <h4>Sistema de gerenciamento acadêmico UFG</h4>
             </div>
         </div>  
     </div>

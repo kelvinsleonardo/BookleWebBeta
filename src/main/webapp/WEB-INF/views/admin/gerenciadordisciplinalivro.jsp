@@ -117,14 +117,8 @@
                             <input type="radio" name="opcaopesquisa" id="op_pesq_isbn" value="isbn" checked>ISBN
                         </label>
                         
-                        <label class="radio-inline">
-                            <input type="radio" name="opcaopesquisa" id="op_pesq_cod_disciplina" value="cod_disciplina">Código Disciplina
-                        </label>
-                             
-                        
                         <div class="input-group">
                           <input type="number" class="form-control" name="isbn" id="search_isbn" placeholder="ISBN do livro">
-                          <input type="text" class="form-control" style="display:none" name="cod_disciplina" id="search_cod_disciplina" placeholder="Codigo da Disciplina">
                           <div class="input-group-btn">
                               <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-search"></i></button>
                             </div>

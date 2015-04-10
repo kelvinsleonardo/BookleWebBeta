@@ -11,6 +11,7 @@ import org.springframework.util.StringUtils;
 
 import br.com.bookleweb.factory.FabricaEntityManager;
 import br.com.bookleweb.modelo.Usuario;
+import br.com.bookleweb.util.CriptografiaSenha;
 
 @Repository
 public class UsuarioDAO {
@@ -19,6 +20,7 @@ public class UsuarioDAO {
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		try{
 			manager.getTransaction().begin();
+			usuario.setSenha(CriptografiaSenha.md5(usuario.getSenha()));
 			manager.persist(usuario); 
 			manager.getTransaction().commit();
 			return true;
@@ -33,6 +35,8 @@ public class UsuarioDAO {
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		try{
 			manager.getTransaction().begin();
+			Usuario usuariobuscado = manager.find(Usuario.class, usuario.getMatricula());
+			usuario.setSenha(usuariobuscado.getSenha());
 			manager.merge(usuario);
 			manager.getTransaction().commit();
 			return true;

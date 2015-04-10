@@ -140,6 +140,7 @@
                                 <th>Email</th>
                                 <th>Senha</th>
                                 <th>Permissao</th>
+                                <th>Nova Senha</th>
                                 <th>Editar</th>
                                 <th>Excluir</th>
                             </tr>
@@ -157,7 +158,15 @@
                                 <td name="tb_senha">${usuario.senha}</td>
                                 
                                 <td name="tb_permissao" id="${usuario.permissao}">${usuario.permissao}</td>
-                                    
+                                 
+                                 <td>
+                                    <button type="submit" class="btn btn-primary btn-sm"data-toggle="modal" data-target="#modalNovaSenha" name="novasenha">
+                                        <span class="glyphicon glyphicon-lock"></span>
+                                        Nova Senha
+                                    </button>
+                                </td>
+                                
+                                
                                 <td>
                                     <button type="submit" class="btn btn-primary btn-sm"data-toggle="modal" data-target="#modalEditaUsuario" name="editarusuario">
                                         <span class="glyphicon glyphicon-edit"></span>
@@ -195,6 +204,7 @@
         <!-- MODALS -->
         <c:import url="/resources/template/admin/modal/usuario/adicionausuario.jsp"></c:import>
         <c:import url="/resources/template/admin/modal/usuario/editausuario.jsp"></c:import> 
+        <c:import url="/resources/template/admin/modal/usuario/alterasenha.jsp"></c:import> 
         
     <!--FIM DIV CONTAINER-->
     </div>

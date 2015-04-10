@@ -7,10 +7,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
-import br.com.bookleweb.util.CriptografiaSenha;
-
 @NamedQueries({
 	@NamedQuery(name="Usuario.pesquisaPelaMatricula", 
 				query="SELECT usu FROM Usuario usu WHERE usu.matricula = :matricula"),
@@ -31,7 +27,6 @@ public class Usuario {
 	
 	private String email;
 	
-	@NotEmpty(message="{usuario.senha.vazio}")
 	private String senha;
 	
 	private String permissao ;
@@ -52,7 +47,7 @@ public class Usuario {
 		return senha;
 	}
 	public void setSenha(String senha) {
-		this.senha = CriptografiaSenha.md5(senha);
+		this.senha = senha;
 	}
 	public String getPermissao() {
 		return permissao;

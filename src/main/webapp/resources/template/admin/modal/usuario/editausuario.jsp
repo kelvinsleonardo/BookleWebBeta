@@ -25,10 +25,6 @@
                      <div class="form-group">
                             <input type="text" class="form-control" placeholder="Email" name="email" id="edit_email"/>
                     </div> 
-                    
-                    <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Senha" name="senha" id="edit_senha"/>
-                    </div>
  
                     <div class="form-group">
                         <select name="permissao" class="form-control" id="edit_permissao">		

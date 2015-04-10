@@ -53,10 +53,10 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
               Relatórios<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="relatoriocurso">Cursos</a></li>
-            <li><a href="relatoriodisciplina">Disciplinas</a></li>
-            <li><a href="relatoriolivro">Livros</a></li>
-            <li><a href="relatoriousuario">Usuários</a></li>
+            <li><a href="relatoriocurso" target="_blank">Cursos</a></li>
+            <li><a href="relatoriodisciplina" target="_blank">Disciplinas</a></li>
+            <li><a href="relatoriolivro" target="_blank">Livros</a></li>
+            <li><a href="relatoriousuario" target="_blank">Usuários</a></li>
           </ul>
         </li>
       </ul>
