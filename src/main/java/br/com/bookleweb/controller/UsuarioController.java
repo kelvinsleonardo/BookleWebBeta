@@ -41,6 +41,33 @@ public class UsuarioController {
 			return mv;
 		}
 		
+		@RequestMapping(value= "/adicionausuariologin", method= RequestMethod.POST)
+		public ModelAndView adicionaUsuarioTelaLogin(@ModelAttribute Usuario usuario){
+			ModelAndView mv =  new ModelAndView("forward:/login");
+			if(usuarioDAO.isRegistrado(usuario)){
+				String mensagem = "Opa! Usuario já está cadastrado!";
+				mv.addObject("erro",mensagem);
+			}
+			else{
+				Integer quantidadeDigitos = Integer.toString(usuario.getMatricula()).length();
+				if(quantidadeDigitos < 7){
+					usuario.setPermissao("ROLE_ALUNO");
+				}else{
+					usuario.setPermissao("ROLE_PROFESSOR");
+				}
+				
+				if(usuarioDAO.adiciona(usuario)){
+					String mensagem = "Opa! Usuario adicionado com Sucesso! Faça Login!";
+					mv.addObject("sucesso",mensagem);
+				}else{
+					String mensagem = "Ixi! Erro ao cadastrar usuario!";
+					mv.addObject("erro",mensagem);	
+				}
+			}
+			return mv;
+		}
+
+		
 		@RequestMapping(value= "/editausuario", method= RequestMethod.POST)
 		public ModelAndView editaUsuario(@ModelAttribute Usuario usuario){
 			ModelAndView mv =  new ModelAndView("forward:/gerenciadorusuario");

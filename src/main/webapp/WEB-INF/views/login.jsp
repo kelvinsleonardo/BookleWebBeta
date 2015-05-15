@@ -56,7 +56,7 @@
         <div class="row">
             <div role="main">
                 <div class="col-md-4 col-md-offset-4">
-		          <form id="formlogin" action="<c:url value='/adicionausuario' />" method="POST">
+		          <form id="formlogin" action="<c:url value='/adicionausuariologin' />" method="POST">
                     <div class="panel-body">
                     <h3 class="text-center">
                         CADASTRE-SE AGORA
