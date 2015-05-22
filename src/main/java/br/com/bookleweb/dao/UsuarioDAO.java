@@ -47,6 +47,23 @@ public class UsuarioDAO {
 		}
 	}
 	
+	public Boolean alteraSenha(Usuario usuario){
+		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
+		try{
+			manager.getTransaction().begin();
+			Usuario usuariobuscado = manager.find(Usuario.class, usuario.getMatricula());
+			usuario.setSenha(CriptografiaSenha.md5(usuario.getSenha()));
+			usuariobuscado.setSenha(usuario.getSenha());
+			manager.merge(usuariobuscado);
+			manager.getTransaction().commit();
+			return true;
+		}catch(Exception e){
+			return false;
+		}finally{
+			manager.close();
+		}
+	}
+	
 	public Boolean remove(Usuario usuario){
 		
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();

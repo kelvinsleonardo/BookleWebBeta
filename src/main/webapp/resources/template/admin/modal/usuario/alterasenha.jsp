@@ -15,29 +15,25 @@
                 <div class="panel-body">   
                     
                     <div class="form-group">
-                            <input type="number" class="form-control" placeholder="Matricula" name="matricula" id="edit_matricula" readonly/>
+                            <input type="number" class="form-control" placeholder="Matricula" name="matricula" id="novasenha_matricula" readonly/>
                     </div>
                     
                      <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Nome" name="nome" id="edit_nome" readonly/>
-                    </div>
-                    
-                     <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Senha Antiga" name="senha" id="edit_senha"/>
+                            <input type="text" class="form-control" placeholder="Nome" name="nome" id="novasenha_nome" readonly/>
                     </div>
                     
                     <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Senha Nova" name="senha" id="edit_senha"/>
+                            <input type="password" class="form-control" placeholder="Nova Senha" name="senha" id="novasenha_senha"/>
                     </div> 
                     
                     <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Repita a Senha" name="senha" id="edit_senha"/>
+                            <input type="password" class="form-control" placeholder="Repita a Senha" name="senhaconfirmacao" id="novasenha_senhaconfirmacao"/>
                     </div> 
                     
                 </div>
             <div class="col-md-offset-9">
     
-                   <button type="submit" class="btn btn-sm btn-success" >Criar</button>
+                   <button type="submit" class="btn btn-sm btn-success" >Salvar</button>
  
 
                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Cancelar</button>

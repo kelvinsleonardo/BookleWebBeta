@@ -37,7 +37,7 @@ public class LivroController {
 			return mv;
 		}
 		
-		@RequestMapping(value= "/adicionalivro")
+		@RequestMapping(value= "/adicionalivro", method= RequestMethod.POST)
 		public ModelAndView adicionaLivro(@ModelAttribute Livro livro, @ModelAttribute Disciplina disciplina, HttpServletRequest request){
 			ModelAndView mv =  new ModelAndView("forward:/gerenciadorlivro");
 	        if (livroDAO.adiciona(livro)) {

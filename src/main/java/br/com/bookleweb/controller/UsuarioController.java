@@ -81,6 +81,19 @@ public class UsuarioController {
 			return mv;
 		}
 		
+		@RequestMapping(value= "/alterasenha", method= RequestMethod.POST)
+		public ModelAndView alteraSenha(@ModelAttribute Usuario usuario){
+			ModelAndView mv =  new ModelAndView("forward:/gerenciadorusuario");
+			if(usuarioDAO.alteraSenha(usuario)){
+				String mensagem = "Opa! Senha alterada com sucesso!";
+				mv.addObject("sucesso",mensagem);
+			}else{
+				String mensagem = "Ixi! Erro ao alterar senha do usuario!";
+				mv.addObject("erro",mensagem);	
+			}
+			return mv;
+		}
+		
 		@RequestMapping(value= "/removeusuario", method= RequestMethod.POST)
 		public ModelAndView removeDisciplina(@ModelAttribute Usuario usuario){
 			ModelAndView mv =  new ModelAndView("forward:/gerenciadorusuario");

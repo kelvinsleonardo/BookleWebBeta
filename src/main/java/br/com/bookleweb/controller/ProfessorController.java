@@ -9,7 +9,7 @@ public class ProfessorController {
 
 	@RequestMapping(value = "/professor")
 	public String executeProfessor(){
-		return "/professor/home";
+		return "/admin/home";
 	}
 	
 	

@@ -69,7 +69,7 @@
         <div class="row">
             <div role="main">
                 <div class="col-md-12 col-md-offset-0">
-                    <form action="pesquisaresultado" method="GET">
+                    <form action="pesquisaresultado" method="POST">
                     <div class="form-group">
                         <select name="cod_curso" class="form-control">
                             <option value="-1" selected >Selecione o curso</option>

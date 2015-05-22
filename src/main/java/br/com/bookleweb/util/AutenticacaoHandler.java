@@ -25,6 +25,7 @@ public class AutenticacaoHandler implements AuthenticationSuccessHandler {
 		UsuarioDAO usuariodao = new UsuarioDAO();
 		request.getSession().setAttribute("nome_usuario_sessao", usuariodao.getNomeUsuarioLogado());
 		
+		
 		if (roles.contains("ROLE_ALUNO")) {
 			response.sendRedirect("/BookleWeb/aluno");
 		}else if (roles.contains("ROLE_PROFESSOR")) {

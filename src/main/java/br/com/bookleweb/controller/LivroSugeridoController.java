@@ -40,7 +40,7 @@ public class LivroSugeridoController {
 	}
 	
 	
-	@RequestMapping(value= "/pesquisaresultado")
+	@RequestMapping(value= "/pesquisaresultado", method= RequestMethod.POST)
 	public ModelAndView initPesquisaResultado(@ModelAttribute Disciplina disciplina){
 		ModelAndView mv = new ModelAndView("/admin/pesquisaresultado");
 		mv.addObject("listalivros",disciplinaDAO.procuraPeloCodigoDaDisciplina(disciplina));

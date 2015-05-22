@@ -4,8 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- Spring Famework -->
 <%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>    
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> 
+   
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -25,11 +25,10 @@
         <li class="active"><a href="admin">Home 
             <span class="sr-only">(current)</span></a>
         </li>
-        
         <li class="dropdown">
             <li><a href="pesquisa">Pesquisar</a></li>
         </li>
-          
+    <sec:authorize access="hasRole('ROLE_ADMIN')">      
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
               Gerenciar<span class="caret"></span></a>
@@ -47,18 +46,24 @@
             <li><a href="gerenciadorusuario">Usuários</a></li>
           </ul>
         </li>
-      
-        
+      </sec:authorize>    
+ 
+     <sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_PROFESSOR')">    
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
               Relatórios<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
+          	<sec:authorize access="hasRole('ROLE_ADMIN')"> 
             <li><a href="relatoriocurso" target="_blank">Cursos</a></li>
             <li><a href="relatoriodisciplina" target="_blank">Disciplinas</a></li>
+             </sec:authorize> 
             <li><a href="relatoriolivro" target="_blank">Livros</a></li>
+ 			<sec:authorize access="hasRole('ROLE_ADMIN')"> 
             <li><a href="relatoriousuario" target="_blank">Usuários</a></li>
+            </sec:authorize>  
           </ul>
         </li>
+      </sec:authorize>   
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <li class="dropdown"> 

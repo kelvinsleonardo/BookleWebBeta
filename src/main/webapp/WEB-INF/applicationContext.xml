@@ -9,13 +9,21 @@
 
 	<http auto-config="true" access-denied-page="/403">
 		
-		<!-- INTERCEPTADORES DO ROLE ADMIN -->
-		<intercept-url pattern="/listausuario" access="ROLE_ADMIN"/>
-		<intercept-url pattern="/gerenciausuario" access="ROLE_ADMIN"/>
-		<intercept-url pattern="/gerenciausuario-do" access="ROLE_ADMIN"/>
-		<intercept-url pattern="/admin**" access="ROLE_ADMIN"/>
+		<!-- INTERCEPTADORES ROLE ADMIN -->
+		<intercept-url pattern="/admin**" access="ROLE_ADMIN,ROLE_ALUNO,ROLE_PROFESSOR"/>
+		<intercept-url pattern="/pesquisa" access="ROLE_ADMIN,ROLE_ALUNO,ROLE_PROFESSOR"/>
+
+		<intercept-url pattern="/gerenciadorcurso" access="ROLE_ADMIN"/>
+		<intercept-url pattern="/gerenciadordisciplina" access="ROLE_ADMIN"/>
+		<intercept-url pattern="/gerenciadorlivro" access="ROLE_ADMIN"/>
+		<intercept-url pattern="/gerenciadorusuario" access="ROLE_ADMIN"/>
+		<intercept-url pattern="/relationshipdisciplinacurso" access="ROLE_ADMIN"/>
 		
-		
+		<intercept-url pattern="/relatoriocurso" access="ROLE_ADMIN"/>
+		<intercept-url pattern="/relatoriodisciplina" access="ROLE_ADMIN"/>
+		<intercept-url pattern="/relatoriolivro" access="ROLE_ADMIN,ROLE_PROFESSOR"/>
+		<intercept-url pattern="/relatoriousuario" access="ROLE_ADMIN"/>
+			
 		<!-- INTERCEPTADORES DO ROLE ALUNO -->
 		<intercept-url pattern="/aluno**" access="ROLE_ALUNO,ROLE_ADMIN"/>
 		
@@ -47,7 +55,10 @@
 		</authentication-provider>
 	</authentication-manager>
 
-	 <beans:bean id="autenticacaoHandler" class="br.com.bookleweb.util.AutenticacaoHandler" />
+   <beans:bean id="autenticacaoHandler" class="br.com.bookleweb.util.AutenticacaoHandler" />
+
+   <beans:bean id="webSecurityExpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
+
 
 	<beans:bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">

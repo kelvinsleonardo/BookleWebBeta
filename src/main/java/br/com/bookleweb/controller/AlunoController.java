@@ -9,7 +9,7 @@ public class AlunoController {
 
 	@RequestMapping(value = "/aluno")
 	public String executeAluno(){
-		return "/aluno/home";
+		return "/admin/home";
 	}
 	
 	

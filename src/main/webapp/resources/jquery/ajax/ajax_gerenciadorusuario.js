@@ -15,7 +15,14 @@ $(function(){
         $('#edit_matricula').val(matricula); // Setando codigo do curso da tabela para modal editar curso
         $('#edit_nome').val(nome); // Setando nome do curso da tabela para modal editar curso
         $('#edit_email').val(email); // Setando descricao do curso da tabela para modal editar curso
-        $('#edit_senha').val(senha); // Setando descricao do curso da tabela para modal editar curso
+	})
+    
+    $('button[name=novasenha]').click(function(){
+        var matricula = $(this).closest("tr").find("td[name=tb_matricula]").html();
+        var nome = $(this).closest("tr").find("td[name=tb_nome]").html();
+        console.log(nome);
+        $('#novasenha_matricula').val(matricula); 
+        $('#novasenha_nome').val(nome); 
 	})
     
     /* EVENTO CLICAR NO BOTÃO "EXCLUIR" CURSO
