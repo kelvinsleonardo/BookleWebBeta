@@ -11,7 +11,7 @@
         <h4>Editar Disciplina</h4>
       </div>
       <div class="modal-body">
-        <form id="formlogin" action="editadisciplina" method="POST">
+        <form id="formdisciplina_editar" action="editadisciplina" method="POST">
                 <div class="panel-body">   
                     
                     <div class="form-group">

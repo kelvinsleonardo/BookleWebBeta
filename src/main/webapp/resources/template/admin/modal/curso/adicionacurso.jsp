@@ -9,15 +9,10 @@
         <h4>Adicionar Curso</h4>
       </div>
       <div class="modal-body">
-        <form id="formlogin" action="adicionacurso" method="POST">
+        <form id="formcurso_adicionar" action="adicionacurso" method="POST">
                 <div class="panel-body">  
-                    
                     <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Codigo" name="cod_curso_old" id="add_cod_curso" readonly/>
-                    </div>
-                    
-                    <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Nome" name="nome_curso" id="add_nome_curso"/>
+                            <input type="text" class="form-control" placeholder="Nome do curso" name="nome_curso" id="add_nome_curso"/>
                     </div> 
                 </div>
             <button class="btn btn-sm btn-info btn-block" type="submit" >Adicionar Novo</button>

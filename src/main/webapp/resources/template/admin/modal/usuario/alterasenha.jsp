@@ -11,7 +11,7 @@
         <h4>Altera senha Usuario</h4>
       </div>
       <div class="modal-body">
-        <form id="formlogin" action="alterasenha" method="POST">
+        <form id="formusuario_alterasenha" action="alterasenha" method="POST">
                 <div class="panel-body">   
                     
                     <div class="form-group">

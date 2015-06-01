@@ -9,7 +9,7 @@
         <h4>Editar Curso</h4>
       </div>
       <div class="modal-body">
-        <form id="formlogin" action="editacurso" method="POST">
+        <form id="formcurso_editar" action="editacurso" method="POST">
                 <div class="panel-body">  
                     
                     <div class="form-group">

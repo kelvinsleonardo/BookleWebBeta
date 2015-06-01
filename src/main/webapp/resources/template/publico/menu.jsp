@@ -19,7 +19,7 @@
 
         <div class="navbar-text pull-right">
        
-			<form action="j_spring_security_check" method="POST" class="form-inline" >
+			<form id="formlogin_logar" action="j_spring_security_check" method="POST" class="form-inline" >
 			  <div class="form-group form-group-sm">
 			    <input type="text" name="j_username" class="form-control" placeholder="Matrícula" value="${param.usuario}">
 			  </div>

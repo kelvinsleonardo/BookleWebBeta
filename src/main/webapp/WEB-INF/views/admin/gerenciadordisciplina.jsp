@@ -57,16 +57,16 @@
             "infoFiltered": "(filtrado de _MAX_ gravações)<br><br>",
             "search":         "Procurar:"
         },
-    
-        
-        
-    } );
-    
- 
-    
+
+    } );    
 } );    
     
-    </script>
+</script>
+
+<!-- Jquery Validator Form --> 
+<script src="<c:url value="/resources/jquery/validator/jquery.validate.js" />"></script>
+<script src="<c:url value="/resources/jquery/validator/views/gerenciadordisciplina.js" />"></script>
+    
 </head>
     
 <body class="background-login">

@@ -11,7 +11,7 @@
         <h4>Editar Usuario</h4>
       </div>
       <div class="modal-body">
-        <form id="formlogin" action="editausuario" method="POST">
+        <form id="formusuario_editar" action="editausuario" method="POST">
                 <div class="panel-body">   
                     
                     <div class="form-group">

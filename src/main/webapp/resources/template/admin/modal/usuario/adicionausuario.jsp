@@ -11,7 +11,7 @@
         <h4>Adicionar Usuario</h4>
       </div>
       <div class="modal-body">
-        <form id="formlogin" action="adicionausuario" method="POST">
+        <form id="formusuario_adicionar" action="adicionausuario" method="POST">
                 <div class="panel-body">  
                     
                     <div class="form-group">

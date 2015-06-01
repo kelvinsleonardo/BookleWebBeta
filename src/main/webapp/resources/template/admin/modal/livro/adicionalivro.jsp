@@ -11,26 +11,9 @@
         <h4>Adicionar Livro</h4>
       </div>
       <div class="modal-body">
-        <form id="formlogin" action="adicionalivro" method="GET">
+        <form id="formlivro_adicionar" action="adicionalivro" method="POST">
                 <div class="panel-body">  
-                    <!--
-                    <div class="form-group">
-                        
-                        <select name="cod_disciplina" class="form-control">
-                            <c:forEach items="${listadisciplinas}" var="disciplina" >		
-                                Selecione o curso: <option value="${disciplina.cod_disciplina}">${disciplina.nome_disciplina}</option>
-                            </c:forEach> 
-                        </select>
-                        
-                    </div>
-                    
-                  
-                    
-                    <select name="listaescolhida" multiple class="form-control">                   
-                        <c:forEach  var="disciplina" items="${listadisciplinas}">		
-                           <option id="${disciplina.cod_disciplina}" value="${disciplina.cod_disciplina}">${disciplina.nome_disciplina}</option>
-                        </c:forEach>
-                    </select>-->
+
                     <div class="form-group">
                             <input type="text" class="form-control" placeholder="ISBN" name="isbn" id="add_isbn"/>
                     </div>
@@ -57,10 +40,11 @@
                     </div>
                     
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Status" name="status" id="add_status"/>
+                        <select name="status" class="form-control">	
+                            <option value="Disponível">Disponível</option>
+                            <option value="Indisponível">Indisponível</option>
+                        </select>
                     </div>
-                
-                    
                 </div>
             <button class="btn btn-sm btn-info btn-block" type="submit" >Adicionar Novo</button>
         </form>

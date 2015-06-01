@@ -11,7 +11,7 @@
         <h4>Adicionar Disciplina</h4>
       </div>
       <div class="modal-body">
-        <form id="formlogin" action="adicionadisciplina" method="POST">
+        <form id="formdisciplina_adicionar" action="adicionadisciplina" method="POST">
                 <div class="panel-body">  
                     
                     <div class="form-group">
@@ -25,11 +25,7 @@
                     </div>
                     
                     <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Codigo" name="cod_disciplina" id="add_cod_disciplina" readonly/>
-                    </div>
-                    
-                    <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Nome" name="nome_disciplina" id="add_nome_disciplina"/>
+                            <input type="text" class="form-control" placeholder="Nome da disciplina" name="nome_disciplina" id="add_nome_disciplina"/>
                     </div>  
                     
 

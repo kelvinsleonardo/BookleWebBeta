@@ -11,17 +11,8 @@
         <h4>Editar Livro</h4>
       </div>
       <div class="modal-body">
-        <form id="formlogin" action="editalivro" method="POST">
+        <form id="formlivro_editar" action="editalivro" method="POST">
                 <div class="panel-body">   
-                    <!--
-                    <div class="form-group">
-                        <select name="cod_disciplina" class="form-control" id="edit_nome_disciplina">
-                            <c:forEach  var="disciplina" items="${listadisciplinas}">		
-                                Selecione o curso: <option value="${disciplina.cod_disciplina}">${disciplina.nome_disciplina}</option>
-                            </c:forEach> 
-                        </select>
-                    </div>
-                    -->
                     <div class="form-group">
                             <input type="text" class="form-control" name="isbn" id="edit_isbn" readonly/>
                     </div>
@@ -47,7 +38,10 @@
                     </div>
                     
                     <div class="form-group">
-                            <input type="text" class="form-control" name="status" id="edit_status" placeholder="Status"/>
+                        <select name="status" class="form-control" id="edit_status">	
+                            <option value="Disponível">Disponível</option>
+                            <option value="Indisponível">Indisponível</option>
+                        </select>
                     </div>
                     
                 </div>

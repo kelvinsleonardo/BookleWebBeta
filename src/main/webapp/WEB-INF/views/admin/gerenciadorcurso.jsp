@@ -39,6 +39,11 @@
   
 <!-- DataTables -->
 <script type="text/javascript" charset="utf8" src="<c:url value="/resources/jquery/datatables/media/js/jquery.dataTables.js"/>"></script>
+    
+<!-- Jquery Validator Form --> 
+<script src="<c:url value="/resources/jquery/validator/jquery.validate.js" />"></script>
+<script src="<c:url value="/resources/jquery/validator/views/gerenciadorcurso.js" />"></script>
+    
 <script>
     $(document).ready(function() {
        $.extend( $.fn.dataTable.defaults, {
@@ -182,11 +187,7 @@
             </div>
         </div>  
     </div>
-        <!-- RODAPÉ 
-        <footer class="row">
-            <c:import url="/resources/template/admin/rodape.jsp"></c:import> 
-        </footer>--> 
-    
+
         <!-- MODALS -->
         <c:import url="/resources/template/admin/modal/curso/adicionacurso.jsp"></c:import>
         <c:import url="/resources/template/admin/modal/curso/editacurso.jsp"></c:import> 

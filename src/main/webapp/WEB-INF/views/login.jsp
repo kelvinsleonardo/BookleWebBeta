@@ -20,9 +20,11 @@
 <link rel="stylesheet" href="<c:url value="/resources/jquery/alertifyjs/alertify.min.css"/>" />
 <link rel="stylesheet" href="<c:url value="/resources/jquery/alertifyjs/css/themes/default.min.css"/>" /> 
 <script src="<c:url value="/resources/jquery/alertifyjs/alertify.min.js" />"></script>
-
     
-    
+<!-- Jquery Validator Form -->
+    <script src="resources/js/jquery-1.11.2.min.js"></script>   
+<script src="<c:url value="/resources/jquery/validator/jquery.validate.js" />"></script>
+<script src="<c:url value="/resources/jquery/validator/views/login.js" />"></script>
     
 </head>
 <body class="background-login">
@@ -56,7 +58,7 @@
         <div class="row">
             <div role="main">
                 <div class="col-md-4 col-md-offset-4">
-		          <form id="formlogin" action="<c:url value='/adicionausuariologin' />" method="POST">
+		          <form id="formlogin_cadastrar" action="<c:url value='/adicionausuariologin' />" method="POST">
                     <div class="panel-body">
                     <h3 class="text-center">
                         CADASTRE-SE AGORA
@@ -115,7 +117,6 @@
     </div>
 
     <!-- Javascript do bootstrap -->
-    <script src="resources/js/jquery-1.11.2.min.js"></script>
     <script src="resources/js/bootstrap.min.js"></script>
 </body>
     
