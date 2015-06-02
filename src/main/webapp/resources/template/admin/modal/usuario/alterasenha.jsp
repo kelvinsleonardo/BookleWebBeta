@@ -19,7 +19,7 @@
                     </div>
                     
                      <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Nome" name="nome" id="novasenha_nome" readonly/>
+                            <input type="text" class="form-control" placeholder="Nome do Usuario" name="nome" id="novasenha_nome"readonly/>
                     </div>
                     
                     <div class="form-group">

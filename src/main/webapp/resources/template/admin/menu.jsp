@@ -74,7 +74,12 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="alterarsenha">Alterar Senha</a></li>
+            <li><a data-toggle="modal" data-target="#modalNovaSenha" name="novasenha">
+                <span class="glyphicon glyphicon-lock"></span> 
+                Alterar Senha
+                </a>
+              </li>
+    
             <li class="divider"></li>
             <li><a href="<c:url value="/j_spring_security_logout"/>">
                 <span class="glyphicon glyphicon-off"></span> Logout
@@ -86,3 +91,4 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<c:import url="/resources/template/admin/modal/usuario/alterasenha_menu.jsp"></c:import>    

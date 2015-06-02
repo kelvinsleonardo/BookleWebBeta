@@ -160,15 +160,15 @@
 
                                 <td>
                                     <button type="submit" class="btn btn-primary btn-sm"data-toggle="modal" data-target="#modalEditaCurso" name="editarcurso">
-                                        <span class="glyphicon glyphicon-edit"></span>
-                                        Editar
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                        <strong>Editar</strong>
                                     </button>
                                 </td> 
                                 
                                 <td>
                                     <button type="submit" class="btn btn-danger btn-sm" name="excluircurso">
                                         <span class="glyphicon glyphicon-trash"></span>
-                                        Excluir
+                                        <strong>Excluir</strong>
                                     </button>
                                 </td>
                                   
@@ -179,7 +179,9 @@
                 
                     <div class="col-md-offset-9">
                         <br>
-                        <button type="submit" class="btn btn-info btn-sm form-control" data-toggle="modal" data-target="#modalAdicionaCurso"/><span class="glyphicon glyphicon-plus-sign"></span> &nbsp;Adicionar Curso</button>
+                        <button type="submit" class="btn btn-info btn-sm form-control" data-toggle="modal" data-target="#modalAdicionaCurso"/><span class="glyphicon glyphicon-plus-sign"></span> &nbsp;
+                        <strong>Adicionar Novo Curso</strong>
+                        </button>
                     </div>
                     
                         

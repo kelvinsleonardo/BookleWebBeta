@@ -35,7 +35,7 @@ $(function(){
         console.log(codDisciplina);
         var nomeDoLivro = $(this).closest("tr").find("td[name=tb_titulo]").html(); // Pegando nome da disciplina da tabela 
         var $this = $(this); // Pegando this do excluir a linha do livro
-        alertify.confirm("EXCLUSÃO DO LIVRO "+nomeDoLivro, "Você tem certeza que deseja remover o livro "+nomeDoLivro+" ?", "", "").
+        alertify.confirm("EXCLUSÃO DO LIVRO "+nomeDoLivro, "Você tem certeza que deseja remover o livro <strong>"+nomeDoLivro+"</strong> ?", "", "").
                     autoCancel(10).set('onok', function(closeEvent){ 
             if (closeEvent) {
                 $.ajax({

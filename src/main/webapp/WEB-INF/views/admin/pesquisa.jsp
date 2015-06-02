@@ -88,7 +88,7 @@
                     <div class="col-md-offset-9">
                         <br>
                         <button type="submit" class="btn btn-info btn-sm form-control" name="btnpesquisar"/>
-                        <span class="glyphicon glyphicon-search"></span> &nbsp;Pesquisar</button>
+                        <span class="glyphicon glyphicon-search"></span><strong> &nbsp;Pesquisar</strong></button>
                     </div>
                     </form>
                     

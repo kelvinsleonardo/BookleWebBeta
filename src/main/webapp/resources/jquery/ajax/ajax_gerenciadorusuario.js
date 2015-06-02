@@ -20,7 +20,7 @@ $(function(){
     $('button[name=novasenha]').click(function(){
         var matricula = $(this).closest("tr").find("td[name=tb_matricula]").html();
         var nome = $(this).closest("tr").find("td[name=tb_nome]").html();
-        console.log(nome);
+        //console.log(nome);
         $('#novasenha_matricula').val(matricula); 
         $('#novasenha_nome').val(nome); 
 	})
@@ -34,7 +34,7 @@ $(function(){
         var matricula = $(this).closest("tr").find("td[name=tb_matricula]").html(); // Pegando codigo da disciplina da tabela 
         var nome = $(this).closest("tr").find("td[name=tb_nome]").html(); // Pegando nome da disciplina da tabela 
         var $this = $(this); // Pegando this do excluir a linah da disciplina
-        alertify.confirm("EXCLUSÃO DO USUARIO "+nome, "Você tem certeza que deseja remover o usuario "+nome+" ?", "", "").
+        alertify.confirm("EXCLUSÃO DO USUARIO "+nome, "Você tem certeza que deseja remover o usuario <strong>"+nome+"</strong> ?", "", "").
                     autoCancel(10).set('onok', function(closeEvent){ 
             if (closeEvent) {
                 $.ajax({

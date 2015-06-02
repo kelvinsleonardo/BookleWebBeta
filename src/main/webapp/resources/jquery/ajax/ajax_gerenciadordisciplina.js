@@ -24,7 +24,7 @@ $(function(){
         var codigoDaDisc = $(this).closest("tr").find("td[name=tb_cod_disciplina]").html(); // Pegando codigo da disciplina da tabela 
         var nomeDaDisc = $(this).closest("tr").find("td[name=tb_nome_disciplina]").html(); // Pegando nome da disciplina da tabela 
         var $this = $(this); // Pegando this do excluir a linah da disciplina
-        alertify.confirm("EXCLUSÃO DA DISCIPLINA "+nomeDaDisc, "Você tem certeza que deseja remover o curso "+nomeDaDisc+" ?", "", "").
+        alertify.confirm("EXCLUSÃO DA DISCIPLINA "+nomeDaDisc, "Você tem certeza que deseja remover a disciplina  <strong>"+nomeDaDisc+"</strong> ?", "", "").
                     autoCancel(10).set('onok', function(closeEvent){ 
             if (closeEvent) {
                 $.ajax({

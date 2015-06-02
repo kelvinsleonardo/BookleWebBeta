@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Modelo GRID BookleWeb</title>
+    <title>BookleWeb - Livros Sugeridos</title>
     <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css" />" />
     <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/estilo.css" />" />
 
@@ -74,14 +74,22 @@
                 <c:forEach items="${listalivros}" var="disciplina" >
                     <div class="panel panel-default ">
                       <div class="panel-heading">
-                        <h3 class="panel-title text-center">${disciplina.nome_disciplina}</h3>
+                        <h3 class="text-center">
+                            <strong>${disciplina.nome_disciplina}</strong>
+                        </h3>
+                        <h6 class="text-center">
+                            Código da Disciplina: ${disciplina.cod_disciplina}  
                       </div>
                     <c:forEach items="${disciplina.livros}" var="livro" >
                       <div class="panel-body">
-                           <h5>${livro.titulo} -  ${livro.autor}</h5>
-                                    <h5>${livro.local}</h5>
-                                    <h5>Exemplares: ${livro.exemplares} Status: ${livro.status}</h5>
+                           <h4><strong>${livro.titulo} - ${livro.autor}</strong></h4>
+                            <h5><strong>ISBN: </strong>${livro.isbn}
+                            <strong>Local: </strong>${livro.local}</h5>
+                            <h5><strong>Qnt. Exemplares: </strong>${livro.exemplares} </h5>
+                            <h5><strong>Status:</strong> ${livro.status}</h5>
                       </div>
+                        <div class="panel panel-info">
+                        </div>
                      </c:forEach>
                     </div>  
                 </c:forEach> 
@@ -89,19 +97,20 @@
                     <div class="row">    
                         <div class="col-md-10">
                              <a href="pesquisa" class="btn btn-info btn-sm">
-                                    <span class="glyphicon glyphicon-menu-left"></span>&nbsp;VOLTAR
+                                    <span class="glyphicon glyphicon-backward"></span>&nbsp;
+                                    <strong>Voltar a Pesquisa</strong>
                              </a>
                        </div>
                         
                         <div class="col-md-2">
                             <a class="btn btn-info btn-sm" href="javascript:window.print()">
-                                    <span class="glyphicon glyphicon-print"></span>&nbsp;IMPRIMIR
+                                    <span class="glyphicon glyphicon-print"></span>&nbsp;
+                                    <strong>Imprimir</strong>
                              </a>
                         </div>
                     </div>
                     
-                    
-                    
+                    <br>
             </div>
         </div>  
     </div>

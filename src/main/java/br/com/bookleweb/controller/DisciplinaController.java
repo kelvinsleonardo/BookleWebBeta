@@ -72,11 +72,11 @@ public class DisciplinaController {
 			opcaopesquisa = opcaopesquisa.toLowerCase();
 			if(opcaopesquisa.equals("codigo")){
 				mv.addObject("listadisciplinas",disciplinaDAO.procuraPeloCodigoDaDisciplina(disciplina));
-				
 			}
 			else if(opcaopesquisa.equals("nome")){
 				mv.addObject("listadisciplinas",disciplinaDAO.procuraPeloNomeDaDisciplina(disciplina));
 			}
+			mv.addObject("listacursos",cursoDAO.getTodosCursos());
 			return mv;
 		}
 		

@@ -21,7 +21,7 @@ $(function(){
         var codigoDoCurso = $(this).closest("tr").find("td[name=tb_cod_curso]").html(); // Pegando codigo do curso da tabela 
         var nomeDoCurso = $(this).closest("tr").find("td[name=tb_nome_curso]").html(); // Pegando nome do curso da tabela 
         var $this = $(this); // Pegando this do excluir curso
-        alertify.confirm("EXCLUSÃO DO CURSO "+nomeDoCurso, "Você tem certeza que deseja remover o curso "+nomeDoCurso+" ?", "", "").
+        alertify.confirm("EXCLUSÃO DO CURSO "+nomeDoCurso, "Você tem certeza que deseja remover o curso <strong>"+nomeDoCurso+"</strong> ?", "", "").
                     autoCancel(10).set('onok', function(closeEvent){ 
             if (closeEvent) {
                 $.ajax({
