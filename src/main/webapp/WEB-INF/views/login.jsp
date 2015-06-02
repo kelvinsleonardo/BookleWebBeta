@@ -78,7 +78,7 @@
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-user"></span>
                             </span>
-                            <input type="text" class="form-control" placeholder="Nome completo" name="nome"/>
+                            <input type="text" class="form-control" placeholder="Nome completo" name="nome" id="add_nome"/>
                         </div>
                     </div>
                     <div class="form-group">

@@ -1,12 +1,38 @@
 $(document).ready( function() {
-  $("#formlogin_cadastrar").validate({
+
+// Verificando e convertendo UPPERCASE do campo
+$("#add_nome").bind('keyup', function (e) {
+    if (e.which >= 97 && e.which <= 122) {
+        var newKey = e.which - 32;
+        e.keyCode = newKey;
+        e.charCode = newKey;
+    }
+    $("#add_nome").val(($("#add_nome").val()).toUpperCase());
+});  
+    
+    
+/**
+ * Novo Método para validação de Full Name(Nome Completo)
+ * @author Kelvin Santiago
+ */
+jQuery.validator.addMethod( "fullname", function(value, element) {
+    
+    if (/\w+\s+\w+/.test(value)) {
+        return true;
+    } else {
+        return false;
+    }
+}, "O nome deve ser completo." );       
+    
+$("#formlogin_cadastrar").validate({
     // Define as regras
     rules:{
       matricula:{
         required: true, minlength: 5, number: true
       },
       nome:{
-        required: true
+        required: true,
+        fullname: true
       },
       email:{
         required: true, email: true
@@ -23,7 +49,8 @@ $(document).ready( function() {
         minlength: "A matrícula deve conter, no mínimo, 5 números"
       },
       nome:{
-        required: "O nome é obrigatório"
+        required: "O nome é obrigatório",
+        fullname: "O nome deve ser completo. Exemplo: Fulano Alves" 
       },
       email:{
         required: "O email é obrigatório",
