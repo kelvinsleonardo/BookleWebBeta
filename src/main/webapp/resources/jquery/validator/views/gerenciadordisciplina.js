@@ -13,7 +13,7 @@ $("#add_nome_disciplina,#edit_nome_disciplina").bind('keyup', function (e) {
     
 
     
-// Validação do Formulário adicionar curso pelo Modal    
+// Validação do Formulário adicionar disciplina pelo Modal    
 $("#formdisciplina_adicionar").validate({
     // Define as regras
     rules:{

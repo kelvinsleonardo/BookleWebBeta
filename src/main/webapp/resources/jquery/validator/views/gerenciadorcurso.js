@@ -1,6 +1,6 @@
 $(document).ready( function() {
 
-// Verificando e convertendo UPPERCASE do campo
+// Verificando e convertendo para UPPERCASE do campo
 $("#add_nome_curso,#edit_nome_curso").bind('keyup', function (e) {
     if (e.which >= 97 && e.which <= 122) {
         var newKey = e.which - 32;

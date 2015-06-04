@@ -5,13 +5,24 @@ $(function(){
      * da tabela.
      */
     $('button[name=excluirlivrodadisciplina]').click(function(){
-        var isbn = $(this).closest("tr").find("td[name=tb_isbn]").html(); // Pegando codigo da disciplina da tabela
-        var codDisciplina = $(this).closest("tr").find("td[name=tb_cod_disciplina]").html(); // Pegando codigo da disciplina da tabela 
-        var nomeDoLivro = $(this).closest("tr").find("td[name=tb_titulo]").html(); // Pegando nome da disciplina da tabela 
-        var nomeDaDisciplina = $(this).closest("tr").find("td[name=tb_nome_disciplina]").html(); // Pegando nome da disciplina da tabela 
-        var $this = $(this); // Pegando this do excluir a linha do livro
-        alertify.confirm("EXCLUSÃO DO LIVRO "+nomeDoLivro, "Você tem certeza que deseja remover o livro <strong>"+nomeDoLivro+"</strong> da disciplina <strong>"+nomeDaDisciplina+"</strong> ?", "", "").
-                    autoCancel(10).set('onok', function(closeEvent){ 
+        // Pegando isbn da disciplina da tabela
+        var isbn = $(this).closest("tr").find("td[name=tb_isbn]").html();
+        // Pegando codigo da disciplina da tabela 
+        var codDisciplina = $(this).closest("tr").find("td[name=tb_cod_disciplina]").html(); 
+        // Pegando nome do livro na tabela 
+        var nomeDoLivro = $(this).closest("tr").find("td[name=tb_titulo]").html(); 
+        // Pegando nome da disciplina da tabela 
+        var nomeDaDisciplina = $(this).closest("tr").find("td[name=tb_nome_disciplina]").html(); 
+        // Pegando this do excluir a linha do livro
+        var $this = $(this); 
+        
+        alertify.confirm(
+                        "EXCLUSÃO DO LIVRO "
+                        +nomeDoLivro, 
+                        "Você tem certeza que deseja remover o livro <strong>"
+                        +nomeDoLivro+"</strong> da disciplina <strong>"
+                        +nomeDaDisciplina+"</strong> ?", "", "").
+                        autoCancel(10).set('onok', function(closeEvent){ 
             if (closeEvent) {
                 $.ajax({
                         type: 'POST',
@@ -26,12 +37,13 @@ $(function(){
                             }
                         },
                         success: function(response){
-                            $this.closest('tr').remove(); //Remove linha do curso excluido 
-                            alertify.success("Opa! Livro "+ nomeDoLivro+" foi removido da disciplina "+nomeDaDisciplina+" com sucesso!"); // Mostra mensagem de excluido
+                            //Remove linha do curso excluido 
+                            $this.closest('tr').remove();
+                            // Mostra mensagem de excluido
+                            alertify.success("Opa! Livro "+ nomeDoLivro+" foi removido da disciplina "+nomeDaDisciplina+" com sucesso!"); 
                         }
                     });
             }// Fim IF   
         } );   
 	})
-    
 });

@@ -5,6 +5,8 @@
 <!-- Spring Famework -->
 <%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> 
+    
+<link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400|Open+Sans' rel='stylesheet' type='text/css'>
    
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -16,7 +18,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">BOOKLEWEB</a>
+      <a class="navbar-brand logo" href="#">BOOKLEWEB</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -68,12 +70,11 @@
       <ul class="nav navbar-nav navbar-right">
           <li class="dropdown"> 
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-			<div class="form-inline" >
+			<div class="form-inline" id="avatar_menu">
 			  <div class="form-group form-group-sm">
 			    <img src="<c:url value="/resources/img/avatar.png" />" class="img-circle img-responsive" alt="Cinque Terre">
 			  </div>
 			  ${nome_usuario_sessao} 
-			
                  <span class="caret"></span>
            </div>            
                           
@@ -81,8 +82,7 @@
            
           </a>
           <ul class="dropdown-menu" role="menu">
-            <li><a data-toggle="modal" data-target="#modalNovaSenhaMenu" name="novasenha">
-                <span class="glyphicon glyphicon-lock"></span> 
+            <li><a data-toggle="modal" data-target="#modalNovaSenhaMenu" name="novasenha"> 
                 Alterar Senha
                 </a>
               </li>

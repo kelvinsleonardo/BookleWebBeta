@@ -1,42 +1,63 @@
-.logo{
-    color: rgb(255, 255, 255);
-    font-size: 35px;
-    text-shadow: rgb(122, 122, 122) 4px 3px 0px;
-    font-family: 'Anton', sans-serif;
+/* Padrão de estilo 
+* Import das fonts em:
+* - Menu Login (Public)
+* - Menu Sistema Interno (Private)
+*/
+*{
+    font-family: 'Roboto', sans-serif;
 }
 
+/* Logo Navbar Interno Sistema */
+.logo{
+    color: #FFF;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Logo Navbar Pagina Login*/
+.logo-login{
+    color: #FFF;
+    font-size: 20px;
+    padding-top: 25px;
+    font-weight: bold;
+}
+
+/* Mensagens de Erro 403 e 404 */
 .error-http{
     font-family: 'Oswald', sans-serif;
     text-align: center;
     margin-top:100px;
 }
 
+/* Imagem 403 e 404 Mensagem de Erro */
 .img-error-header{
     font-size:150px;
-    color: #337AB7;
+    color: #3A5795;
     text-shadow:#000 5px -1px 2px, #000 -1px 1px 2px, #000 1px 1px 2px, #000 -1px -1px 2px
 }
 
+/* Linha da Div */
 .row {
   margin-bottom: 0px;
 }
 
+/* Background da Tela Login */
 .background-login{
 	background-color: #FFFFFF; 
 }
 
-
+/* Background do Sistema */
 header{
 	background-color: #FFFFFF; 
- /*padding-top: 10px;
- padding-bottom: 0px;*/
 }
 
+/* Div Main*/
 div[role="main"]{
     position:relative;
     height: 100%;
-    padding:0px 0 0px 0; /* Header height and footer height */
-    margin:0 auto 0 auto; /* Center content */
+    padding:0px 0 0px 0;
+    margin:0 auto 0 auto;
     -moz-box-sizing:border-box;
     -webkit-box-sizing:border-box;
     -o-box-sizing:border-box;
@@ -44,6 +65,7 @@ div[role="main"]{
     box-sizing:border-box;
 }
 
+/* Rodapé */
 footer {
     position: absolute;
     bottom: 0px;
@@ -53,12 +75,18 @@ footer {
     z-index: 99;
     height:30px;
     left: 0px;
-    padding: 10px; /* Styling */
-    border-top: 2px solid #000000; /* Styling */
-    background-color: #ffffff; /* Styling */
-    text-align: center; /* Styling */
+    padding: 10px; 
+    border-top: 2px solid #3A5795; 
+    background-color: #ffffff; 
+    text-align: center; 
 }
 
+/* Navbar */
+.navbar-default{
+    background-color: #3A5795;
+}
+
+/* DropDown da Navbar */
 .dropdown-submenu {
     position: relative;
 }
@@ -113,30 +141,23 @@ footer {
 input.error{
     border:1px solid #FF0000 !important; 
 }
+
 label.error,div.error{
-    float: left; 
-    font:10px Tahoma,sans-serif;
+    float: left;
+    padding-top: 3px;
+    font-family: 'Roboto',sans-serif;
     color:#B94A48;;
     margin-left:5px;
     display:inline;
     font-size: 12px;    
 }
 
+label.error::after {	
+content: ".";
+width: 1px;
+}   
 
-/* FRONT END */
-/*
- * Alteração do MENU NavBar
- */
-.navbar-default{
-    background-color: #3a5795;
-}
 
-/*
- * Alteração das Titulos
- */
-h1, h2, h3, h4, h5, h6, label{
-    font-family: 'Roboto', sans-serif;
-}
 
 /*
  * Alteração dos Botões
@@ -162,10 +183,12 @@ h1, h2, h3, h4, h5, h6, label{
     background-color: #3A5795;
 }
 
+/* Botão maior para Login Cadastro */
 .btn-login{
     width: 200px;
 }
 
+/* Botão para Login da Navbar */
 .btn-login-menu{
     background-color: #3A5795;
     color: #FFF;
@@ -174,14 +197,12 @@ h1, h2, h3, h4, h5, h6, label{
     width: 100px;
 }
 
-
 /*
  * Alteração Tabela
  */
 .table-info{
     background-color: #3A5795;
     color: #FFF;
-      
 }
 
 /*
@@ -195,9 +216,9 @@ h1, h2, h3, h4, h5, h6, label{
    color: #111111;  
 }
 a, a:hover{
-  color: #3A5795;  
+  color: #3A5795;
+  cursor: pointer;
 }
-
 
 
 /*
@@ -208,7 +229,8 @@ a, a:hover{
     background-color: #3A5795;
 }
 
-.form-inline{
+/* Removendo espaçamento na Navbar pelo Avatar */
+#avatar_menu{
     height: 20px;
 }
 

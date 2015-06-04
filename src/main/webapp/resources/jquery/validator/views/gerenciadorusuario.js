@@ -16,7 +16,7 @@ $("#add_nome,#edit_nome").bind('keyup', function (e) {
  * Novo Método para validação de Full Name(Nome Completo)
  * @author Kelvin Santiago
  */
-jQuery.validator.addMethod( "fullname", function(value, element) {
+ jQuery.validator.addMethod( "fullname", function(value, element) {
     
     if (/\w+\s+\w+/.test(value)) {
         return true;

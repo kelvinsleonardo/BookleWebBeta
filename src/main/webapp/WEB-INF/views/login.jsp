@@ -2,20 +2,14 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!-- Import JSTL-->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//PT" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login BookleWeb</title>
 <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css" />" />
-<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/estilo.css" />" />
-
-<!-- Fontes do Google -->
-<link href='http://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400|Open+Sans' rel='stylesheet' type='text/css'>    
+<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/estilo.css" />" />   
     
 <!-- Estilos do Alertfy -->
 <link rel="stylesheet" href="<c:url value="/resources/jquery/alertifyjs/alertify.min.css"/>" />
@@ -44,6 +38,12 @@
             </script>
         </c:if>
         
+        <c:if test="${not empty param.sucesso}">
+            <script>
+                alertify.success("${param.sucesso}");
+            </script>
+        </c:if>
+        
         <c:if test="${not empty sucesso}">
             <script>
                 alertify.success("${sucesso}");
@@ -64,27 +64,27 @@
                         Cadastre-se Agora
                     </h3>
                     <form class="form form-signup" role="form">
-                    <!-- Input 1 -->
+                    <!-- Campo Matrícula -->
                      <div class="form-group">
                        <input type="text" class="form-control mat-input" placeholder="Matrícula" name="matricula"/>  
                      </div>
 
-                     <!-- Input 2 -->
+                     <!-- Campo Nome Completo -->
                      <div class="form-group">
-                       <input type="text" class="form-control mat-input" placeholder="Nome completo" name="nome"/>
+                       <input type="text" class="form-control mat-input" placeholder="Nome completo" name="nome" id="add_nome"/>
                      </div>
 
-                     <!-- Input 3 -->
+                     <!-- Campo Email -->
                      <div class="form-group">
                        <input type="text" class="form-control mat-input" placeholder="Email" name="email"/>
                      </div>
 
-                     <!-- Input 4 -->
+                     <!-- Campo Senha -->
                      <div class="form-group">
                        <input type="password" class="form-control mat-input" placeholder="Senha" name="senha"/>
                        <input type="hidden" name="permissao"/>
                      </div>
-
+                     <br>        
                      <button type="submit" class="btn btn-success btn-login center-block">Abrir Conta</button>
                      <a data-toggle="modal" data-target="#myModal"><h5 class="text-center">Esqueceu sua senha?</h5></a>    
                 </form>

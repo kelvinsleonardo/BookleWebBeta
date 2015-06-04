@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import br.com.bookleweb.dao.CursoDAO;
 import br.com.bookleweb.dao.DisciplinaDAO;
 import br.com.bookleweb.dao.LivroDAO;
-import br.com.bookleweb.dao.RelationShipDisciplinaLivroDAO;
+import br.com.bookleweb.dao.RelacionamentoDisciplinaLivroDAO;
 import br.com.bookleweb.modelo.Curso;
 import br.com.bookleweb.modelo.Disciplina;
 
@@ -27,7 +27,7 @@ public class LivroSugeridoController {
 	private DisciplinaDAO disciplinaDAO;
 	
 	@Autowired
-	public LivroSugeridoController(DisciplinaDAO disciplinaDAO, LivroDAO livroDAO, CursoDAO cursoDAO, RelationShipDisciplinaLivroDAO relationShipDAO) {
+	public LivroSugeridoController(DisciplinaDAO disciplinaDAO, LivroDAO livroDAO, CursoDAO cursoDAO, RelacionamentoDisciplinaLivroDAO relationShipDAO) {
 		this.disciplinaDAO = disciplinaDAO;
 		this.cursoDAO = cursoDAO;
 	}

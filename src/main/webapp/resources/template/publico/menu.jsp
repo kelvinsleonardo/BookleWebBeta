@@ -1,5 +1,6 @@
 <!-- Import java-->
 <%@ page contentType="text/html; charset=UTF-8" %>
+<link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400|Open+Sans' rel='stylesheet' type='text/css'>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -10,7 +11,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand logos" href="#">BOOKLEWEB</a>
+      <a class="navbar-brand logo-login" href="#">BOOKLEWEB</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

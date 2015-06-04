@@ -1,29 +1,44 @@
 $(function(){
+    
 	/* EVENTO CLICAR NO BOTAO "EDITAR" CURSO
      * Após clicar no botão "Editar" da tabela, ele pega os campos e preenche uma tela modal com os dados 
      * daquela linha escolhida.
      */
     $('button[name=editarcurso]').click(function(){
-        var codigoDoCurso = $(this).closest("tr").find("td[name=tb_cod_curso]").html(); // Pegando codigo do curso da tabela 
-        var nomeDoCurso = $(this).closest("tr").find("td[name=tb_nome_curso]").html(); // Pegando nome do curso da tabela
-        var descDoCurso = $(this).closest("tr").find("td[name=tb_descricao_curso]").html(); // Pegando descricao do curso da tabela
-        $('#edit_cod_curso').val(codigoDoCurso); // Setando codigo do curso da tabela para modal editar curso
-        $('#edit_nome_curso').val(nomeDoCurso); // Setando nome do curso da tabela para modal editar curso
-        $('#edit_desc_curso').val(descDoCurso); // Setando descricao do curso da tabela para modal editar curso
+        // Pegando Código do curso da tabela.
+        var codigoDoCurso = $(this).closest("tr").find("td[name=tb_cod_curso]").html();
+        // Pegando Nome do curso da tabela.
+        var nomeDoCurso = $(this).closest("tr").find("td[name=tb_nome_curso]").html(); 
+        // Pegando Descrição do curso da tabela.
+        var descDoCurso = $(this).closest("tr").find("td[name=tb_descricao_curso]").html(); 
+        // Setando Código do curso no Modal
+        $('#edit_cod_curso').val(codigoDoCurso);
+        // Setando Nome do curso no Modal
+        $('#edit_nome_curso').val(nomeDoCurso);
+        // Setando Descrição do curso no Modal
+        $('#edit_desc_curso').val(descDoCurso); 
 	})
     
     /* EVENTO CLICAR NO BOTÃO "EXCLUIR" CURSO
-     * Após clicar no botão "Excluir" da tabela, é mostrado uma tela de confirmação "alert", caso true é chamado o servlet
-     * para excluir aquele ID selecionado na tabela, após a exclusão do dado é mostrado uma tela de sucesso, e remove a linha
-     * da tabela.
+     * Após clicar no botão "Excluir" da tabela, é mostrado uma tela de confirmação "alert", caso true é chamado o servlet.
+     * Para excluir aquele ID selecionado na tabela, após a exclusão do dado é mostrado uma tela de sucesso, e remove a linha da tabela pelo ajax.
      */
     $('button[name=excluircurso]').click(function(){
-        var codigoDoCurso = $(this).closest("tr").find("td[name=tb_cod_curso]").html(); // Pegando codigo do curso da tabela 
-        var nomeDoCurso = $(this).closest("tr").find("td[name=tb_nome_curso]").html(); // Pegando nome do curso da tabela 
-        var $this = $(this); // Pegando this do excluir curso
-        alertify.confirm("EXCLUSÃO DO CURSO "+nomeDoCurso, "Você tem certeza que deseja remover o curso <strong>"+nomeDoCurso+"</strong> ?", "", "").
-                    autoCancel(10).set('onok', function(closeEvent){ 
-            if (closeEvent) {
+        // Pegando codigo do curso da tabela 
+        var codigoDoCurso = $(this).closest("tr").find("td[name=tb_cod_curso]").html();
+        // Pegando nome do curso da tabela 
+        var nomeDoCurso = $(this).closest("tr").find("td[name=tb_nome_curso]").html(); 
+        // Pegando this do excluir curso
+        var $this = $(this); 
+        alertify.confirm(
+                        "EXCLUSÃO DO CURSO "
+                        +nomeDoCurso, 
+                        "Você tem certeza que deseja remover o curso <strong>"
+                        +nomeDoCurso+"
+                        </strong> ?", "", "").
+                        autoCancel(10).set('onok', function(closeEvent){ 
+            if (closeEvent){
+                // Iniciando Ajax para chamar Servlet que Remove Curso
                 $.ajax({
                         type: 'POST',
                         url: 'removecurso',
@@ -37,16 +52,18 @@ $(function(){
                             }
                         },
                         success: function(response){
-                            $this.closest('tr').remove(); //Remove linha do curso excluido 
-                            alertify.success("Opa! Curso "+ nomeDoCurso+" removido com sucesso!"); // Mostra mensagem de excluido
+                            //Remove linha do curso excluido na tabela.
+                            $this.closest('tr').remove(); 
+                            // Mostra mensagem de excluído pelo Alertify.
+                            alertify.success("Opa! Curso "+ nomeDoCurso+" removido com sucesso!"); 
                         }
                     });
             }// Fim IF   
         } );   
 	})
     
-    /* EVENTO CLICAR NO RADIO "CODIGO" CURSO DE FILTRO DE PESQUISA
-     * Após clicar no radio "CODIGO" é mostrado um input para inserir os dados e oculta o input nome.
+    /* Evento ao clicar no Radio Button Código da Busca
+     * Após clicar no radio "Código" é mostrado um input para inserir os dados e oculta o input Nome.
      */
     $('#op_pesq_cod').on('change',function(){
         $('#search_nome_curso').hide();
@@ -55,8 +72,8 @@ $(function(){
         
     })
     
-        /* EVENTO CLICAR NO RADIO "NOME" CURSO DE FILTRO DE PESQUISA
-     * Após clicar no radio "NOME" é mostrado um input para inserir os dados e oculta o input codigo.
+    /* Evento ao clicar no Radio Button Nome da Busca
+     * Após clicar no radio "Nome" é mostrado um input para inserir os dados e oculta o input Código.
      */
     $('#op_pesq_nome').on('change',function(){
         $('#search_cod_curso').hide();

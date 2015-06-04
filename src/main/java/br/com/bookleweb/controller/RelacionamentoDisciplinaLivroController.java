@@ -10,20 +10,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.bookleweb.dao.DisciplinaDAO;
 import br.com.bookleweb.dao.LivroDAO;
-import br.com.bookleweb.dao.RelationShipDisciplinaLivroDAO;
+import br.com.bookleweb.dao.RelacionamentoDisciplinaLivroDAO;
 import br.com.bookleweb.modelo.Disciplina;
 import br.com.bookleweb.modelo.Livro;
 
 
 @Controller
-public class RelationshipDisciplinaLivroController {
+public class RelacionamentoDisciplinaLivroController {
 	
-	private RelationShipDisciplinaLivroDAO relationShipDAO;
+	private RelacionamentoDisciplinaLivroDAO relationShipDAO;
 	private LivroDAO livroDAO;
 	private DisciplinaDAO disciplinaDAO;
 	
 	@Autowired
-	public RelationshipDisciplinaLivroController(RelationShipDisciplinaLivroDAO relationShipDAO, LivroDAO livroDAO, DisciplinaDAO disciplinaDAO) {
+	public RelacionamentoDisciplinaLivroController(RelacionamentoDisciplinaLivroDAO relationShipDAO, LivroDAO livroDAO, DisciplinaDAO disciplinaDAO) {
 		this.relationShipDAO = relationShipDAO;
 		this.livroDAO = livroDAO;
 		this.disciplinaDAO = disciplinaDAO;

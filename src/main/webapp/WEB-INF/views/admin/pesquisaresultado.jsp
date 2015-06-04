@@ -74,17 +74,17 @@
                 <c:forEach items="${listalivros}" var="disciplina" >
                     <div class="panel panel-default ">
                       <div class="panel-heading">
-                        <h3 class="text-center">
+                        <h4 class="text-center">
                             <strong>${disciplina.nome_disciplina}</strong>
-                        </h3>
+                        </h4>
                         <h6 class="text-center">
                             Código da Disciplina: ${disciplina.cod_disciplina}  
                       </div>
                     <c:forEach items="${disciplina.livros}" var="livro" >
                       <div class="panel-body">
                            <h4><strong>${livro.titulo} - ${livro.autor}</strong></h4>
-                            <h5><strong>ISBN: </strong>${livro.isbn}
-                            <strong>Local: </strong>${livro.local}</h5>
+                            <h5><strong>ISBN: </strong>${livro.isbn}</h5>
+                            <h5><strong>Local: </strong>${livro.local}</h5>
                             <h5><strong>Qnt. Exemplares: </strong>${livro.exemplares} </h5>
                             <h5><strong>Status:</strong> ${livro.status}</h5>
                       </div>

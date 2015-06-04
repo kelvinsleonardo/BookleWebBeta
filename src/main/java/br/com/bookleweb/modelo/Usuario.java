@@ -20,7 +20,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "tb_usuario")
 public class Usuario {
 	@Id
-	@NotNull(message="{usuario.matricula.vazio}")
+	@NotNull
 	private Integer matricula;
 	
 	private String nome;

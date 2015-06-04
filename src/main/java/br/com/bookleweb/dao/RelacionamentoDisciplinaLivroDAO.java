@@ -13,7 +13,7 @@ import br.com.bookleweb.modelo.Livro;
 import br.com.bookleweb.util.DataFind;
 
 @Repository
-public class RelationShipDisciplinaLivroDAO {
+public class RelacionamentoDisciplinaLivroDAO {
 
 	public Boolean adiciona(Livro livro, Disciplina disciplina){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();

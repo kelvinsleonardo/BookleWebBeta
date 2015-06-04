@@ -25,7 +25,7 @@ public class RelatorioController {
 	
 	@RequestMapping(value = "/relatoriocurso")
 	public void geraRelatorioCurso(HttpServletResponse response) throws JRException, IOException{
-		// Pegando conex„o do entityManager e convertendo para Connection
+		// Pegando conex√£o do entityManager e convertendo para Connection
 		Connection conn = FabricaEntityManager.getConnectionDoEntityManager();
 		// Compilando relatorio
 	    JasperReport jasperReport = JasperCompileManager.compileReport("src/main/java/br/com/bookleweb/relatorios/RelatorioCursos.jrxml");           
@@ -38,7 +38,7 @@ public class RelatorioController {
 	
 	@RequestMapping(value = "/relatoriodisciplina")
 	public void geraRelatorioDisciplina(HttpServletResponse response) throws JRException, IOException{
-		// Pegando conex„o do entityManager e convertendo para Connection
+		// Pegando conex√£o do entityManager e convertendo para Connection
 		Connection conn = FabricaEntityManager.getConnectionDoEntityManager();
 		// Compilando relatorio
 	    JasperReport jasperReport = JasperCompileManager.compileReport("src/main/java/br/com/bookleweb/relatorios/RelatorioDisciplinas.jrxml");           
@@ -51,7 +51,7 @@ public class RelatorioController {
 	
 	@RequestMapping(value = "/relatoriolivro")
 	public void geraRelatorioLivro(HttpServletResponse response) throws JRException, IOException{
-		// Pegando conex„o do entityManager e convertendo para Connection
+		// Pegando conex√£o do entityManager e convertendo para Connection
 		Connection conn = FabricaEntityManager.getConnectionDoEntityManager();
 		// Compilando relatorio
 	    JasperReport jasperReport = JasperCompileManager.compileReport("src/main/java/br/com/bookleweb/relatorios/RelatorioLivros.jrxml");           
@@ -64,7 +64,7 @@ public class RelatorioController {
 	
 	@RequestMapping(value = "/relatoriousuario")
 	public void geraRelatorioUsuario(HttpServletResponse response) throws JRException, IOException{
-		// Pegando conex„o do entityManager e convertendo para Connection
+		// Pegando conex√£o do entityManager e convertendo para Connection
 		Connection conn = FabricaEntityManager.getConnectionDoEntityManager();
 		// Compilando relatorio
 	    JasperReport jasperReport = JasperCompileManager.compileReport("src/main/java/br/com/bookleweb/relatorios/RelatorioUsuarios.jrxml");           

@@ -62,7 +62,8 @@
 
         <!-- BREADCRUMB -->
         <ul class="breadcrumb">
-          <li class="active">Home</li>
+           <li><a href="admin">Home</a></li>
+           <li class="active">Pesquisar</li>
         </ul>
         
         <!-- CONTEÚDO -->

@@ -10,11 +10,19 @@ import org.hibernate.Session;
 import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
 import org.hibernate.engine.spi.SessionFactoryImplementor;
 
+/** Classe para Factory do Entity Manager do Framework JPA.
+ *  @author Kélvin Santiago
+ */
+
 public class FabricaEntityManager {
 	
 	private static EntityManagerFactory fabrica = null;
 	private static Connection conn = null;
 	
+	/**
+	 * Cria o Entity Manager caso não esteja criado.
+	 * @return EntityManagerFactory - Fabrica do Entity Manager
+	 */
 	public static EntityManagerFactory getEntityManagerFactory() {
 		if(fabrica == null){
 			fabrica = Persistence.createEntityManagerFactory("biblioteca");
@@ -22,6 +30,10 @@ public class FabricaEntityManager {
 		return fabrica; 
 	}
 	
+	/**
+	 * Retorna uma conexão do tipo Connection, através do EntityManager
+	 * @return Connection - Conexão do Entity Manager.
+	 */
 	public static Connection getConnectionDoEntityManager(){
 		try{
 			EntityManager em = FabricaEntityManager.getEntityManagerFactory().createEntityManager();

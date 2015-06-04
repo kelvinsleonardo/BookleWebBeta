@@ -4,19 +4,27 @@ $(function(){
      * daquela linha escolhida.
      */
     $('button[name=editarusuario]').click(function(){
+        // Pegando nome do grupo - Role
         var nomeGrupoPermissao = $(this).closest("tr").find("td[name=tb_permissao]").html();
+        // Pegando Codigo da Permissão
         var codigoPermissao = $(this).closest("tr").find("td[name=tb_permissao]").attr('id');
-        //console.log(codigoPermissao);
-        var matricula = $(this).closest("tr").find("td[name=tb_matricula]").html(); // Pegando codigo do curso da tabela 
-        var nome = $(this).closest("tr").find("td[name=tb_nome]").html(); // Pegando nome do curso da tabela
-        var email = $(this).closest("tr").find("td[name=tb_email]").html(); // Pegando descricao do curso da tabela
-        var senha = $(this).closest("tr").find("td[name=tb_senha]").html(); // Pegando descricao do curso da tabela
-        $('#edit_permissao').val(codigoPermissao); // Setando Curso referente a disciplina da tabela.
-        $('#edit_matricula').val(matricula); // Setando codigo do curso da tabela para modal editar curso
-        $('#edit_nome').val(nome); // Setando nome do curso da tabela para modal editar curso
-        $('#edit_email').val(email); // Setando descricao do curso da tabela para modal editar curso
+        // Pegando matricula
+        var matricula = $(this).closest("tr").find("td[name=tb_matricula]").html();
+        // Pegando Nome
+        var nome = $(this).closest("tr").find("td[name=tb_nome]").html(); 
+        // Pegando Email
+        var email = $(this).closest("tr").find("td[name=tb_email]").html(); 
+        
+        // Setando atributos nos input do Modal
+        $('#edit_permissao').val(codigoPermissao); 
+        $('#edit_matricula').val(matricula); 
+        $('#edit_nome').val(nome); 
+        $('#edit_email').val(email); 
 	})
     
+    /* Ao clicar em nova senha é inserido os dados no modal de acordo com a linha selecionada
+     * para editar a senha.
+     */
     $('button[name=novasenha]').click(function(){
         var matricula = $(this).closest("tr").find("td[name=tb_matricula]").html();
         var nome = $(this).closest("tr").find("td[name=tb_nome]").html();
@@ -24,17 +32,22 @@ $(function(){
         $('#novasenha_nome').val(nome);
 	})
     
-    /* EVENTO CLICAR NO BOTÃO "EXCLUIR" CURSO
-     * Após clicar no botão "Excluir" da tabela, é mostrado uma tela de confirmação "alert", caso true é chamado o servlet
-     * para excluir aquele ID selecionado na tabela, após a exclusão do dado é mostrado uma tela de sucesso, e remove a linha
-     * da tabela.
+    /* EVENTO CLICAR NO BOTÃO "EXCLUIR" USUARIO
+     * Após clicar no botão "Excluir" da tabela, é mostrado uma tela de confirmação "alert", caso true é chamado o servlet.
+     * Para excluir aquela matricula selecionada na tabela, após a exclusão do dado é mostrado uma tela de sucesso, e remove a linha da tabela.
      */
     $('button[name=excluirusuario]').click(function(){
-        var matricula = $(this).closest("tr").find("td[name=tb_matricula]").html(); // Pegando codigo da disciplina da tabela 
-        var nome = $(this).closest("tr").find("td[name=tb_nome]").html(); // Pegando nome da disciplina da tabela 
-        var $this = $(this); // Pegando this do excluir a linah da disciplina
-        alertify.confirm("EXCLUSÃO DO USUARIO "+nome, "Você tem certeza que deseja remover o usuario <strong>"+nome+"</strong> ?", "", "").
-                    autoCancel(10).set('onok', function(closeEvent){ 
+        // Pegando matricula a excluir
+        var matricula = $(this).closest("tr").find("td[name=tb_matricula]").html();
+        // Pegando nome dessa matricula
+        var nome = $(this).closest("tr").find("td[name=tb_nome]").html(); 
+        // Pegando this do excluir a linha do usuario
+        var $this = $(this); 
+        alertify.confirm(
+                        "EXCLUSÃO DO USUARIO "
+                        +nome, "Você tem certeza que deseja remover o usuario <strong>"
+                        +nome+"</strong> ?", "", "").
+                        autoCancel(10).set('onok', function(closeEvent){ 
             if (closeEvent) {
                 $.ajax({
                         type: 'POST',
@@ -49,16 +62,18 @@ $(function(){
                             }
                         },
                         success: function(response){
-                            $this.closest('tr').remove(); //Remove linha do curso excluido 
-                            alertify.success("Opa! Usuario "+ nome+" removido com sucesso!"); // Mostra mensagem de excluido
+                            //Remove linha do usuario excluido
+                            $this.closest('tr').remove();
+                            // Mostra mensagem de excluido
+                            alertify.success("Opa! Usuario "+ nome+" removido com sucesso!"); 
                         }
                     });
             }// Fim IF   
         } );   
 	})
     
-    /* EVENTO CLICAR NO RADIO "CODIGO" CURSO DE FILTRO DE PESQUISA
-     * Após clicar no radio "CODIGO" é mostrado um input para inserir os dados e oculta o input nome.
+    /* EVENTO CLICAR NO RADIO "MATRICULA" CURSO DE FILTRO DE PESQUISA
+     * Após clicar no radio "MATRICULA" é mostrado um input para inserir os dados e oculta o input nome.
      */
     $('#op_pesq_matricula').on('change',function(){
         $('#search_nome').hide();
@@ -75,5 +90,4 @@ $(function(){
         $('#search_matricula').val("");
         $('#search_nome').show();
     })
-    
 });
