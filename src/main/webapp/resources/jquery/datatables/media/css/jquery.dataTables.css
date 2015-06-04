@@ -444,7 +444,7 @@ table.dataTable td {
 }
 .dataTables_wrapper.no-footer div.dataTables_scrollHead table,
 .dataTables_wrapper.no-footer div.dataTables_scrollBody table {
-  border-bottom: hide !important; // Desativando
+  <!--border-bottom: hidden !important;  Desativando -->
 }
 .dataTables_wrapper:after {
   visibility: hidden;

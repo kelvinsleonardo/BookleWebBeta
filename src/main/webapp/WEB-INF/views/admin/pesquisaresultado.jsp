@@ -96,14 +96,14 @@
                     
                     <div class="row">    
                         <div class="col-md-10">
-                             <a href="pesquisa" class="btn btn-info btn-sm">
+                             <a href="pesquisa" class="btn btn-primary btn-sm">
                                     <span class="glyphicon glyphicon-backward"></span>&nbsp;
                                     <strong>Voltar a Pesquisa</strong>
                              </a>
                        </div>
                         
                         <div class="col-md-2">
-                            <a class="btn btn-info btn-sm" href="javascript:window.print()">
+                            <a class="btn btn-primary btn-sm" href="javascript:window.print()">
                                     <span class="glyphicon glyphicon-print"></span>&nbsp;
                                     <strong>Imprimir</strong>
                              </a>

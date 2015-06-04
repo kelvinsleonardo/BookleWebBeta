@@ -138,7 +138,7 @@
                     
                     <table id="tabelalivro" class="table table-responsive table-bordered table-hover table-striped">
                         <thead>
-                            <tr class="info">
+                            <tr class="table-info">
                                 <th>ISBN</th>
                                 <th>Titulo</th>
                                 <th>Autor</th>
@@ -173,15 +173,15 @@
 
                                         <td>
                                             <button type="submit" class="btn btn-primary btn-sm"data-toggle="modal" data-target="#modalEditaLivro" name="editarlivro">
-                                                <span class="glyphicon glyphicon-edit"></span>
-                                                Editar
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                                <strong> Editar</strong>
                                             </button>
                                         </td> 
 
                                         <td>
                                             <button type="submit" class="btn btn-danger btn-sm" name="excluirlivro">
                                                 <span class="glyphicon glyphicon-trash"></span>
-                                                Excluir
+                                                <strong>Excluir</strong>
                                             </button>
                                         </td>      
                                     </tr> 
@@ -192,7 +192,9 @@
                 
                     <div class="col-md-offset-9">
                         <br>
-                        <button type="submit" class="btn btn-info btn-sm form-control" data-toggle="modal" data-target="#modalAdicionaLivro"/><span class="glyphicon glyphicon-plus-sign"></span> &nbsp;Adicionar Livro
+                        <button type="submit" class="btn btn-primary btn-sm form-control" data-toggle="modal" data-target="#modalAdicionaLivro"/>
+                        <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
+                        <strong>Adicionar Novo Livro</strong>
                         </button>
                     </div>
                 

@@ -22,13 +22,13 @@
                 </div>
             <div class="col-md-offset-7">
     
-                   <button type="submit" class="btn btn-sm btn-info">
+                   <button type="submit" class="btn btn-sm btn-success">
                        <span class="glyphicon glyphicon-ok"></span>
                        <strong>Salvar Alterações</strong>
                     </button>
  
 
-                   <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">
+                   <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">
                        <span class="glyphicon glyphicon-remove"></span>
                        <strong>Cancelar</strong>
                     </button>

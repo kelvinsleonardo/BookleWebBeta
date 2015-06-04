@@ -127,4 +127,30 @@ jQuery.validator.addMethod( "fullname", function(value, element) {
       }
     }
   });
+    
+ $("#formusuario_alterasenha_menu").validate({
+    // Define as regras
+    rules:{
+      senha:{
+        required: true, minlength: 6
+      },
+      senhaconfirmacao:{
+        equalTo: "#novasenha_senha_menu",   
+        required: true, minlength: 6
+      }
+    },
+    // Define as mensagens de erro para cada regra
+    messages:{
+      senha:{
+        required: "A senha é obrigatória",
+        minlength: "A senha deve conter, no mínimo, 6 caracteres"
+      },
+      senhaconfirmacao:{
+        required: "A senha é obrigatória",
+        minlength: "A senha deve conter, no mínimo, 6 caracteres",
+        equalTo: "A senha de confirmação não está igual a nova senha"  
+      }
+    }
+  });    
+    
 });

@@ -144,7 +144,7 @@
                     
                     <table id="tabelacurso" class="table table-responsive table-bordered table-hover table-striped">
                         <thead>
-                            <tr class="info">
+                            <tr class="table-info">
                                 <th>Código</th>
                                 <th>Nome</th>
                                 <th>Editar</th>
@@ -179,7 +179,7 @@
                 
                     <div class="col-md-offset-9">
                         <br>
-                        <button type="submit" class="btn btn-info btn-sm form-control" data-toggle="modal" data-target="#modalAdicionaCurso"/><span class="glyphicon glyphicon-plus-sign"></span> &nbsp;
+                        <button type="submit" class="btn btn-primary btn-sm form-control" data-toggle="modal" data-target="#modalAdicionaCurso"/><span class="glyphicon glyphicon-plus-sign"></span> &nbsp;
                         <strong>Adicionar Novo Curso</strong>
                         </button>
                     </div>

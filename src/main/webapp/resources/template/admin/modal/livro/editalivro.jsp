@@ -45,12 +45,18 @@
                     </div>
                     
                 </div>
-            <div class="col-md-offset-9">
+            <div class="col-md-offset-7">
     
-                   <button type="submit" class="btn btn-sm btn-success" >Editar</button>
+                   <button type="submit" class="btn btn-sm btn-success" >
+                    <span class="glyphicon glyphicon-ok"></span>
+                       <strong>Salvar Alterações</strong>
+                   </button>
  
 
-                   <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Cancelar</button>
+                   <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">
+                       <span class="glyphicon glyphicon-remove"></span>
+                       <strong>Cancelar</strong>
+                    </button>
 
             </div>
         </form>

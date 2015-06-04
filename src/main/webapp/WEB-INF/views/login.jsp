@@ -15,6 +15,7 @@
 
 <!-- Fontes do Google -->
 <link href='http://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400|Open+Sans' rel='stylesheet' type='text/css'>    
     
 <!-- Estilos do Alertfy -->
 <link rel="stylesheet" href="<c:url value="/resources/jquery/alertifyjs/alertify.min.css"/>" />
@@ -56,53 +57,38 @@
 
         <!-- CONTEÚDO -->
         <div class="row">
-            <div role="main">
                 <div class="col-md-4 col-md-offset-4">
 		          <form id="formlogin_cadastrar" action="<c:url value='/adicionausuariologin' />" method="POST">
                     <div class="panel-body">
-                    <h3 class="text-center">
-                        CADASTRE-SE AGORA
+                    <h3 class="text-center signup">
+                        Cadastre-se Agora
                     </h3>
                     <form class="form form-signup" role="form">
-                      <div class="form-group">  
-                     <div class="input-group">
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-certificate"></span>
-                            </span>
-                            <input type="text" class="form-control" placeholder="Matrícula" name="matricula"/>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-user"></span>
-                            </span>
-                            <input type="text" class="form-control" placeholder="Nome completo" name="nome" id="add_nome"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                         <span class="input-group-addon">
-                             <span class="glyphicon glyphicon-envelope"></span>
-                            </span>
-                            <input type="text" class="form-control" placeholder="Email" name="email"/>
-                        </div>
-                    </div>    
-                    <div class="form-group">
-                        <div class="input-group">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                            <input type="password" class="form-control" placeholder="Senha" name="senha"/>
-                            <input type="hidden" name="permissao"/>
-                        </div>
-                    </div>
-                </div>
-                
-                <button class="btn btn-sm btn-success btn-block" type="submit" >Abrir nova conta</button>
-                        <a data-toggle="modal" data-target="#myModal"><h6>Esqueceu sua senha?</h5></a>    
+                    <!-- Input 1 -->
+                     <div class="form-group">
+                       <input type="text" class="form-control mat-input" placeholder="Matrícula" name="matricula"/>  
+                     </div>
+
+                     <!-- Input 2 -->
+                     <div class="form-group">
+                       <input type="text" class="form-control mat-input" placeholder="Nome completo" name="nome"/>
+                     </div>
+
+                     <!-- Input 3 -->
+                     <div class="form-group">
+                       <input type="text" class="form-control mat-input" placeholder="Email" name="email"/>
+                     </div>
+
+                     <!-- Input 4 -->
+                     <div class="form-group">
+                       <input type="password" class="form-control mat-input" placeholder="Senha" name="senha"/>
+                       <input type="hidden" name="permissao"/>
+                     </div>
+
+                     <button type="submit" class="btn btn-success btn-login center-block">Abrir Conta</button>
+                     <a data-toggle="modal" data-target="#myModal"><h5 class="text-center">Esqueceu sua senha?</h5></a>    
                 </form>
             </div>
-        </div>  
     </div>
 </div>
         <!-- RODAPÉ 

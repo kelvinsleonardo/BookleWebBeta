@@ -26,7 +26,7 @@
 			  <div class="form-group form-group-sm">
 			    <input type="password" name="j_password" class="form-control form-control-sm" placeholder="Senha" value="${param.senha}">
 			  </div>
-			  <button type="submit" class="btn btn-default btn-sm">Entrar</button>
+			  <button type="submit" class="btn btn-login-menu btn-sm">Entrar</button>
 			</form>       
 
       </div>

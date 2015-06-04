@@ -129,7 +129,7 @@
                     
                     <table id="tabelarelationship" class="table table-responsive table-bordered table-hover table-striped">
                         <thead>
-                            <tr class="info">
+                            <tr class="table-info">
                                 <th>ISBN</th>
                                 <th>Nome do Livro</th>
                                 <th>Código Disciplina</th>
@@ -153,7 +153,7 @@
                                         <td>
                                             <button type="submit" class="btn btn-danger btn-sm" name="excluirlivrodadisciplina">
                                                 <span class="glyphicon glyphicon-trash"></span>
-                                                Excluir
+                                                <strong>Excluir</strong>
                                             </button>
                                         </td>      
                                     </tr>
@@ -165,7 +165,9 @@
                 
                     <div class="col-md-offset-9">
                         <br>
-                        <button type="submit" class="btn btn-info btn-sm form-control" data-toggle="modal" data-target="#modalVinculaLivroNaDisciplina"/><span class="glyphicon glyphicon-plus-sign"></span> &nbsp;Adicionar Livro na Disciplina
+                        <button type="submit" class="btn btn-primary btn-sm form-control" data-toggle="modal" data-target="#modalVinculaLivroNaDisciplina"/>
+                        <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
+                        <strong>Adicionar Livro na Disciplina</strong>
                         </button>
                     </div>
                 

@@ -22,12 +22,12 @@
 }
 
 .background-login{
-	background-color: #F2F1EF; 
+	background-color: #FFFFFF; 
 }
 
 
 header{
-	background-color: #F2F1EF; 
+	background-color: #FFFFFF; 
  /*padding-top: 10px;
  padding-bottom: 0px;*/
 }
@@ -121,3 +121,94 @@ label.error,div.error{
     display:inline;
     font-size: 12px;    
 }
+
+
+/* FRONT END */
+/*
+ * Alteração do MENU NavBar
+ */
+.navbar-default{
+    background-color: #3a5795;
+}
+
+/*
+ * Alteração das Titulos
+ */
+h1, h2, h3, h4, h5, h6, label{
+    font-family: 'Roboto', sans-serif;
+}
+
+/*
+ * Alteração dos Botões
+ */
+.btn-success{
+    border: #26a69a;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #26a69a;
+}
+
+.btn-danger{
+    border: #D32F2F;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #D32F2F;
+}
+
+.btn-primary{
+    border: #3A5795;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #3A5795;
+}
+
+.btn-login{
+    width: 200px;
+}
+
+.btn-login-menu{
+    background-color: #3A5795;
+    color: #FFF;
+    font-weight: bold;
+    border-color: #FFF;
+    width: 100px;
+}
+
+
+/*
+ * Alteração Tabela
+ */
+.table-info{
+    background-color: #3A5795;
+    color: #FFF;
+      
+}
+
+/*
+ * Alteração Breadcrumbs
+ */
+.breadcrumb{
+    background-color: #FFF;   
+}
+
+.breadcrumb>.active{
+   color: #111111;  
+}
+a, a:hover{
+  color: #3A5795;  
+}
+
+
+
+/*
+ * Alteração do Botão pesquisa
+ */
+.btn-info {
+    padding: 13px;
+    background-color: #3A5795;
+}
+
+.form-inline{
+    height: 20px;
+}
+

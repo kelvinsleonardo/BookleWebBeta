@@ -139,7 +139,7 @@
                     
                     <table id="tabelausuario" class="table table-responsive table-bordered table-hover table-striped">
                         <thead>
-                            <tr class="info">
+                            <tr class="table-info">
                                 <th>Matricula</th>
                                 <th>Nome</th>
                                 <th>Email</th>
@@ -167,22 +167,22 @@
                                  <td>
                                     <button type="submit" class="btn btn-primary btn-sm"data-toggle="modal" data-target="#modalNovaSenha" name="novasenha">
                                         <span class="glyphicon glyphicon-lock"></span>
-                                        Nova Senha
+                                        <strong>Nova Senha</strong>
                                     </button>
                                 </td>
                                 
                                 
                                 <td>
                                     <button type="submit" class="btn btn-primary btn-sm"data-toggle="modal" data-target="#modalEditaUsuario" name="editarusuario">
-                                        <span class="glyphicon glyphicon-edit"></span>
-                                        Editar
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                        <strong>Editar</strong>
                                     </button>
                                 </td> 
                                 
                                 <td>
                                     <button type="submit" class="btn btn-danger btn-sm" name="excluirusuario">
                                         <span class="glyphicon glyphicon-trash"></span>
-                                        Excluir
+                                         <strong>Excluir</strong>
                                     </button>
                                 </td>
                                   
@@ -193,7 +193,10 @@
                 
                     <div class="col-md-offset-9">
                         <br>
-                        <button type="submit" class="btn btn-info btn-sm form-control" data-toggle="modal" data-target="#modalAdicionaUsuario"/><span class="glyphicon glyphicon-plus-sign"></span> &nbsp;Adicionar Usuario</button>
+                        <button type="submit" class="btn btn-primary btn-sm form-control" data-toggle="modal" data-target="#modalAdicionaUsuario"/>
+                        <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
+                        <strong>Adicionar Novo Usuário</strong>
+                        </button>
                     </div>
                     
                         

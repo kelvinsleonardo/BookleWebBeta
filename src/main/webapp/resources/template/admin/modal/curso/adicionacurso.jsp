@@ -15,7 +15,7 @@
                             <input type="text" class="form-control" placeholder="Nome do curso" name="nome_curso" id="add_nome_curso"/>
                     </div> 
                 </div>
-            <button class="btn btn-sm btn-info btn-block" type="submit" >
+            <button class="btn btn-sm btn-success btn-block" type="submit" >
                 <span class="glyphicon glyphicon-ok"></span>
                 <strong>Salvar Novo Curso</strong>
             </button>

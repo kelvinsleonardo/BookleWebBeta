@@ -46,7 +46,10 @@
                         </select>
                     </div>
                 </div>
-            <button class="btn btn-sm btn-info btn-block" type="submit" >Adicionar Novo</button>
+            <button class="btn btn-sm btn-success btn-block" type="submit" >
+                <span class="glyphicon glyphicon-ok"></span>
+                <strong>Salvar Novo Livro</strong></button>
+            </button>
         </form>
     </div>
     </div>

@@ -68,13 +68,20 @@
       <ul class="nav navbar-nav navbar-right">
           <li class="dropdown"> 
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                <span class="glyphicon glyphicon-user"></span>
-                 Bem vindo, ${nome_usuario_sessao}               
+			<div class="form-inline" >
+			  <div class="form-group form-group-sm">
+			    <img src="<c:url value="/resources/img/avatar.png" />" class="img-circle img-responsive" alt="Cinque Terre">
+			  </div>
+			  ${nome_usuario_sessao} 
+			
+                 <span class="caret"></span>
+           </div>            
+                          
                 <!--Matrícula: <%= SecurityContextHolder.getContext().getAuthentication().getName() %>-->
-            <span class="caret"></span>
+           
           </a>
           <ul class="dropdown-menu" role="menu">
-            <li><a data-toggle="modal" data-target="#modalNovaSenha" name="novasenha">
+            <li><a data-toggle="modal" data-target="#modalNovaSenhaMenu" name="novasenha">
                 <span class="glyphicon glyphicon-lock"></span> 
                 Alterar Senha
                 </a>

@@ -6,7 +6,7 @@ $(function(){
     $('button[name=editarusuario]').click(function(){
         var nomeGrupoPermissao = $(this).closest("tr").find("td[name=tb_permissao]").html();
         var codigoPermissao = $(this).closest("tr").find("td[name=tb_permissao]").attr('id');
-        console.log(codigoPermissao);
+        //console.log(codigoPermissao);
         var matricula = $(this).closest("tr").find("td[name=tb_matricula]").html(); // Pegando codigo do curso da tabela 
         var nome = $(this).closest("tr").find("td[name=tb_nome]").html(); // Pegando nome do curso da tabela
         var email = $(this).closest("tr").find("td[name=tb_email]").html(); // Pegando descricao do curso da tabela
@@ -20,9 +20,8 @@ $(function(){
     $('button[name=novasenha]').click(function(){
         var matricula = $(this).closest("tr").find("td[name=tb_matricula]").html();
         var nome = $(this).closest("tr").find("td[name=tb_nome]").html();
-        //console.log(nome);
         $('#novasenha_matricula').val(matricula); 
-        $('#novasenha_nome').val(nome); 
+        $('#novasenha_nome').val(nome);
 	})
     
     /* EVENTO CLICAR NO BOTÃO "EXCLUIR" CURSO

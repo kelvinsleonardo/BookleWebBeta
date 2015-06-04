@@ -134,7 +134,7 @@
                     
                     <table id="tabeladisciplina" class="table table-responsive table-bordered table-hover table-striped">
                         <thead>
-                            <tr class="info">
+                            <tr class="table-info">
                                 <th>Código</th>
                                 <th>Nome</th>
                                 <th>Curso</th>
@@ -153,15 +153,15 @@
                                 
                                 <td>
                                     <button type="submit" class="btn btn-primary btn-sm"data-toggle="modal" data-target="#modalEditaDisciplina" name="editardisciplina">
-                                        <span class="glyphicon glyphicon-edit"></span>
-                                        Editar
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                        <strong> Editar</strong>
                                     </button>
                                 </td> 
                                 
                                 <td>
                                     <button type="submit" class="btn btn-danger btn-sm" name="excluirdisciplina">
                                         <span class="glyphicon glyphicon-trash"></span>
-                                        Excluir
+                                        <strong>Excluir</strong>
                                     </button>
                                 </td>
                                   
@@ -172,7 +172,10 @@
                 
                     <div class="col-md-offset-9">
                         <br>
-                        <button type="submit" class="btn btn-info btn-sm form-control" data-toggle="modal" data-target="#modalAdicionaDisciplina"/><span class="glyphicon glyphicon-plus-sign"></span> &nbsp;Adicionar Disciplina</button>
+                        <button type="submit" class="btn btn-primary btn-sm form-control" data-toggle="modal" data-target="#modalAdicionaDisciplina"/>
+                        <span class="glyphicon glyphicon-plus-sign"></span> &nbsp;
+                        <strong>Adicionar Nova Disciplina</strong>
+                        </button>
                     </div>
                     
                         
