@@ -93,7 +93,9 @@
              
         <!-- CABEÇALHO -->
         <header class="row">
-            <c:import url="/resources/template/admin/menu.jsp"></c:import> 
+            <jsp:include page="/resources/template/admin/menu.jsp">
+                <jsp:param name="active" value="gerenciadordisciplina" />
+            </jsp:include>
         </header>
         
         <!-- CONTEÚDO -->
@@ -178,7 +180,8 @@
                         </button>
                     </div>
                     
-                        
+                      <br>
+                <br>  
                 
             </div>
         </div>  

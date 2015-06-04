@@ -93,7 +93,9 @@
              
         <!-- CABEÇALHO -->
         <header class="row">
-            <c:import url="/resources/template/admin/menu.jsp"></c:import> 
+            <jsp:include page="/resources/template/admin/menu.jsp">
+                <jsp:param name="active" value="relationshipdisciplinacurso" />
+            </jsp:include>
         </header>
         
         <!-- CONTEÚDO -->
@@ -170,7 +172,8 @@
                         <strong>Adicionar Livro na Disciplina</strong>
                         </button>
                     </div>
-                
+                <br>
+                <br>
             </div>
         </div>  
     </div>

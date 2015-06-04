@@ -25,6 +25,12 @@ import javax.persistence.Table;
 				query="SELECT disc FROM Disciplina disc JOIN disc.curso cur WHERE cur.cod_curso = :cod_curso")
 })
 
+/** Classe Modelo de Disciplina
+ * 
+ * @author Kelvin Santiago
+ *
+ */
+
 @Entity
 @Table(name = "tb_disciplina")
 public class Disciplina implements Serializable{

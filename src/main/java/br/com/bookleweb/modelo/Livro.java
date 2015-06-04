@@ -27,6 +27,12 @@ import javax.persistence.Table;
 				query="SELECT DISTINCT liv FROM Livro liv JOIN liv.disciplinas disc WHERE liv.isbn = :isbn")
 })
 
+/** Classe Modelo de Livro
+ * 
+ * @author Kelvin Santiago
+ *
+ */
+
 @Entity
 @Table(name = "tb_livro")
 public class Livro implements Serializable{

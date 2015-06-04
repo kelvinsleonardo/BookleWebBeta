@@ -97,7 +97,9 @@
              
         <!-- CABEÇALHO -->
         <header class="row">
-            <c:import url="/resources/template/admin/menu.jsp"></c:import> 
+            <jsp:include page="/resources/template/admin/menu.jsp">
+                <jsp:param name="active" value="gerenciadorlivro" />
+            </jsp:include> 
         </header>
         
         <!-- CONTEÚDO -->
@@ -197,7 +199,8 @@
                         <strong>Adicionar Novo Livro</strong>
                         </button>
                     </div>
-                
+                <br>
+                <br>
             </div>
         </div>  
     </div>

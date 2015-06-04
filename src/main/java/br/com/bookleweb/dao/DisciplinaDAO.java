@@ -10,9 +10,24 @@ import br.com.bookleweb.factory.FabricaEntityManager;
 import br.com.bookleweb.modelo.Curso;
 import br.com.bookleweb.modelo.Disciplina;
 
+/**
+ * Classe responsável pelo DAO (Data Access Object) da Disciplina, ou seja é uma
+ * classe que contém métodos para acesso ao banco de dados com JPA.
+ * 
+ * @author Kélvin Santiago
+ *
+ */
+
 @Repository
 public class DisciplinaDAO {
 	
+	/**
+	 * Método responsável por adicionar uma disciplina no banco de dados
+	 * 
+	 * @param disciplina
+	 * @param curso
+	 * @return Boolean - True ou False
+	 */
 	public Boolean adiciona(Disciplina disciplina, Curso curso){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		try{
@@ -29,6 +44,13 @@ public class DisciplinaDAO {
 		}
 	}
 
+	/**
+	 * Método responsável por editar uma disciplina no banco de dados
+	 * 
+	 * @param disciplina
+	 * @param curso
+	 * @return Boolean - True ou False
+	 */
 	public Boolean edita(Disciplina disciplina, Curso curso){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		try{
@@ -44,6 +66,13 @@ public class DisciplinaDAO {
 		}
 	}
 	
+	/**
+	 * Método responsável por remover uma disciplina no banco de dados
+	 * 
+	 * @param disciplina
+	 * @param curso
+	 * @return Boolean - True ou False
+	 */
 	public Boolean remove(Disciplina disciplina){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		try{
@@ -59,6 +88,11 @@ public class DisciplinaDAO {
 		}
 	}
 
+	/**
+	 * Método responsável por buscar todos cursos no banco de dados
+	 * 
+	 * @return ArrayList<Disciplina> - Lista de disciplina
+	 */
 	public ArrayList<Disciplina> getTodasDisciplinas(){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		TypedQuery<Disciplina> typedQuery = manager.createNamedQuery("Disciplina.procuraTodasAsDisciplinas", Disciplina.class);
@@ -66,6 +100,12 @@ public class DisciplinaDAO {
 		return disciplinas;
 	}
 	
+	/** Método responsável por buscar os dados da disciplina no banco de dados
+	 * de acordo com o código da disciplina informado.
+	 * 
+	 * @param disciplina
+	 * @return ArrayList<Disciplina> - Lista de disciplina
+	 */
 	public ArrayList<Disciplina> procuraPeloCodigoDaDisciplina(Disciplina disciplina){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		TypedQuery<Disciplina> typedQuery = manager.createNamedQuery("Disciplina.procuraPeloCodigo",Disciplina.class);
@@ -74,6 +114,12 @@ public class DisciplinaDAO {
 		return disciplinaArrayList;
 	}
 	
+	/** Método responsável por buscar os dados da disciplina no banco de dados
+	 * de acordo com o nome da disciplina informado.
+	 * 
+	 * @param disciplina
+	 * @return ArrayList<Disciplina> - Lista de disciplina
+	 */
 	public ArrayList<Disciplina> procuraPeloNomeDaDisciplina(Disciplina disciplina){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		TypedQuery<Disciplina> typedQuery = manager.createNamedQuery("Disciplina.procuraPeloNome",Disciplina.class);
@@ -82,6 +128,12 @@ public class DisciplinaDAO {
 		return disciplinaArrayList;
 	}
 	
+	/** Método responsável por buscar os dados da disciplina no banco de dados
+	 * de acordo com o código do curso informado.
+	 * 
+	 * @param curso
+	 * @return ArrayList<Disciplina> - Lista de disciplina
+	 */
 	public ArrayList<Disciplina> procuraDisciplinaPeloCodigoDoCurso(Curso curso){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		TypedQuery<Disciplina> typedQuery = manager.createNamedQuery("Disciplina.procuraPeloCodigoCurso",Disciplina.class);

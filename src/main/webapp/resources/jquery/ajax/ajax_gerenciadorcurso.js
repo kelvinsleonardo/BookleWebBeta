@@ -33,9 +33,8 @@ $(function(){
         alertify.confirm(
                         "EXCLUSÃO DO CURSO "
                         +nomeDoCurso, 
-                        "Você tem certeza que deseja remover o curso <strong>"
-                        +nomeDoCurso+"
-                        </strong> ?", "", "").
+                        "Você tem certeza que deseja remover o curso <strong>"+nomeDoCurso+"</strong> ?",
+                        "", "").
                         autoCancel(10).set('onok', function(closeEvent){ 
             if (closeEvent){
                 // Iniciando Ajax para chamar Servlet que Remove Curso

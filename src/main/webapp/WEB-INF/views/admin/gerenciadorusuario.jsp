@@ -33,21 +33,24 @@
 
 <!-- DataTables CSS -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/jquery/datatables/media/css/jquery.dataTables.css"/>">
-  
-<!-- DataTables -->
+
+    <!-- DataTables -->
 <script type="text/javascript" charset="utf8" src="<c:url value="/resources/jquery/datatables/media/js/jquery.dataTables.js"/>"></script>
 <script>
     $(document).ready(function() {
-       $.extend( $.fn.dataTable.defaults, {
+    $.extend( $.fn.dataTable.defaults, {
             searching: false,
             ordering:  true,
             info: false
-       } );
+    });
+             
     $('#tabelausuario').dataTable( {
-        "scrollY":        "300px",
+        responsive: true,
+        "scrollY":        "300",
         "scrollCollapse": true,
         "paging":         false, // Remove ocao de setar quantos itens mostrados
         //"bSort": false, // Removendo Ordenação
+        
         "language": {
             "emptyTable":     "Ixi! Não foi encontrado nada nessa busca.",
             "lengthMenu": "Display _MENU_ records per page",
@@ -57,13 +60,8 @@
             "infoFiltered": "(filtrado de _MAX_ gravações)<br><br>",
             "search":         "Procurar:"
         },
-    
-        
-        
+
     } );
-    
- 
-    
 } );    
     
     </script>
@@ -98,7 +96,9 @@
              
         <!-- CABEÇALHO -->
         <header class="row">
-            <c:import url="/resources/template/admin/menu.jsp"></c:import> 
+            <jsp:include page="/resources/template/admin/menu.jsp">
+                <jsp:param name="active" value="gerenciadorusuario" />
+            </jsp:include> 
         </header>
         
         <!-- CONTEÚDO -->
@@ -143,7 +143,6 @@
                                 <th>Matricula</th>
                                 <th>Nome</th>
                                 <th>Email</th>
-                                <th>Senha</th>
                                 <th>Permissao</th>
                                 <th>Nova Senha</th>
                                 <th>Editar</th>
@@ -159,8 +158,6 @@
                                 <td name="tb_nome">${usuario.nome}</td>
                                 
                                 <td name="tb_email">${usuario.email}</td>
-                                
-                                <td name="tb_senha">${usuario.senha}</td>
                                 
                                 <td name="tb_permissao" id="${usuario.permissao}">${usuario.permissao}</td>
                                  
@@ -199,7 +196,8 @@
                         </button>
                     </div>
                     
-                        
+                <br>
+                <br>
                 
             </div>
         </div>  

@@ -4,27 +4,31 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import br.com.bookleweb.modelo.Usuario;
+
+/**
+ * Classe responsável por implementar Servlets de controle que estão
+ * relacionados ao Login do sistema.
+ * 
+ * @author Kélvin Santiago
+ *
+ */
 
 @Controller
 public class LoginController {
-
-	/* 
-	private UsuarioDAO usuarioDAO;
 	
-	@Autowired
-	public LoginController(UsuarioDAO usuarioDAO) {
-		this.usuarioDAO = usuarioDAO;
-	}
-	*/
-
+	/**
+	 * Método Servlet responsável por permitir acesso a página de login.
+	 */
 	@RequestMapping(value = {"/","/login",""})
 	public String execute(){
 		return "login";
 	}
 	
+	/**
+	 * Método Servlet responsável por permitir logoff a página de login.
+	 */
 	@RequestMapping("/logout")
-	public String logoff(Usuario usuario, HttpSession session){
+	public String logoff(HttpSession session){
 			session.invalidate();
 		return "redirect:Login";
 	}

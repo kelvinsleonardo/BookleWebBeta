@@ -77,9 +77,20 @@
 } );    
     
     </script>
+    
+<script>
+     $(function() {
+        $('#nav li a').click(function() {
+            console.log("teste");
+           $('#nav li').removeClass();
+           $($(this).attr('href')).addClass('active');
+        });
+     });
+  </script>
 </head>
     
 <body class="background-login">
+
     <div class="container-fluid">
         
         <!-- MENSAGENS ALERTIFY-->
@@ -103,7 +114,11 @@
              
         <!-- CABEÇALHO -->
         <header class="row">
-            <c:import url="/resources/template/admin/menu.jsp"></c:import> 
+            
+            <jsp:include page="/resources/template/admin/menu.jsp">
+                <jsp:param name="active" value="gerenciadorcurso" />
+            </jsp:include>
+    
         </header>
         
         <!-- CONTEÚDO -->
@@ -183,7 +198,8 @@
                         <strong>Adicionar Novo Curso</strong>
                         </button>
                     </div>
-                    
+                <br>
+                <br>
                         
                 
             </div>

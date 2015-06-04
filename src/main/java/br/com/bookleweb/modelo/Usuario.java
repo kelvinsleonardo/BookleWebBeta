@@ -16,6 +16,12 @@ import javax.validation.constraints.NotNull;
 				query="SELECT usu FROM Usuario usu")
 })
 
+/** Classe Modelo de Usuario
+ * 
+ * @author Kelvin Santiago
+ *
+ */
+
 @Entity
 @Table(name = "tb_usuario")
 public class Usuario {

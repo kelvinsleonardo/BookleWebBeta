@@ -13,9 +13,23 @@ import br.com.bookleweb.factory.FabricaEntityManager;
 import br.com.bookleweb.modelo.Usuario;
 import br.com.bookleweb.util.CriptografiaSenha;
 
+/**
+ * Classe responsável pelo DAO (Data Access Object) dos Usuarios, ou seja é uma
+ * classe que contém métodos para acesso ao banco de dados com JPA.
+ * 
+ * @author Kélvin Santiago
+ *
+ */
+
 @Repository
 public class UsuarioDAO {
 	
+	/**
+	 * Método responsável por adicionar um usuario no banco de dados.
+	 * 
+	 * @param usuario
+	 * @return Boolean - True ou False
+	 */
 	public Boolean adiciona(Usuario usuario){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		try{
@@ -31,6 +45,12 @@ public class UsuarioDAO {
 		}
 	}
 	
+	/**
+	 * Método responsável por editar um usuario no banco de dados.
+	 * 
+	 * @param usuario
+	 * @return Boolean - True ou False
+	 */
 	public Boolean edita(Usuario usuario){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		try{
@@ -47,6 +67,12 @@ public class UsuarioDAO {
 		}
 	}
 	
+	/**
+	 * Método responsável por alterar senha de um usuario no banco de dados.
+	 * 
+	 * @param usuario
+	 * @return Boolean - True ou False
+	 */
 	public Boolean alteraSenha(Usuario usuario){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		try{
@@ -64,6 +90,12 @@ public class UsuarioDAO {
 		}
 	}
 	
+	/**
+	 * Método responsável por remover um usuario no banco de dados.
+	 * 
+	 * @param usuario
+	 * @return Boolean - True ou False
+	 */
 	public Boolean remove(Usuario usuario){
 		
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
@@ -80,6 +112,12 @@ public class UsuarioDAO {
 		}
 	}
 
+	/**
+	 * Método responsável por verificar se existe o usuário no banco de dados.
+	 * 
+	 * @param usuario
+	 * @return Boolean - True ou False
+	 */
 	public Boolean isRegistrado(Usuario usuario){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		Usuario dadosusuario = manager.find(Usuario.class, usuario.getMatricula());
@@ -90,6 +128,11 @@ public class UsuarioDAO {
 		}
 	}
 	
+	/**
+	 * Método responsável por buscar todos usuarios no banco de dados
+	 * 
+	 * @return ArrayList<Usuarios> - Lista de usuarios
+	 */
 	public ArrayList<Usuario> getListaTodosUsuarios(){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		TypedQuery<Usuario> typedQuery = manager.createNamedQuery("Usuario.pesquisaTodosUsuarios", Usuario.class);
@@ -97,6 +140,12 @@ public class UsuarioDAO {
 		return usuarios;
 	}
 
+	/** Método responsável por pegar a matrícula do usuário, fazer uma busca
+	 * no banco de dados pela matricula, pegar o nome e deixar apenas o primeiro
+	 * nome do usuário.
+	 * 
+	 * @return String - Nome do usuário Editado
+	 */
 	public String getNomeUsuarioLogado(){
 		Integer matriculasessaologado = Integer.parseInt(SecurityContextHolder.getContext().getAuthentication().getName());
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
@@ -108,6 +157,12 @@ public class UsuarioDAO {
 		return strFinalUsuario;
 	}
 	
+	/** Método responsável por buscar os dados do usuario no banco de dados
+	 * de acordo com a matricula do usuario informado.
+	 * 
+	 * @param usuario
+	 * @return ArrayList<Usuario> - Lista de usuarios
+	 */
 	public ArrayList<Usuario> pesquisaPelaMatricula(Usuario usuario){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		TypedQuery<Usuario> typedQuery = manager.createNamedQuery("Usuario.pesquisaPelaMatricula",Usuario.class);
@@ -116,6 +171,12 @@ public class UsuarioDAO {
 		return usuarioArrayList;
 	}
 	
+	/** Método responsável por buscar os dados do usuario no banco de dados
+	 * de acordo com o nome do usuario informado.
+	 * 
+	 * @param usuario
+	 * @return ArrayList<Usuario> - Lista de usuarios
+	 */
 	public ArrayList<Usuario> pesquisaPeloNome(Usuario usuario){
 		EntityManager manager = FabricaEntityManager.getEntityManagerFactory().createEntityManager();
 		TypedQuery<Usuario> typedQuery = manager.createNamedQuery("Usuario.pesquisaPeloNome",Usuario.class);
@@ -123,6 +184,5 @@ public class UsuarioDAO {
 		ArrayList<Usuario> usuarioArrayList = (ArrayList<Usuario>) typedQuery.getResultList();  // Pega resultado
 		return usuarioArrayList;
 	}
-	
 	
 }

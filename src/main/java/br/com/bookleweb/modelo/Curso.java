@@ -16,6 +16,13 @@ import javax.persistence.Table;
 	@NamedQuery(name="Curso.procuraPeloNome", 
 				query="SELEct cur FROM Curso cur WHERE cur.nome_curso LIKE :nome_curso")
 })
+
+/** Classe Modelo de Curso
+ * 
+ * @author Kelvin Santiago
+ *
+ */
+
 @Entity
 @Table(name = "tb_curso")
 public class Curso {

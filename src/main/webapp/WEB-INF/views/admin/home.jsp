@@ -57,7 +57,9 @@
              
         <!-- CABEÇALHO -->
         <header class="row">
-            <c:import url="/resources/template/admin/menu.jsp"></c:import> 
+             <jsp:include page="/resources/template/admin/menu.jsp">
+                <jsp:param name="active" value="home" />
+            </jsp:include> 
         </header>
         
         <!-- CONTEÚDO -->

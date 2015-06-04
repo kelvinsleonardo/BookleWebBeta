@@ -21,9 +21,21 @@
 <script src="<c:url value="/resources/jquery/validator/jquery.validate.js" />"></script>
 <script src="<c:url value="/resources/jquery/validator/views/login.js" />"></script>
     
+<!-- Jquery para Loading Page -->    
+<script src="<c:url value="/resources/jquery/modernizr/modernizr.js" />"></script>
+ 
+<script>
+	$(window).load(function() {
+		// Animate loader off screen
+		$(".loading-page").fadeOut(3000);
+	});    
+</script>     
+    
 </head>
 <body class="background-login">
     <div class="container-fluid">
+        
+        <div class="loading-page"></div>
         
         <!-- MENSAGENS ALERTIFY-->
         <c:if test="${not empty param.error}">

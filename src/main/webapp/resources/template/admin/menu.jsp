@@ -6,8 +6,8 @@
 <%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> 
     
-<link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400|Open+Sans' rel='stylesheet' type='text/css'>
-   
+<link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400|Open+Sans' rel='stylesheet' type='text/css'>   
+    
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -24,28 +24,49 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="admin">Home 
+        <li <c:if test="${param.active == 'home'}"> class="active"</c:if>>
+            <a href="admin">Home 
             <span class="sr-only">(current)</span></a>
         </li>
-        <li class="dropdown">
-            <li><a href="pesquisa">Pesquisar</a></li>
-        </li>
+      
+        <li <c:if test="${param.active == 'pesquisa'}"> class="active"</c:if>>
+                <a href="pesquisa">Pesquisar</a></li>
     <sec:authorize access="hasRole('ROLE_ADMIN')">      
-        <li class="dropdown">
+        
+        <li 
+            <c:if test="${param.active == 'gerenciadorcurso' || param.active == 'gerenciadordisciplina' || param.active == 'gerenciadorlivro' ||param.active == 'relationshipdisciplinacurso' || param.active == 'gerenciadorusuario'
+            }"> class="active"</c:if>
+        class="dropdown">
+        
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
               Gerenciar<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="gerenciadorcurso">Cursos</a></li>
-            <li><a href="gerenciadordisciplina">Disciplinas</a></li>
+            <li <c:if test="${param.active == 'gerenciadorcurso'}"> class="active"</c:if>>
+                <a href="gerenciadorcurso">Cursos</a>
+           </li>
+            <li <c:if test="${param.active == 'gerenciadordisciplina'}"> class="active"</c:if>>
+                <a href="gerenciadordisciplina">Disciplinas</a></li>
 
-            <li class="dropdown-submenu">
+            <li 
+                <c:choose>
+                    <c:when test="${param.active=='relationshipdisciplinacurso' || param.active=='gerenciadorlivro'}">
+                    class="dropdown-submenu active"    
+                </c:when>
+
+                  <c:otherwise>
+                      class="dropdown-submenu"
+                  </c:otherwise>
+                </c:choose>
+            >
                 <a tabindex="-1" href="gerenciadorlivro">Livros</a>
                 <ul class="dropdown-menu">
-                  <li><a href="relationshipdisciplinacurso">Vincular Livro a Disciplina</a></li>
+                <li <c:if test="${param.active == 'relationshipdisciplinacurso'}"> class="active"</c:if>>
+                      <a href="relationshipdisciplinacurso">Vincular Livro a Disciplina</a></li>
                 </ul>
               </li>
               
-            <li><a href="gerenciadorusuario">Usuários</a></li>
+            <li <c:if test="${param.active == 'gerenciadorusuario'}"> class="active"</c:if>>
+                <a href="gerenciadorusuario">Usuários</a></li>
           </ul>
         </li>
       </sec:authorize>    
@@ -56,7 +77,9 @@
               Relatórios<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
           	<sec:authorize access="hasRole('ROLE_ADMIN')"> 
-            <li><a href="relatoriocurso" target="_blank">Cursos</a></li>
+            <li>
+                <a href="relatoriocurso" target="_blank">Cursos</a>
+            </li>
             <li><a href="relatoriodisciplina" target="_blank">Disciplinas</a></li>
              </sec:authorize> 
             <li><a href="relatoriolivro" target="_blank">Livros</a></li>

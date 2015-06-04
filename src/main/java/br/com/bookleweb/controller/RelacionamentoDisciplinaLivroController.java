@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.bookleweb.dao.DisciplinaDAO;
@@ -14,21 +13,41 @@ import br.com.bookleweb.dao.RelacionamentoDisciplinaLivroDAO;
 import br.com.bookleweb.modelo.Disciplina;
 import br.com.bookleweb.modelo.Livro;
 
+/**
+ * Classe responsável por implementar Servlets de controle do relacionamento
+ * livro com disciplina.
+ * 
+ * @author Kélvin Santiago
+ *
+ */
 
 @Controller
 public class RelacionamentoDisciplinaLivroController {
 	
-	private RelacionamentoDisciplinaLivroDAO relationShipDAO;
+	private RelacionamentoDisciplinaLivroDAO relacionamentoDAO;
 	private LivroDAO livroDAO;
 	private DisciplinaDAO disciplinaDAO;
 	
+	/**
+	 * Construtor da Classe aplicando injeção de dependencia do Spring MVC
+	 * 
+	 * @param relacionamentoDAO
+	 * @param livroDAO
+	 * @param disciplinaDAO
+	 */
 	@Autowired
-	public RelacionamentoDisciplinaLivroController(RelacionamentoDisciplinaLivroDAO relationShipDAO, LivroDAO livroDAO, DisciplinaDAO disciplinaDAO) {
-		this.relationShipDAO = relationShipDAO;
+	public RelacionamentoDisciplinaLivroController(RelacionamentoDisciplinaLivroDAO relacionamentoDAO, LivroDAO livroDAO, DisciplinaDAO disciplinaDAO) {
+		this.relacionamentoDAO = relacionamentoDAO;
 		this.livroDAO = livroDAO;
 		this.disciplinaDAO = disciplinaDAO;
 	}
 	
+	/**
+	 * Método Servlet responsável por permitir acesso a página do gerenciador da
+	 * de vínculo livro com disciplina.
+	 * 
+	 * @return ModelAndView - Lista de livros e Disciplinas
+	 */
 	@RequestMapping(value = "/relationshipdisciplinacurso")
 	public ModelAndView executeAdmin(){
 		ModelAndView mv = new ModelAndView("/admin/gerenciadordisciplinalivro");
@@ -37,12 +56,20 @@ public class RelacionamentoDisciplinaLivroController {
 		return mv;
 	}
 	
-	
+	/**
+	 * Método Servlet responsável por controlar o adicionar vínculo livro a disicplina.
+	 * 
+	 * @param livro - Model livro.
+	 *   
+	 * @param disciplina - Model disciplina.     
+	 *            
+	 * @return ModelAndView - Retorna uma mensagem de sucesso, ou erro.
+	 */
 	@RequestMapping (value = "/adicionaLivroNaDisciplina", method= RequestMethod.POST)
 	public ModelAndView adicionaLivroNaDisciplina(@ModelAttribute Livro livro, @ModelAttribute Disciplina disciplina){
 		ModelAndView mv =  new ModelAndView("forward:/relationshipdisciplinacurso");
 	    
-		if (relationShipDAO.adiciona(livro, disciplina)) {
+		if (relacionamentoDAO.adiciona(livro, disciplina)) {
 				String mensagem = "Opa! Livro vinculado com Sucesso!";
 				mv.addObject("sucesso",mensagem);
 			}else{
@@ -53,12 +80,22 @@ public class RelacionamentoDisciplinaLivroController {
 		return mv;
 	}
 	
+	/**
+	 * Método Servlet responsável por controlar o remover vinculo do livro
+	 * com a disciplina.
+	 * 
+	 * @param livro - Modelo livro
+	 * 
+	 * @param disciplina - Modelo disciplina
+	 *            
+	 * @return ModelAndView - Somente redireciona.
+	 */
 	@RequestMapping(value= "/removeLivroDaDisciplina", method= RequestMethod.POST)
 	public ModelAndView removeLivroDaDisciplina(@ModelAttribute Livro livro, @ModelAttribute Disciplina disciplina){
 		
 		ModelAndView mv =  new ModelAndView("forward:/relationshipdisciplinacurso");
 	    
-		if (relationShipDAO.remove(livro, disciplina)) {
+		if (relacionamentoDAO.remove(livro, disciplina)) {
 				String mensagem = "Opa! Livro removido da disciplina com sucesso";
 				mv.addObject("sucesso",mensagem);
 			}else{
@@ -69,20 +106,24 @@ public class RelacionamentoDisciplinaLivroController {
 		return mv;
 	}
 
+	/**
+	 * Método Servlet responsável por controlar o filtro (Pesquisa) da pagina
+	 * gerenciador vinculo livro com disciplina.
+	 * 
+	 * @param disciplina - Modelo disciplina
+	 *            
+	 * @param livro - Modelo livro            
+	 *            
+	 * @param opcaopesquisa - Filtrar pelo ISN ou Titulo
+	 *            
+	 * @return ModelAndView - Retorna uma lista de livros e lista de disciplinas.
+	 */
 	@RequestMapping(value= "/procurarelationshipdisciplinalivro", method= RequestMethod.POST)
-	public ModelAndView procuraNaRelacaoPeloCodigoDisciplina(@ModelAttribute Disciplina disciplina, @ModelAttribute Livro livro,@RequestParam String opcaopesquisa){
+	public ModelAndView procuraNaRelacaoPeloCodigoDisciplina(@ModelAttribute Livro livro){
 		ModelAndView mv =  new ModelAndView("/admin/gerenciadordisciplinalivro");
-		opcaopesquisa = opcaopesquisa.toLowerCase();
-		if(opcaopesquisa.equals("cod_disciplina")){
-			mv.addObject("listalivros",relationShipDAO.procuraNaRelacaoPeloCodigoDaDisciplina(disciplina));
+			mv.addObject("listalivros",relacionamentoDAO.procuraNaRelacaoPeloISBN(livro));
 			mv.addObject("listadisciplinas",disciplinaDAO.getTodasDisciplinas());
-		}
-		else if(opcaopesquisa.equals("isbn")){
-			mv.addObject("listalivros",relationShipDAO.procuraNaRelacaoPeloISBN(livro));
-			mv.addObject("listadisciplinas",disciplinaDAO.getTodasDisciplinas());
-		}
 		return mv;
 	}
-	
 	
 }
