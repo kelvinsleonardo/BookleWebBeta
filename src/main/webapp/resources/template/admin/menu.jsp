@@ -94,10 +94,10 @@
           <li class="dropdown"> 
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
 			<div class="form-inline" id="avatar_menu">
-			  <div class="form-group form-group-sm">
+			 <!-- <div class="form-group form-group-sm">
 			    <img src="<c:url value="/resources/img/avatar.png" />" class="img-circle img-responsive" alt="Cinque Terre">
-			  </div>
-			  ${nome_usuario_sessao} 
+			  </div>-->  
+			  Olá ${nome_usuario_sessao} 
                  <span class="caret"></span>
            </div>            
                           

@@ -18,12 +18,12 @@
                     <form class="form form-signup" role="form">
                         <!-- Campo de Matrícula -->
                      <div class="form-group">
-                       <input type="text" class="form-control mat-input" placeholder="Matrícula" name="matricula"/>
+                       <input type="text" class="form-control" placeholder="Matrícula" name="matricula"/>
                      </div>
                     
                       <!-- Campo de Email -->
                      <div class="form-group">
-                       <input type="text" class="form-control mat-input" placeholder="Email" name="email"/>
+                       <input type="text" class="form-control" placeholder="Email" name="email"/>
                      </div>    
                         
             <button class="btn btn-sm btn-success btn-block" type="submit">

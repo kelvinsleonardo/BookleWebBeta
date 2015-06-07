@@ -10,7 +10,8 @@
 /* Logo Navbar Interno Sistema */
 .logo{
     color: #FFF;
-    font-size: 20px;
+    font-size: 17px;
+    padding-top: 22px;
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
 }
@@ -18,8 +19,8 @@
 /* Logo Navbar Pagina Login*/
 .logo-login{
     color: #FFF;
-    font-size: 20px;
-    padding-top: 25px;
+    font-size: 17px;
+    padding-top: 20px;
     font-weight: bold;
 }
 
@@ -120,6 +121,7 @@ footer {
 }
 .dropdown-menu>li>a{
     color: #FFFFFF;
+    line-height: 30px;
 }
 
 /* DropDown da Navbar */
@@ -151,7 +153,7 @@ footer {
     border-style: solid;
     border-width: 5px 0 5px 5px;
     border-left-color: #ccc;
-    margin-top: 5px;
+    margin-top: 10px;
     margin-right: -10px;
 }
 
@@ -228,6 +230,8 @@ width: 1px;
     width: 200px;
 }
 
+
+
 /* Botão para Login da Navbar */
 .btn-login-menu{
     background-color: #3A5795;
@@ -235,6 +239,10 @@ width: 1px;
     font-weight: bold;
     border-color: #FFF;
     width: 100px;
+}
+
+.btn-login-menu:hover{
+    background-color: #4D679F;
 }
 
 /*
@@ -269,10 +277,6 @@ a, a:hover{
     background-color: #3A5795;
 }
 
-/* Removendo espaçamento na Navbar pelo Avatar */
-#avatar_menu{
-    height: 20px;
-}
 
 /* Paste this css to your style sheet file or under head tag */
 /* This only works with JavaScript, 
@@ -287,5 +291,33 @@ if it's not present, don't show loader */
 	height: 100%;
 	z-index: 9999;
 	background: url(../img/loading.gif) center no-repeat #fff;
+}
+
+/* Removendo espaço no navbar da tela login*/
+form {
+  margin-bottom: 0px;
+}
+
+.pull-right {
+  margin: 12px; !important;
+    
+}
+
+.mat-input{
+    background-color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    height: 38px;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    border-radius: 0;
+    outline: none;
+    -webkit-box-shadow: none;
+}
+
+.mat-input:focus{
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-bottom-color: skyblue;
 }
 
