@@ -2,6 +2,7 @@ package br.com.bookleweb.modelo;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,7 +33,7 @@ public class Curso {
 	
 	private String nome_curso;
 	
-	@OneToMany(mappedBy="curso")
+	@OneToMany(cascade=CascadeType.REMOVE,mappedBy="curso")
 	private List<Disciplina> disciplina;
 	
 	

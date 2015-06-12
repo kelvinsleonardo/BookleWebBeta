@@ -34,15 +34,6 @@ public class RelatorioController {
 	private final String CAMINHO_RELATORIO_LIVRO = "src/main/java/br/com/bookleweb/relatorios/RelatorioLivros.jrxml";
 	private final String CAMINHO_RELATORIO_USUARIO = "src/main/java/br/com/bookleweb/relatorios/RelatorioUsuarios.jrxml";
 	
-	private Connection conexao;
-	
-	/** Construtor inicializando a conexão para os relatórios
-	 * pelo método getConnectionDoEntityManager.
-	 * 
-	 */
-	public RelatorioController() {
-		conexao = FabricaEntityManager.getConnectionDoEntityManager();
-	}
 	
 	/** Servlet responsável por gerar relatório de todos os cursos.
 	 * 
@@ -52,6 +43,8 @@ public class RelatorioController {
 	 */
 	@RequestMapping(value = "/relatoriocurso")
 	public void geraRelatorioCurso(HttpServletResponse response) throws JRException, IOException{
+
+		Connection conexao = FabricaEntityManager.getConnectionDoEntityManager();
 		
 	    JasperReport jasperReport = JasperCompileManager.compileReport(CAMINHO_RELATORIO_CURSO);           
 	    
@@ -70,6 +63,8 @@ public class RelatorioController {
 	@RequestMapping(value = "/relatoriodisciplina")
 	public void geraRelatorioDisciplina(HttpServletResponse response) throws JRException, IOException{
 		
+		Connection conexao = FabricaEntityManager.getConnectionDoEntityManager();
+		
 	    JasperReport jasperReport = JasperCompileManager.compileReport(CAMINHO_RELATORIO_DISCIPLINA);           
 	    
 		JasperPrint print = JasperFillManager.fillReport(jasperReport,new HashMap<String, Object>(),conexao);
@@ -87,6 +82,7 @@ public class RelatorioController {
 	@RequestMapping(value = "/relatoriolivro")
 	public void geraRelatorioLivro(HttpServletResponse response) throws JRException, IOException{
 		
+		Connection conexao = FabricaEntityManager.getConnectionDoEntityManager();
 		
 	    JasperReport jasperReport = JasperCompileManager.compileReport(CAMINHO_RELATORIO_LIVRO);           
 	    
@@ -104,6 +100,8 @@ public class RelatorioController {
 	 */
 	@RequestMapping(value = "/relatoriousuario")
 	public void geraRelatorioUsuario(HttpServletResponse response) throws JRException, IOException{
+		
+		Connection conexao = FabricaEntityManager.getConnectionDoEntityManager();
 		
 	    JasperReport jasperReport = JasperCompileManager.compileReport(CAMINHO_RELATORIO_USUARIO);           
 	    

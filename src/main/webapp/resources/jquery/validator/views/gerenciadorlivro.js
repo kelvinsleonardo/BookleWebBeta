@@ -28,7 +28,7 @@ $("#formlivro_adicionar").validate({
         number: "O ISBN deve conter apenas números"
       },
       titulo:{
-        required: "O ISBN não pode ser vazio"
+        required: "O Titulo não pode ser vazio"
       },
       autor:{
         required: "O campo Autor não pode ser vazio"
