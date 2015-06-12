@@ -51,6 +51,9 @@ Design Responsivo é uma técnica de estruturação HTML e CSS, em que o site se
 # Testando aplicação BookleWeb
 Acesse: http://localhost:9090/BookleWeb
 
+# Javadoc
+Para visualizar o javadoc do sistema acesse: http://rawgit.com/kelvinsleonardo/BookleWeb/master/src/main/javadoc/site/apidocs/index.html
+
 # Demo do sistema
 Acesse: http://bookleweb.kelvinsantiago.com.br
 
