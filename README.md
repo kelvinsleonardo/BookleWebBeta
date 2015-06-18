@@ -59,11 +59,16 @@ Design Responsivo é uma técnica de estruturação HTML e CSS, em que o site se
     
 5. Este sistema utiliza o Maven que é um software de gerenciamento de projetos, então todas as dependencias que o sistema usa o maven baixa automaticamente, conforme definimos no POM.xml que é o arquivo de configuração dele. 
 
-6. Vamos inicializar o sistema no eclipse 
+6. Vamos atualizar o projeto com Maven:
+  1. Clique sobre o projeto do BookleWeb, selecione a opção Maven > Update Project.
+  2. Selecione o projeto BookleWeb e clique em ok.
+  3. E aguarde a atualização do projeto.
+
+7. Vamos inicializar o sistema no eclipse 
     1. Clique em cima do projeto BookleWeb com o botão direito e selecione, Run as > Maven Build...
     2. Em Goals coloque o seguinte comando: tomcat7:run, com esse comando o TomCat será inicializado.
 
-7. Se a inicialização do sistema com o TomCat foi feita da maneira correta, o sistema já está online, a URL para ao acesso ao sistema é:
+8. Se a inicialização do sistema com o TomCat foi feita da maneira correta, o sistema já está online, a URL para ao acesso ao sistema é:
     - URL: http://localhost/9090/BookleWeb
     - Usuario: 123456
     - Senha: 123456
