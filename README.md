@@ -35,18 +35,38 @@ Design Responsivo é uma técnica de estruturação HTML e CSS, em que o site se
 
 
 # Instalação
-1. Faça o clone deste projeto com git clone https://github.com/kelvinsleonardo/BookleWeb.git
-2. Crie um banco de dados MYSQL com o nome de bookleweb
-3. Edite o arquivo src/main/resources/META-INF/persistence.xml e altere o nome do usuário e senha, conforme seus dados do banco de dados, o banco de dados está configurado com o usuário e senha: "root".
-4. Edite o arquivo src/main/webapp/WEB-INF/applicationContext.xml e altere o nome do usuário e senha, conforme seus dados do banco de dados , o sistema está configurado com o usuário e senha: "root".
-5. Execute o sistema e acesse: http://localhost:9090/BookleWeb
-6. Feito isso é necessário criar um usuário administrador para ter acesso a todas funcionalidades do sistema, isso deve ser feito no próprio banco de dados, então vá no seu SGBD e insere a seguinte linha na tabela "tb_usuario":
-  1. Matrícula: Pode ser qualquer número, exemplo: 1312015
-  2. Nome: Qualquer nome completo (Deve ser completo), exemplo: Kélvin Santiago
-  3. Permissão: Existe 3 níveis de permissão no sistema "ROLE_ALUNO", "ROLE_PROFESSOR", "ROLE_ADMIN" então coloque "ROLE_ADMIN" para permissão FULL.
-  4. Senha: Acesse http://www.md5.cz/ e gere uma senha em MD5.
-  5. Email: Insira seu email, exemplo bookleweb@gmail.com.
-7. Feito essas configurações é só acessar o sistema em http://localhost:9090/BookleWeb e logar com o novo usuário que foi cadastrado anteriormente.
+1. Abra o IDE Eclipse EE, caso não tenha instalado faça o download no link abaixo.
+  Link: https://www.eclipse.org/downloads/
+
+2. Vamos clonar o projeto do Github no Eclipse.
+  1. Clique em "File > Import" e procure por GIT, selecione "Projects from Git" e clique em Next.
+  2. Selecione Clone URL e clique em Next.
+  3. Em URL coloque https://github.com/kelvinsleonardo/BookleWeb.git .
+  4. Você necessita ter uma conta no Github para clonar o projeto, será solicitado as credenciais de autenticação.
+  5. Selecione "master" e clique em Next.
+
+3. O banco de dados utilizado para a persistencia dos dados foi o SGBD Mysql, faça a instalação dele, o sistema bookleweb ultiliza o usuário "root" e senha "root" para logar no mysql, caso seu mysql foi criado com outros dados de login, escolha uma das opções abaixo: 
+  * Edite os arquivos do sistema bookleweb com seus dados de login do mysql nos campos correspondentes.
+        * src/main/resources/META-INF/persistence.xml 
+        * src/main/webapp/WEB-INF/applicationContext.xml
+  * Crie um novo usuário no banco de dados com o comando abaixo.
+        * CREATE USER 'root'@'%' IDENTIFIED BY 'root';
+        * GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+
+4. Importe o arquivo configurarDatabase.sql no Mysql que está dentro da pasta Doc na raiz do projeto BookleWeb, feito isso será criado o banco de dados e a tabela tb_usuario, contendo apenas um usuário padrão cadastrado, segue dados desse usuário para utilizar no login do sistema:    
+    - Matrícula: 123456
+    - Senha: 123456
+    
+5. Este sistema utiliza o Maven que é um software de gerenciamento de projetos, então todas as dependencias que o sistema usa o maven baixa automaticamente, conforme definimos no POM.xml que é o arquivo de configuração dele. 
+
+6. Vamos inicializar o sistema no eclipse 
+    1. Clique em cima do projeto BookleWeb com o botão direito e selecione, Run as > Maven Build...
+    2. Em Goals coloque o seguinte comando: tomcat7:run, com esse comando o TomCat será inicializado.
+
+7. Se a inicialização do sistema com o TomCat foi feita da maneira correta, o sistema já está online, a URL para ao acesso ao sistema é:
+    - URL: http://localhost/9090/BookleWeb
+    - Usuario: 123456
+    - Senha: 123456
 
 # Testando aplicação BookleWeb
 Acesse: http://localhost:9090/BookleWeb
