@@ -15,8 +15,8 @@
 		<class>br.com.bookleweb.modelo.Curso</class>
 		<class>br.com.bookleweb.modelo.Disciplina</class>
 		<class>br.com.bookleweb.modelo.Livro</class>
+		
 		<properties>
-
 			<!-- Propriedades JDBC -->
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/bookleweb" />

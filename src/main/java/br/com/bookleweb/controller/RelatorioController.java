@@ -2,6 +2,7 @@ package br.com.bookleweb.controller;
 
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.util.HashMap;
 
@@ -29,10 +30,10 @@ import br.com.bookleweb.factory.FabricaEntityManager;
 @Controller
 public class RelatorioController {
 	
-	private final String CAMINHO_RELATORIO_CURSO = "src/main/java/br/com/bookleweb/relatorios/RelatorioCursos.jrxml";
-	private final String CAMINHO_RELATORIO_DISCIPLINA = "src/main/java/br/com/bookleweb/relatorios/RelatorioDisciplinas.jrxml";
-	private final String CAMINHO_RELATORIO_LIVRO = "src/main/java/br/com/bookleweb/relatorios/RelatorioLivros.jrxml";
-	private final String CAMINHO_RELATORIO_USUARIO = "src/main/java/br/com/bookleweb/relatorios/RelatorioUsuarios.jrxml";
+	private final String CAMINHO_RELATORIO_CURSO = "/br/com/bookleweb/relatorios/RelatorioCursos.jrxml";
+	private final String CAMINHO_RELATORIO_DISCIPLINA = "/br/com/bookleweb/relatorios/RelatorioDisciplinas.jrxml";
+	private final String CAMINHO_RELATORIO_LIVRO = "/br/com/bookleweb/relatorios/RelatorioLivros.jrxml";
+	private final String CAMINHO_RELATORIO_USUARIO = "/br/com/bookleweb/relatorios/RelatorioUsuarios.jrxml";
 	
 	
 	/** Servlet responsável por gerar relatório de todos os cursos.
@@ -44,9 +45,13 @@ public class RelatorioController {
 	@RequestMapping(value = "/relatoriocurso")
 	public void geraRelatorioCurso(HttpServletResponse response) throws JRException, IOException{
 
+		InputStream inputStreamURLCurso =this.getClass().getResourceAsStream(CAMINHO_RELATORIO_CURSO);
+		
 		Connection conexao = FabricaEntityManager.getConnectionDoEntityManager();
 		
-	    JasperReport jasperReport = JasperCompileManager.compileReport(CAMINHO_RELATORIO_CURSO);           
+		response.setContentType("application/pdf");
+		
+	    JasperReport jasperReport = JasperCompileManager.compileReport(inputStreamURLCurso);           
 	    
 		JasperPrint print = JasperFillManager.fillReport(jasperReport,new HashMap<String, Object>(),conexao);
 
@@ -63,9 +68,13 @@ public class RelatorioController {
 	@RequestMapping(value = "/relatoriodisciplina")
 	public void geraRelatorioDisciplina(HttpServletResponse response) throws JRException, IOException{
 		
+		InputStream inputStreamURLDisciplina =this.getClass().getResourceAsStream(CAMINHO_RELATORIO_DISCIPLINA);
+		
 		Connection conexao = FabricaEntityManager.getConnectionDoEntityManager();
 		
-	    JasperReport jasperReport = JasperCompileManager.compileReport(CAMINHO_RELATORIO_DISCIPLINA);           
+		response.setContentType("application/pdf");
+		
+	    JasperReport jasperReport = JasperCompileManager.compileReport(inputStreamURLDisciplina);           
 	    
 		JasperPrint print = JasperFillManager.fillReport(jasperReport,new HashMap<String, Object>(),conexao);
 
@@ -82,9 +91,13 @@ public class RelatorioController {
 	@RequestMapping(value = "/relatoriolivro")
 	public void geraRelatorioLivro(HttpServletResponse response) throws JRException, IOException{
 		
+		InputStream inputStreamURLLivro =this.getClass().getResourceAsStream(CAMINHO_RELATORIO_LIVRO);
+		
 		Connection conexao = FabricaEntityManager.getConnectionDoEntityManager();
 		
-	    JasperReport jasperReport = JasperCompileManager.compileReport(CAMINHO_RELATORIO_LIVRO);           
+		response.setContentType("application/pdf");
+		
+	    JasperReport jasperReport = JasperCompileManager.compileReport(inputStreamURLLivro);           
 	    
 		JasperPrint print = JasperFillManager.fillReport(jasperReport,new HashMap<String, Object>(),conexao);
 
@@ -101,9 +114,13 @@ public class RelatorioController {
 	@RequestMapping(value = "/relatoriousuario")
 	public void geraRelatorioUsuario(HttpServletResponse response) throws JRException, IOException{
 		
+		InputStream inputStreamURLUsuario =this.getClass().getResourceAsStream(CAMINHO_RELATORIO_USUARIO);
+		
 		Connection conexao = FabricaEntityManager.getConnectionDoEntityManager();
 		
-	    JasperReport jasperReport = JasperCompileManager.compileReport(CAMINHO_RELATORIO_USUARIO);           
+		response.setContentType("application/pdf");
+		
+	    JasperReport jasperReport = JasperCompileManager.compileReport(inputStreamURLUsuario);           
 	    
 		JasperPrint print = JasperFillManager.fillReport(jasperReport,new HashMap<String, Object>(),conexao);
 
