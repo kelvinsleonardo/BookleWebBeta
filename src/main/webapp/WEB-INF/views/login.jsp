@@ -98,7 +98,7 @@
                      </div>
                      <br>        
                      <button type="submit" class="btn btn-success btn-login center-block">Abrir Conta</button>
-                     <a data-toggle="modal" data-target="#myModal"><h5 class="text-center">Esqueceu sua senha?</h5></a>    
+                     <!-- <a data-toggle="modal" data-target="#myModal"><h5 class="text-center">Esqueceu sua senha?</h5></a> -->    
                 </form>
             </div>
     </div>
