@@ -18,7 +18,7 @@ import javax.persistence.Table;
 	@NamedQuery(name="Livro.procuraPeloTitulo", 
 				query="SELECT liv FROM Livro liv WHERE liv.titulo LIKE :titulo"),
 	@NamedQuery(name="Livro.procuraTodosLivros", 
-				query="SELECT liv FROM Livro liv"),
+				query="SELECT liv FROM Livro liv ORDER BY liv.titulo ASC"),
 	@NamedQuery(name="Livro.procuraTodosLivrosDaRelacao", 
 				query="SELECT liv FROM Livro liv JOIN liv.disciplinas disc"),
 	@NamedQuery(name="Livro.procuraNaRelacaoPeloCodigoDisciplina", 
@@ -40,7 +40,7 @@ public class Livro implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Integer isbn;
+	private Long isbn;
 	private String titulo;
 	private String autor;
 	private String desc_livro;
@@ -54,10 +54,10 @@ public class Livro implements Serializable{
 	inverseJoinColumns = @JoinColumn(name="cod_disciplina"))
 	private List<Disciplina> disciplinas;
 	
-	public Integer getIsbn() {
+	public Long getIsbn() {
 		return isbn;
 	}
-	public void setIsbn(Integer isbn) {
+	public void setIsbn(Long isbn) {
 		this.isbn = isbn;
 	}
 	public List<Disciplina> getDisciplinas() {

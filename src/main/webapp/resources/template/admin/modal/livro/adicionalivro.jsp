@@ -14,9 +14,9 @@
         <form id="formlivro_adicionar" action="adicionalivro" method="POST">
                 <div class="panel-body">  
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                             <input type="text" class="form-control" placeholder="ISBN" name="isbn" id="add_isbn"/>
-                    </div>
+                    </div> -->
                     
                     <div class="form-group">
                             <input type="text" class="form-control" placeholder="Titulo" name="titulo" id="add_titulo"/>

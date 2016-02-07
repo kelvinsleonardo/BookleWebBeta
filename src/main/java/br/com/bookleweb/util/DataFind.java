@@ -2,6 +2,7 @@ package br.com.bookleweb.util;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 import br.com.bookleweb.modelo.Disciplina;
 
@@ -28,6 +29,17 @@ public class DataFind {
 			}
 		}			
 		return false;
+	}
+	
+	public static Long gerarId(){
+		StringBuilder codigo = new StringBuilder();
+        Random random = new Random();
+
+        for(int contador = 0; contador < 11; contador++){
+            codigo.append(random.nextInt(9));
+        }
+        
+        return Long.parseLong(codigo.toString());
 	}
 	
 }

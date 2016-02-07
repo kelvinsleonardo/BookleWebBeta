@@ -14,6 +14,7 @@ import br.com.bookleweb.dao.DisciplinaDAO;
 import br.com.bookleweb.dao.LivroDAO;
 import br.com.bookleweb.modelo.Disciplina;
 import br.com.bookleweb.modelo.Livro;
+import br.com.bookleweb.util.DataFind;
 
 /**
  * Classe responsável por implementar Servlets de controle que estão
@@ -68,6 +69,7 @@ public class LivroController {
 	public ModelAndView adicionaLivro(@ModelAttribute Livro livro,
 			@ModelAttribute Disciplina disciplina, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("forward:/gerenciadorlivro");
+		livro.setIsbn(DataFind.gerarId());
 		if (livroDAO.adiciona(livro)) {
 			String mensagem = "Opa! Livro adicionado com Sucesso!";
 			mv.addObject("sucesso", mensagem);
