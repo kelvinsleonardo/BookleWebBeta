@@ -79,15 +79,3 @@ Acesse: http://localhost:9090/BookleWeb
 # Javadoc
 Para visualizar o javadoc do sistema acesse: http://rawgit.com/kelvinsleonardo/BookleWeb/master/src/main/javadoc/site/apidocs/index.html
 
-# Demo do sistema
-Acesse: http://bookleweb.kelvinsantiago.com.br
-
-# Screenshot do sistema
-![Alt text](http://www.kelvinsantiago.com.br/blog/wp-content/uploads/2015/06/LOGIN.png "Login")
-
-![Alt text](http://www.kelvinsantiago.com.br/blog/wp-content/uploads/2015/06/BookleWeb_Home.png "Tela Home")
-
-![Alt text](http://www.kelvinsantiago.com.br/blog/wp-content/uploads/2015/06/BookleWeb_GerenciadorDisciplina.png "Gerenciador Disciplina")
-
-![Alt text](http://www.kelvinsantiago.com.br/blog/wp-content/uploads/2015/06/BookleWeb_Pesquisa.png "Pesquisa Livro")
-
